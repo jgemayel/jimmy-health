@@ -1,0 +1,1415 @@
+{
+  "RBC": {
+    "desc": "Red Blood Cell count, the number of oxygen-carrying cells per microliter of blood.",
+    "why": "Screens for anemia (too few) and polycythemia (too many). Always read together with Hemoglobin and Hematocrit.",
+    "highMeans": "A high count is most often from dehydration, living at altitude, smoking, or sleep apnea. Rarely, it points to a bone-marrow condition called polycythemia.",
+    "lowMeans": "A low count suggests anemia. Common causes are iron deficiency, recent blood loss, low B12 or folate, or chronic inflammation.",
+    "context": "Hydration status matters. Getting blood drawn dehydrated can artificially raise this number.",
+    "actions": {
+      "high": [
+        "Drink water consistently and retest, mild dehydration shifts this upward",
+        "Review smoking and altitude exposure",
+        "Pair with Hb, HCT, and ferritin for a full picture"
+      ],
+      "low": [
+        "Check ferritin, B12, and folate",
+        "Rule out GI or urinary blood loss if unexplained",
+        "Review iron-rich foods, red meat, lentils, spinach"
+      ],
+      "maintain": [
+        "Re-check with your next annual panel",
+        "Stay well hydrated before any blood draw"
+      ]
+    }
+  },
+  "Hemoglobin": {
+    "desc": "The iron-containing protein inside red blood cells that actually carries oxygen to your tissues.",
+    "why": "The primary number doctors use to diagnose anemia and track its severity.",
+    "highMeans": "Elevated hemoglobin usually reflects dehydration, smoking, chronic lung issues, high altitude, or sleep apnea.",
+    "lowMeans": "Low hemoglobin is the definition of anemia. Most common causes are iron deficiency, blood loss, B12/folate deficiency, kidney disease, or chronic inflammation.",
+    "context": "A drop of more than 1 g/dL between tests is worth investigating even if the value is still in range.",
+    "actions": {
+      "high": [
+        "Hydrate well before retesting",
+        "Discuss smoking cessation and sleep quality with your doctor",
+        "Check oxygen saturation if you have daytime fatigue"
+      ],
+      "low": [
+        "Check ferritin, B12, folate, and iron studies",
+        "Add iron-rich foods and vitamin C (which helps absorption)",
+        "Ask your doctor about iron supplementation if ferritin is low"
+      ],
+      "maintain": [
+        "Annual CBC is enough if you feel well",
+        "Donate blood no more than 2-3 times per year"
+      ]
+    }
+  },
+  "Hematocrit": {
+    "desc": "The percentage of your blood that is made up of red blood cells (the rest is plasma and white cells).",
+    "why": "Cross-checks Hemoglobin and RBC. Useful for spotting dehydration (falsely high) or blood loss (falsely low).",
+    "highMeans": "High Hct usually means dehydration or the same things that raise Hemoglobin, smoking, altitude, sleep apnea, rarely polycythemia.",
+    "lowMeans": "Low Hct usually means anemia (too few red cells) or overhydration diluting the blood.",
+    "context": "Hct closely tracks Hemoglobin. Interpret them together, not independently.",
+    "actions": {
+      "high": [
+        "Drink water and retest",
+        "Review smoking and sleep habits with your doctor"
+      ],
+      "low": [
+        "Check iron, B12, folate, the anemia workup",
+        "Rule out hidden bleeding if persistent"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "MCV": {
+    "desc": "Mean Corpuscular Volume, the average size of your red blood cells.",
+    "why": "Categorizes anemia by cell size: small (microcytic) often means iron deficiency, large (macrocytic) often means B12 or folate deficiency.",
+    "highMeans": "Big red cells (macrocytic) most often point to B12 or folate deficiency, alcohol use, hypothyroidism, or certain medications.",
+    "lowMeans": "Small red cells (microcytic) most often mean iron deficiency or thalassemia (a genetic trait common in Mediterranean populations).",
+    "context": "MCV is the single best triage tool once anemia is confirmed.",
+    "actions": {
+      "high": [
+        "Check B12 and folate",
+        "Review alcohol intake honestly",
+        "Check TSH to rule out thyroid"
+      ],
+      "low": [
+        "Check iron and ferritin",
+        "Ask about thalassemia trait if you have Mediterranean ancestry"
+      ],
+      "maintain": [
+        "No action needed when MCV is normal"
+      ]
+    }
+  },
+  "MCH": {
+    "desc": "Mean Corpuscular Hemoglobin, the average amount of hemoglobin inside each red blood cell.",
+    "why": "Supports MCV in classifying anemia. Low MCH almost always rides with low MCV and points to iron issues.",
+    "highMeans": "Usually mirrors high MCV, B12 or folate deficiency, alcohol, hypothyroidism.",
+    "lowMeans": "Usually mirrors low MCV, iron deficiency or thalassemia trait.",
+    "context": "Interpret alongside MCV and MCHC, never in isolation.",
+    "actions": {
+      "high": [
+        "Follow the MCV workup (B12, folate, TSH)"
+      ],
+      "low": [
+        "Follow the MCV workup (ferritin, iron)"
+      ],
+      "maintain": [
+        "No action needed when normal"
+      ]
+    }
+  },
+  "MCHC": {
+    "desc": "Mean Corpuscular Hemoglobin Concentration, how densely packed the hemoglobin is inside each red cell.",
+    "why": "Helps separate iron-deficiency anemia from other types. Also a quality check for blood samples.",
+    "highMeans": "True elevations are rare; usually hereditary spherocytosis or a lab artifact from cold agglutinins.",
+    "lowMeans": "Low MCHC (hypochromic cells) points to iron deficiency anemia.",
+    "context": "If isolated and the rest of the CBC is normal, a mildly off MCHC often has no clinical meaning.",
+    "actions": {
+      "high": [
+        "Repeat the test, artifacts are common here"
+      ],
+      "low": [
+        "Check iron and ferritin"
+      ],
+      "maintain": [
+        "No action needed when normal"
+      ]
+    }
+  },
+  "RDW-CV": {
+    "desc": "Red cell Distribution Width, how much variation there is in the size of your red blood cells.",
+    "why": "A rising RDW is an early signal that your marrow is making a mixed population of cells, often before anemia shows up.",
+    "highMeans": "A high RDW means your red cells are unusually varied in size. Commonly iron, B12, or folate deficiency starting to show.",
+    "lowMeans": "A low RDW is not clinically meaningful.",
+    "context": "RDW often rises before Hemoglobin drops, it's an early-warning marker for nutritional anemia.",
+    "actions": {
+      "high": [
+        "Check iron, B12, and folate",
+        "Review diet for animal protein and leafy greens"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "Platelets": {
+    "desc": "The tiny cell fragments in blood that form clots when you're injured.",
+    "why": "Checks both bleeding risk (low) and clotting risk (high).",
+    "highMeans": "High platelets (thrombocytosis) are usually reactive, from inflammation, infection, iron deficiency, or recent intense exercise. Sustained highs can raise clot risk.",
+    "lowMeans": "Low platelets (thrombocytopenia) can be from a viral illness, certain medications, autoimmune conditions, or liver disease. Very low values raise bleeding risk.",
+    "context": "A single reading just below the reference range is usually not concerning. Trend over multiple tests matters more.",
+    "actions": {
+      "high": [
+        "Check ferritin and CRP",
+        "Retest in 4-6 weeks after any recent illness or infection has resolved"
+      ],
+      "low": [
+        "Retest to confirm, EDTA clumping can falsely lower platelets",
+        "Review medications with your doctor",
+        "Avoid NSAIDs and alcohol until confirmed"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "MPV": {
+    "desc": "Mean Platelet Volume, the average size of your platelets.",
+    "why": "Helps distinguish whether platelet counts are changing due to production (young, bigger platelets) or destruction (older, mixed sizes).",
+    "highMeans": "High MPV suggests your marrow is cranking out fresh, young platelets, common when platelets are being destroyed or consumed faster than normal.",
+    "lowMeans": "Low MPV suggests reduced platelet production and can be seen in some marrow conditions or after chemotherapy.",
+    "context": "MPV alone rarely drives decisions. Always interpret with platelet count.",
+    "actions": {
+      "high": [
+        "Follow up with your doctor if platelet count is also abnormal"
+      ],
+      "low": [
+        "Follow up with your doctor if platelet count is also abnormal"
+      ],
+      "maintain": [
+        "No action needed when the rest of the CBC is normal"
+      ]
+    }
+  },
+  "WBC": {
+    "desc": "White Blood Cell count, total immune cells in your blood.",
+    "why": "Screens for infection (usually pushes it up), immune suppression (low), and blood cancers (very high or very low).",
+    "highMeans": "A high WBC usually means infection, inflammation, recent intense exercise, or stress. Very high levels (>20k) need prompt workup.",
+    "lowMeans": "A low WBC can be from viral infection, autoimmune conditions, certain medications, B12/folate deficiency, or less commonly a marrow problem.",
+    "context": "Exercise in the hours before testing can transiently raise WBC. Avoid hard workouts the morning of a draw.",
+    "actions": {
+      "high": [
+        "Retest once any current illness has cleared",
+        "Check CRP to gauge inflammation"
+      ],
+      "low": [
+        "Retest in 2-4 weeks",
+        "Check B12 and folate"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "Neutrophils %": {
+    "desc": "The percentage of your white cells that are neutrophils, the first responders to bacterial infection.",
+    "why": "Helps identify what kind of immune activity is happening. A high neutrophil fraction usually points to bacterial infection or inflammation.",
+    "highMeans": "Elevated neutrophils point to bacterial infection, inflammation, stress, or recent steroid use.",
+    "lowMeans": "Low neutrophils (neutropenia) raise infection risk and can come from viral illness, autoimmune disease, medications, or B12/folate deficiency.",
+    "context": "Absolute neutrophil count matters more than the percentage, a high percentage with a normal WBC may not mean much.",
+    "actions": {
+      "high": [
+        "Retest once any infection resolves",
+        "Check CRP"
+      ],
+      "low": [
+        "Retest in 2-4 weeks",
+        "If persistently below 1.0 x10^3/uL, see a doctor promptly"
+      ],
+      "maintain": [
+        "No action needed when normal"
+      ]
+    }
+  },
+  "Lymphocytes %": {
+    "desc": "The percentage of your white cells that are lymphocytes, the cells that handle viruses and long-term immunity.",
+    "why": "Patterns here suggest viral vs bacterial processes. A high lymphocyte fraction often reflects a viral illness.",
+    "highMeans": "High lymphocytes commonly follow a viral infection (mono, COVID, CMV). Persistent high levels need workup.",
+    "lowMeans": "Low lymphocytes can be from acute stress, corticosteroids, viral infection early on, chronic illness, or some immune conditions.",
+    "context": "Percentages shift whenever neutrophils shift, always check absolute counts if either side looks off.",
+    "actions": {
+      "high": [
+        "Retest 4-6 weeks after any viral illness",
+        "Ask about EBV/CMV screening if persistently elevated"
+      ],
+      "low": [
+        "Retest after recovering from any recent illness",
+        "Review medications (especially steroids)"
+      ],
+      "maintain": [
+        "No action needed when normal"
+      ]
+    }
+  },
+  "Monocytes %": {
+    "desc": "The percentage of white cells that are monocytes, the immune cells that clean up damaged tissue and fight chronic infections.",
+    "why": "Monocytosis can signal chronic inflammation, recovery from illness, or less commonly blood disorders.",
+    "highMeans": "High monocytes often reflect chronic inflammation, autoimmune disease, or recovery from an infection.",
+    "lowMeans": "Low monocytes are rarely clinically meaningful on their own.",
+    "context": "Small percentage changes in monocytes rarely matter by themselves.",
+    "actions": {
+      "high": [
+        "Check CRP and repeat CBC in 4-6 weeks",
+        "Review for chronic inflammatory conditions"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "Eosinophils %": {
+    "desc": "White cells that respond mostly to parasites and allergic reactions.",
+    "why": "Elevated eosinophils point toward allergy, asthma, parasitic infection, or drug reactions.",
+    "highMeans": "High eosinophils commonly mean allergies, asthma, eczema, parasitic infection, or a drug reaction.",
+    "lowMeans": "Low eosinophils are not clinically concerning and often follow stress or steroid use.",
+    "context": "Eosinophils dip in acute stress and rise slowly, interpret trends, not single readings.",
+    "actions": {
+      "high": [
+        "Review any new allergies, medications, or travel history",
+        "Consider stool ova and parasite testing if relevant"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "Basophils %": {
+    "desc": "The rarest white blood cell, involved in allergic and inflammatory responses.",
+    "why": "Very small fraction of total WBCs. Rarely the primary driver of any diagnosis.",
+    "highMeans": "Mild elevations can follow allergic reactions or chronic inflammation. Very high basophils are rare and may warrant further workup.",
+    "lowMeans": "Low basophils are not clinically meaningful.",
+    "context": "Measured as a percentage, so small absolute changes can look dramatic.",
+    "actions": {
+      "high": [
+        "Review for allergies, recheck in 4-6 weeks"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual CBC"
+      ]
+    }
+  },
+  "ESR (1 hr)": {
+    "desc": "Erythrocyte Sedimentation Rate, how fast red cells settle in a tube. A nonspecific marker of inflammation.",
+    "why": "Rises with chronic inflammation, infection, autoimmune disease, or certain cancers. Used to monitor inflammation over time.",
+    "highMeans": "A high ESR signals inflammation somewhere in the body but doesn't say where. Could be infection, autoimmune disease, tissue injury, or (uncommon) cancer.",
+    "lowMeans": "Low ESR is not a concern.",
+    "context": "Normal ESR rises gradually with age and is usually higher in women. Pair with hs-CRP for a fuller picture.",
+    "actions": {
+      "high": [
+        "Check hs-CRP to confirm active inflammation",
+        "Review for recent infections or autoimmune symptoms"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "No need to track unless trending inflammation"
+      ]
+    }
+  },
+  "Glucose Fasting": {
+    "desc": "Blood sugar measured after an overnight fast (8-12 hours without food).",
+    "why": "Core screen for prediabetes and diabetes. Values 100-125 mg/dL are prediabetic; 126+ on two occasions is diabetes.",
+    "highMeans": "A high fasting glucose suggests insulin resistance or early diabetes. Even a single high reading deserves a retest plus HbA1c.",
+    "lowMeans": "Low fasting glucose (hypoglycemia) is unusual on a morning fast and may signal excess insulin, adrenal issues, or liver problems.",
+    "context": "Must be truly fasted. Coffee, gum, or stress can nudge it up. Prior-day carb intake also matters.",
+    "actions": {
+      "high": [
+        "Confirm with repeat test and HbA1c",
+        "Cut refined carbs and added sugar; emphasize fiber, protein, fat",
+        "Add 150+ min/week of zone-2 cardio",
+        "Walk 10-15 minutes after each meal",
+        "Aim for 5-7% weight loss if overweight"
+      ],
+      "low": [
+        "Retest to confirm, lab or timing errors are common",
+        "Discuss with your doctor if symptomatic (shakiness, sweating, confusion)"
+      ],
+      "maintain": [
+        "Recheck annually",
+        "Keep the same dietary and activity pattern, it's working"
+      ]
+    }
+  },
+  "HbA1c": {
+    "desc": "Hemoglobin A1c, your average blood sugar over the past 2-3 months, expressed as a percentage.",
+    "why": "The most reliable measure of long-term blood sugar control. Less affected by yesterday's dinner than fasting glucose.",
+    "highMeans": "5.7-6.4% is prediabetic. 6.5%+ meets diabetes criteria. Each 0.1% change reflects real change in average glucose.",
+    "lowMeans": "Very low HbA1c is unusual unless you've had significant blood loss, hemolysis, or a red-cell disorder that shortens red cell lifespan.",
+    "context": "Conditions that shorten red cell life (hemolysis, iron deficiency anemia after repletion) can falsely lower HbA1c.",
+    "actions": {
+      "high": [
+        "Add 150+ min/week of zone-2 cardio, the highest-leverage lever",
+        "Reduce refined carbs; prefer fiber, protein, and fat at each meal",
+        "Walk 10-15 min after every meal",
+        "Lose 5-7% of body weight if overweight, meaningfully lowers HbA1c",
+        "Recheck every 3-6 months until stable"
+      ],
+      "low": [
+        "Check red cell indices and ferritin for a hemolysis or anemia cause"
+      ],
+      "maintain": [
+        "Recheck annually",
+        "Keep current nutrition and exercise habits"
+      ]
+    }
+  },
+  "Insulin": {
+    "desc": "The hormone that moves glucose from your blood into cells. Measured fasting.",
+    "why": "Tells you how hard your pancreas is working to keep glucose normal. High insulin with normal glucose = insulin resistance.",
+    "highMeans": "High fasting insulin points to insulin resistance, your cells are responding less to insulin, so your pancreas makes more.",
+    "lowMeans": "Low fasting insulin with normal glucose is usually fine. With high glucose, it may suggest reduced pancreatic output.",
+    "context": "Must be drawn fasting. Interpret alongside fasting glucose using HOMA-IR.",
+    "actions": {
+      "high": [
+        "Prioritize resistance training (builds insulin-sensitive muscle)",
+        "Reduce added sugar and refined carbs",
+        "Lose excess body fat if applicable, the fastest fix"
+      ],
+      "low": [
+        "Usually no action needed if glucose is normal"
+      ],
+      "maintain": [
+        "Recheck annually with glucose"
+      ]
+    }
+  },
+  "HOMA-IR": {
+    "desc": "A calculated score combining fasting glucose and insulin to estimate insulin resistance.",
+    "why": "Better early-warning sign of metabolic dysfunction than glucose alone. Below 2.0 is generally insulin sensitive.",
+    "highMeans": "HOMA-IR above 2 suggests insulin resistance, even before fasting glucose or HbA1c go abnormal.",
+    "lowMeans": "Low HOMA-IR indicates good insulin sensitivity, ideal.",
+    "context": "Calculated from the same blood draw as fasting glucose and insulin, so both must be fasting.",
+    "actions": {
+      "high": [
+        "Zone-2 cardio and resistance training",
+        "Lower refined carbs and added sugars",
+        "Reduce body fat if applicable"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Recheck annually"
+      ]
+    }
+  },
+  "Total Cholesterol": {
+    "desc": "The sum of all cholesterol in your blood (LDL + HDL + VLDL).",
+    "why": "Screening number for cardiovascular risk. Individual fractions (LDL, HDL) matter more.",
+    "highMeans": "High total cholesterol raises cardiovascular risk but the split between LDL and HDL is what really matters. High total with high HDL is less concerning than high total with high LDL.",
+    "lowMeans": "Very low total cholesterol is uncommon and usually incidental.",
+    "context": "Must be drawn fasting (9-12 hours) for an accurate LDL calculation.",
+    "actions": {
+      "high": [
+        "Focus on LDL and Non-HDL below",
+        "Mediterranean diet, olive oil, fiber, nuts",
+        "150+ min/week aerobic exercise"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "HDL Cholesterol": {
+    "desc": "High-Density Lipoprotein, the 'good' cholesterol that carries excess cholesterol back to the liver for disposal.",
+    "why": "Higher HDL is protective against cardiovascular disease. Below 40 mg/dL is a risk factor.",
+    "highMeans": "High HDL (>60 mg/dL) is generally favorable and associated with lower heart disease risk.",
+    "lowMeans": "Low HDL (<40 mg/dL) is a cardiovascular risk factor. Commonly seen with metabolic syndrome, sedentary lifestyle, smoking, or very low-fat diets.",
+    "context": "Exercise and olive oil raise HDL. Extreme keto can temporarily lower it. Hormonal changes matter too.",
+    "actions": {
+      "high": [
+        "No action, this is favorable",
+        "Keep exercise and Mediterranean eating patterns"
+      ],
+      "low": [
+        "Add 150+ min/week aerobic exercise, the most effective HDL booster",
+        "Add olive oil and fatty fish; reduce trans fats",
+        "Stop smoking if applicable",
+        "Moderate alcohol (no more than 1 drink/day)"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "LDL Cholesterol": {
+    "desc": "Low-Density Lipoprotein, the 'bad' cholesterol that can deposit in artery walls and form plaque.",
+    "why": "LDL is the primary target for cardiovascular risk reduction. Lower is better for most adults.",
+    "highMeans": "High LDL raises the risk of heart attack and stroke. Diet and genetics both contribute. Optimal is <100 mg/dL; <70 for anyone with existing heart disease.",
+    "lowMeans": "Very low LDL (<40 mg/dL) without medication is uncommon. Usually fine but worth noting with your doctor.",
+    "context": "Most labs calculate LDL from other lipids. Accurate calculation requires fasting. Direct LDL-C is more reliable when triglycerides are high.",
+    "actions": {
+      "high": [
+        "Mediterranean-style diet: olive oil, nuts, fatty fish, legumes, vegetables",
+        "Reduce saturated fat (<7% of calories) and eliminate trans fats",
+        "30+ g/day of soluble fiber (oats, beans, apples)",
+        "150+ min/week aerobic exercise",
+        "Discuss statin therapy with your doctor if persistently high despite lifestyle changes"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel",
+        "Keep current nutrition and activity pattern"
+      ]
+    }
+  },
+  "Triglycerides": {
+    "desc": "The form of fat that travels through your blood. Mostly come from dietary carbohydrates and alcohol, not from dietary fat.",
+    "why": "High triglycerides are part of metabolic syndrome and an independent heart-disease risk. Very high (>500) raises pancreatitis risk.",
+    "highMeans": "Elevated triglycerides usually reflect too much refined carbs, sugar, or alcohol, or underlying insulin resistance.",
+    "lowMeans": "Low triglycerides are rarely concerning.",
+    "context": "Strictly fasting (no food 9-12 hours). A big dinner the night before can dramatically raise the reading.",
+    "actions": {
+      "high": [
+        "Cut added sugar and refined carbs first, biggest single lever",
+        "Reduce alcohol",
+        "Add omega-3s (fatty fish 2x/week or 2-4 g EPA/DHA daily)",
+        "Lose excess weight",
+        "Retest after 6-8 weeks of changes"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "VLDL": {
+    "desc": "Very Low-Density Lipoprotein, particles that carry triglycerides from the liver into the blood.",
+    "why": "A secondary cholesterol marker. Moves in the same direction as triglycerides and adds a bit of cardiovascular risk.",
+    "highMeans": "High VLDL usually tracks with high triglycerides and points to the same issues: too much refined carb or alcohol, or insulin resistance.",
+    "lowMeans": "Low VLDL is not a concern.",
+    "context": "Calculated from triglycerides in most labs (Trig ÷ 5). Treat the same way as triglycerides.",
+    "actions": {
+      "high": [
+        "Cut added sugar and refined carbs",
+        "Reduce alcohol",
+        "Add omega-3s"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "Non-HDL Cholesterol": {
+    "desc": "Total cholesterol minus HDL, all the 'bad' cholesterol fractions combined.",
+    "why": "A better predictor of cardiovascular risk than LDL alone, especially when triglycerides are high.",
+    "highMeans": "High non-HDL means your LDL + VLDL + other atherogenic particles are raised. Aim for <130; <100 if you have other risk factors.",
+    "lowMeans": "Low non-HDL is favorable.",
+    "context": "Non-HDL is accurate whether you're fasting or not, useful when someone forgets to fast.",
+    "actions": {
+      "high": [
+        "Same approach as high LDL: Mediterranean diet, fiber, exercise",
+        "Reduce saturated fat and added sugar",
+        "Discuss medication if persistently high"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "Total Chol/HDL Ratio": {
+    "desc": "Total Cholesterol divided by HDL. A single number for cardiovascular risk.",
+    "why": "Captures how well-balanced your lipid profile is. Ideal is under 3.5; above 5 raises risk.",
+    "highMeans": "A high ratio means either total cholesterol is too high, HDL is too low, or both. Below 4.5 is generally the target.",
+    "lowMeans": "A low ratio is favorable.",
+    "context": "Harder to move than individual lipids, best improved by raising HDL (exercise) while lowering LDL (diet).",
+    "actions": {
+      "high": [
+        "Raise HDL with aerobic exercise, olive oil, fatty fish",
+        "Lower LDL with fiber and saturated fat reduction",
+        "Stop smoking if applicable"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "LDL/HDL Ratio": {
+    "desc": "LDL divided by HDL. Another ratio for cardiovascular risk.",
+    "why": "Useful secondary marker. Under 3.5 is generally good; under 2.5 is excellent.",
+    "highMeans": "A high ratio means LDL is outpacing HDL. Treat the same way as high LDL + low HDL: diet, exercise, and potentially medication.",
+    "lowMeans": "A low ratio is favorable.",
+    "context": "Track with Total Chol/HDL ratio; they move together.",
+    "actions": {
+      "high": [
+        "Raise HDL with aerobic exercise",
+        "Lower LDL with Mediterranean diet and fiber"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual lipid panel"
+      ]
+    }
+  },
+  "sdLDL Cholesterol": {
+    "desc": "Small, dense LDL particles, the most atherogenic LDL subtype that squeezes into artery walls.",
+    "why": "A more refined cardiovascular risk marker than standard LDL. Elevated sdLDL is strongly linked to metabolic syndrome and heart disease.",
+    "highMeans": "High sdLDL points to insulin resistance, high triglycerides, and low HDL, the classic metabolic syndrome pattern. These particles form plaque more aggressively than large LDL.",
+    "lowMeans": "Low sdLDL is favorable.",
+    "context": "Not part of standard lipid panels in most labs. Test if you have high triglycerides, low HDL, or family history of heart disease.",
+    "actions": {
+      "high": [
+        "Lower triglycerides (cut refined carbs and sugar)",
+        "Raise HDL with exercise and olive oil",
+        "Lose excess weight",
+        "Discuss with your doctor whether a statin or other lipid therapy is warranted"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Recheck every 1-2 years if previously high"
+      ]
+    }
+  },
+  "Creatinine": {
+    "desc": "A waste product from normal muscle breakdown that your kidneys filter out.",
+    "why": "The standard marker of kidney function. Rising creatinine means your kidneys are filtering less.",
+    "highMeans": "High creatinine points to reduced kidney function, dehydration, or high muscle mass (athletes often run a bit high). Persistent elevation deserves workup.",
+    "lowMeans": "Low creatinine can be from low muscle mass, pregnancy, or overhydration before the test.",
+    "context": "Well-muscled people naturally run higher. Intense exercise in the 24 hours before testing can also raise it temporarily.",
+    "actions": {
+      "high": [
+        "Hydrate well and retest",
+        "Avoid NSAIDs and heavy exercise before testing",
+        "Check eGFR and urine protein for kidney function detail"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "eGFR": {
+    "desc": "Estimated Glomerular Filtration Rate, how much blood your kidneys filter per minute, calculated from creatinine.",
+    "why": "The primary number used to stage kidney health. Above 90 is normal; 60-89 is mildly reduced; below 60 for 3+ months is chronic kidney disease.",
+    "highMeans": "Very high eGFR (>120) is usually fine and reflects excellent kidney function or low muscle mass.",
+    "lowMeans": "Below 60 suggests reduced kidney function. Below 30 is severe and needs specialist care.",
+    "context": "eGFR naturally declines with age (about 1 mL/min/year after 40). A trend downward matters more than a single value.",
+    "actions": {
+      "high": [
+        "No action needed"
+      ],
+      "low": [
+        "Check urine protein (microalbumin) and kidney ultrasound if persistent",
+        "Review any nephrotoxic medications (NSAIDs, certain antibiotics)",
+        "Control blood pressure and glucose aggressively"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "BUN/Urea": {
+    "desc": "Blood Urea Nitrogen, the nitrogen portion of urea, a waste product from protein breakdown cleared by the kidneys.",
+    "why": "Secondary kidney function marker. Also shifts with hydration and protein intake.",
+    "highMeans": "High BUN is most often dehydration or a high-protein meal. Can also reflect GI bleeding, kidney dysfunction, or heart failure.",
+    "lowMeans": "Low BUN can mean liver disease, low-protein diet, or overhydration.",
+    "context": "Rises quickly with dehydration. Drink water and retest before jumping to conclusions.",
+    "actions": {
+      "high": [
+        "Hydrate well and retest",
+        "Review protein intake in the 24h before testing"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "BUN/Creat Ratio": {
+    "desc": "BUN divided by Creatinine. Helps distinguish dehydration from actual kidney issues.",
+    "why": "A ratio >20 suggests dehydration or GI bleeding. Ratio 10-20 is normal. Below 10 may point to liver disease or low protein intake.",
+    "highMeans": "High ratio is usually dehydration. Persistent high ratios can suggest upper GI bleeding or heart failure.",
+    "lowMeans": "Low ratio can reflect liver disease, low-protein diet, or pregnancy.",
+    "context": "A practical triage tool when both BUN and creatinine look off.",
+    "actions": {
+      "high": [
+        "Hydrate well and retest",
+        "Discuss with your doctor if you have black stools or GI symptoms"
+      ],
+      "low": [
+        "Review protein intake",
+        "Check liver function"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Uric Acid": {
+    "desc": "A waste product from breakdown of purines (found in meat, seafood, beer, and sugar).",
+    "why": "Elevated uric acid causes gout and contributes to kidney stones. Also linked to metabolic syndrome.",
+    "highMeans": "High uric acid raises the risk of gout attacks and kidney stones. Driven by red meat, seafood, beer, fructose-sweetened drinks, and sometimes kidney issues.",
+    "lowMeans": "Very low uric acid is uncommon and usually benign.",
+    "context": "Dehydration and fasting raise uric acid. Rapid weight loss (especially keto) can trigger a flare.",
+    "actions": {
+      "high": [
+        "Reduce red meat, organ meats, and shellfish",
+        "Cut beer and sugar-sweetened drinks",
+        "Hydrate well (2-3 L/day)",
+        "Lose weight gradually; avoid very-low-calorie crash diets",
+        "Ask about allopurinol if you've had gout attacks"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "ALT (SGPT)": {
+    "desc": "Alanine Aminotransferase, an enzyme mostly inside liver cells. Leaks into blood when liver cells are stressed.",
+    "why": "The most specific routine marker of liver cell damage. Rises with fatty liver, hepatitis, alcohol, and certain medications.",
+    "highMeans": "High ALT points to liver cell injury. Most common cause today is non-alcoholic fatty liver disease. Also: alcohol, viral hepatitis, medications (including some supplements), or muscle injury.",
+    "lowMeans": "Low ALT can reflect B6 deficiency but is rarely clinically important.",
+    "context": "Intense exercise can transiently raise ALT because some also comes from muscle.",
+    "actions": {
+      "high": [
+        "Reduce alcohol to zero for 6-8 weeks and retest",
+        "Lose weight if overweight, fatty liver often reverses with 5-10% weight loss",
+        "Review medications and supplements with your doctor",
+        "Check hepatitis B/C if risk factors exist"
+      ],
+      "low": [
+        "Check B6 level if curious; otherwise no action"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "AST (SGOT)": {
+    "desc": "Aspartate Aminotransferase, an enzyme in liver AND muscle cells. Less specific to the liver than ALT.",
+    "why": "Supports ALT in liver evaluation. AST > ALT (especially 2:1) is a classic pattern of alcoholic liver disease.",
+    "highMeans": "High AST with high ALT suggests liver stress. AST higher than ALT often points to alcohol. AST alone can rise with muscle injury or vigorous exercise.",
+    "lowMeans": "Low AST is rarely meaningful.",
+    "context": "Rises with heavy exercise. Avoid intense workouts in the 24-48 hours before testing.",
+    "actions": {
+      "high": [
+        "Reduce alcohol and retest in 6-8 weeks",
+        "Check ALT pattern (AST:ALT ratio) for clues",
+        "Avoid intense exercise before retesting"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "GGT": {
+    "desc": "Gamma-Glutamyl Transferase, a liver enzyme especially sensitive to alcohol and bile duct issues.",
+    "why": "Helps distinguish liver from bone sources of elevated alkaline phosphatase. Very responsive to alcohol intake.",
+    "highMeans": "High GGT is often the earliest sign of alcohol-related liver stress. Also rises with bile duct issues, fatty liver, and certain medications.",
+    "lowMeans": "Low GGT is not a concern.",
+    "context": "Even moderate regular alcohol use can nudge GGT up. Abstaining for 2-4 weeks typically drops it meaningfully.",
+    "actions": {
+      "high": [
+        "Stop alcohol for 4-6 weeks and retest",
+        "Review medications (phenytoin, barbiturates)",
+        "Check other liver tests and consider imaging if persistently high"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Alk Phosphatase": {
+    "desc": "Alkaline Phosphatase, an enzyme present in liver, bone, intestine, and placenta.",
+    "why": "Rises with bile duct issues (liver source) or bone growth/disease (bone source). GGT helps tell which.",
+    "highMeans": "High ALP can mean bile duct obstruction, fatty liver, or bone activity (growth in teens, fractures, Paget disease). A normal GGT usually points to bone as the source.",
+    "lowMeans": "Low ALP can suggest zinc deficiency, malnutrition, or rare hypophosphatasia.",
+    "context": "Adolescents and pregnant women naturally run higher.",
+    "actions": {
+      "high": [
+        "Check GGT to split liver vs bone",
+        "Review for bone symptoms or recent fracture",
+        "Imaging if liver source suspected"
+      ],
+      "low": [
+        "Check zinc and nutrition status"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Bilirubin Total": {
+    "desc": "A yellow pigment from red blood cell breakdown that's processed by the liver and excreted in bile.",
+    "why": "Rises when red cells break down faster than normal, or when the liver can't clear it. Very high levels cause jaundice.",
+    "highMeans": "High bilirubin can be from Gilbert syndrome (benign, genetic, common), hemolysis, or liver/bile duct issues. Gilbert variety is harmless and affects 5-10% of people.",
+    "lowMeans": "Low bilirubin is not a concern.",
+    "context": "Fasting, stress, illness, and dehydration can temporarily raise unconjugated bilirubin in Gilbert syndrome.",
+    "actions": {
+      "high": [
+        "Split into direct vs indirect, direct elevation is more concerning",
+        "If isolated and stable, often Gilbert syndrome, benign"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Protein Total": {
+    "desc": "The combined amount of albumin and globulin in blood.",
+    "why": "Screens for liver function, kidney protein loss, dehydration, and abnormal immunoglobulin production.",
+    "highMeans": "High total protein can be from dehydration, chronic inflammation, or abnormal antibody production (rarely, multiple myeloma).",
+    "lowMeans": "Low total protein can mean malnutrition, liver disease, kidney protein loss (nephrotic syndrome), or chronic illness.",
+    "context": "Always interpret alongside albumin and globulin, they drive the total.",
+    "actions": {
+      "high": [
+        "Hydrate and retest",
+        "If persistent, check serum protein electrophoresis"
+      ],
+      "low": [
+        "Check albumin and globulin individually",
+        "Review diet and check for kidney protein loss"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Albumin": {
+    "desc": "The main protein in blood, made by the liver. Holds fluid inside your vessels and carries hormones, drugs, and calcium.",
+    "why": "A marker of liver synthesis and nutritional status. Low albumin is a strong prognostic signal across many illnesses.",
+    "highMeans": "High albumin is almost always dehydration.",
+    "lowMeans": "Low albumin can be from liver disease, protein loss in urine or gut, severe inflammation, or malnutrition.",
+    "context": "Albumin has a long half-life (~20 days), so it responds to changes slowly.",
+    "actions": {
+      "high": [
+        "Hydrate"
+      ],
+      "low": [
+        "Check liver tests, urine protein",
+        "Review protein intake and any GI symptoms"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Globulin": {
+    "desc": "A group of proteins including antibodies (immunoglobulins) and carrier proteins.",
+    "why": "Helps assess immune activity and liver function. High globulin can indicate chronic inflammation or abnormal antibody production.",
+    "highMeans": "High globulin often reflects chronic infection, autoimmune disease, liver disease, or (rarely) multiple myeloma.",
+    "lowMeans": "Low globulin may suggest immune deficiency or severe malnutrition.",
+    "context": "Calculated as Total Protein minus Albumin in many labs.",
+    "actions": {
+      "high": [
+        "Check serum protein electrophoresis if persistent",
+        "Review for autoimmune symptoms"
+      ],
+      "low": [
+        "Check immunoglobulins if recurrent infections"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "A/G Ratio": {
+    "desc": "Albumin divided by Globulin, a ratio that helps flag shifts in protein fractions.",
+    "why": "A high or low ratio can point toward specific problems even when total protein looks normal.",
+    "highMeans": "High A/G ratio can be from low globulin (some immune deficiencies) or certain genetic conditions, often benign.",
+    "lowMeans": "Low A/G ratio suggests either low albumin or high globulin, worth looking at both proteins separately.",
+    "context": "Ratio is most useful in conjunction with the individual values, not alone.",
+    "actions": {
+      "high": [
+        "Look at globulin separately, is it low?",
+        "Usually no action needed if you feel well"
+      ],
+      "low": [
+        "Check albumin and globulin separately to find the driver"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Sodium": {
+    "desc": "The primary electrolyte outside your cells. Tightly regulated by kidneys and hormones.",
+    "why": "Sodium imbalances cause neurological symptoms (confusion, seizures when severe). Small deviations rarely matter.",
+    "highMeans": "High sodium (hypernatremia) is almost always dehydration or inadequate water intake.",
+    "lowMeans": "Low sodium (hyponatremia) can be from overhydration, certain medications (diuretics, SSRIs), heart/kidney/liver disease, or hormonal issues.",
+    "context": "Tightly regulated, even small deviations (2-3 mmol/L) can matter in the right clinical picture.",
+    "actions": {
+      "high": [
+        "Increase water intake"
+      ],
+      "low": [
+        "Review medications",
+        "Don't over-drink during endurance exercise",
+        "Discuss with your doctor if persistent"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Potassium": {
+    "desc": "The main electrolyte inside your cells. Essential for heart rhythm and muscle function.",
+    "why": "Even small abnormalities can affect heart rhythm. Watched carefully in patients on kidney or heart medications.",
+    "highMeans": "High potassium (hyperkalemia) can be from kidney issues, certain medications (ACE inhibitors, potassium-sparing diuretics), or a hemolyzed blood sample.",
+    "lowMeans": "Low potassium (hypokalemia) usually comes from diuretics, vomiting, diarrhea, or magnesium deficiency.",
+    "context": "A hemolyzed sample (red cells broken during draw) falsely raises potassium. Repeat before acting.",
+    "actions": {
+      "high": [
+        "Repeat test with fresh sample",
+        "Review medications"
+      ],
+      "low": [
+        "Eat potassium-rich foods (banana, avocado, spinach, potatoes)",
+        "Check magnesium too, low magnesium causes low potassium"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Chloride": {
+    "desc": "The partner of sodium in maintaining fluid balance and acid-base status.",
+    "why": "Supports interpretation of acid-base problems and sodium/water imbalances.",
+    "highMeans": "High chloride usually tracks with high sodium or metabolic acidosis.",
+    "lowMeans": "Low chloride usually tracks with low sodium or can suggest vomiting (loss of stomach acid).",
+    "context": "Rarely interpreted alone.",
+    "actions": {
+      "high": [
+        "Check sodium and acid-base status"
+      ],
+      "low": [
+        "Check sodium and acid-base status"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Bicarbonate": {
+    "desc": "The body's main chemical buffer that keeps blood pH stable. Sometimes labeled CO2 on labs.",
+    "why": "Detects acid-base problems. Low bicarbonate = metabolic acidosis; high = metabolic alkalosis.",
+    "highMeans": "High bicarbonate (metabolic alkalosis) can be from vomiting, diuretic use, or respiratory compensation for lung disease.",
+    "lowMeans": "Low bicarbonate (metabolic acidosis) can be from diabetic ketoacidosis, kidney disease, severe diarrhea, or certain toxic ingestions.",
+    "context": "Interpret with a full metabolic panel. Severely abnormal values need urgent evaluation.",
+    "actions": {
+      "high": [
+        "Review medications and recent vomiting",
+        "Discuss with your doctor if persistent"
+      ],
+      "low": [
+        "Check kidney function, glucose, and anion gap",
+        "Discuss promptly with your doctor if meaningfully below range"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Calcium": {
+    "desc": "The mineral critical for bones, muscle contraction, heart rhythm, and nerve signaling.",
+    "why": "Tightly regulated by parathyroid hormone and vitamin D. Abnormal levels cause neurological and heart symptoms.",
+    "highMeans": "High calcium (hypercalcemia) can be from overactive parathyroid, certain cancers, high vitamin D, or dehydration.",
+    "lowMeans": "Low calcium can be from low vitamin D, kidney disease, or low parathyroid function. Low albumin falsely lowers total calcium (correct using ionized calcium or corrected calcium formula).",
+    "context": "Low albumin can falsely lower the total calcium reading. Ask for ionized calcium if albumin is abnormal.",
+    "actions": {
+      "high": [
+        "Check PTH and vitamin D",
+        "Hydrate well and retest"
+      ],
+      "low": [
+        "Check vitamin D and albumin",
+        "Increase calcium intake (dairy, leafy greens, sardines)",
+        "Correct vitamin D deficiency first"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Magnesium": {
+    "desc": "A mineral involved in over 300 enzyme reactions, including energy metabolism, muscle relaxation, and sleep quality.",
+    "why": "Often deficient with restricted diets, alcohol use, or chronic stress. Low magnesium worsens low potassium and low calcium.",
+    "highMeans": "High magnesium is uncommon, usually from supplements or kidney disease.",
+    "lowMeans": "Low magnesium is common and contributes to muscle cramps, poor sleep, migraines, and arrhythmias. Often worsens low potassium.",
+    "context": "Serum magnesium underestimates true deficiency, it only reflects 1% of total body magnesium.",
+    "actions": {
+      "high": [
+        "Review supplements",
+        "Check kidney function"
+      ],
+      "low": [
+        "Add magnesium-rich foods (dark chocolate, almonds, pumpkin seeds, leafy greens)",
+        "Supplement 200-400 mg magnesium glycinate or citrate in the evening",
+        "Reduce alcohol"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Serum Iron": {
+    "desc": "The amount of iron bound to transferrin and circulating in blood right now.",
+    "why": "Part of a full iron panel but fluctuates a lot, most useful with ferritin, TIBC, and transferrin saturation.",
+    "highMeans": "High serum iron can reflect recent iron supplementation, a high-iron meal, or (rarely) hemochromatosis (iron overload).",
+    "lowMeans": "Low serum iron can mean iron deficiency, chronic inflammation, or blood loss.",
+    "context": "Diurnal variation is large, draw in the morning and fasting for consistency. Single readings are unreliable.",
+    "actions": {
+      "high": [
+        "Retest fasting and off supplements for 48h",
+        "Check ferritin and transferrin saturation if persistent"
+      ],
+      "low": [
+        "Check ferritin (the most reliable deficiency marker)",
+        "Review diet for heme iron (red meat) and vitamin C for absorption"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Ferritin": {
+    "desc": "The body's main iron storage protein. Ferritin levels reflect iron reserves in the liver, spleen, and bone marrow.",
+    "why": "The single best marker of iron stores. Low ferritin = true iron deficiency, even if Hemoglobin is still normal.",
+    "highMeans": "High ferritin usually reflects inflammation, chronic disease, liver disease, or heavy alcohol use. Very high levels (>1000) suggest iron overload.",
+    "lowMeans": "Low ferritin means iron deficiency, even if you're not yet anemic, symptoms like fatigue, brain fog, hair loss, and cold intolerance are common.",
+    "context": "Ferritin rises with inflammation, so a 'normal' ferritin with active inflammation can mask true iron deficiency. Interpret with hs-CRP.",
+    "actions": {
+      "high": [
+        "Check hs-CRP to see if inflammation explains it",
+        "Reduce alcohol",
+        "Check for hemochromatosis if very high"
+      ],
+      "low": [
+        "Supplement iron (65 mg elemental, every other day, with vitamin C)",
+        "Add red meat, lentils, spinach",
+        "Find and treat any source of blood loss"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "TIBC": {
+    "desc": "Total Iron Binding Capacity, how much iron transferrin (the main iron transport protein) could theoretically carry.",
+    "why": "TIBC rises in iron deficiency (body makes more transferrin to grab scarce iron) and falls in inflammation.",
+    "highMeans": "High TIBC suggests iron deficiency.",
+    "lowMeans": "Low TIBC suggests chronic inflammation, liver disease, or malnutrition.",
+    "context": "Interpret alongside serum iron and ferritin.",
+    "actions": {
+      "high": [
+        "Check ferritin, likely iron deficient",
+        "Start iron repletion if confirmed"
+      ],
+      "low": [
+        "Check hs-CRP",
+        "Review nutrition"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "Transferrin Saturation": {
+    "desc": "The percentage of transferrin (the iron taxi) that's actually carrying iron. Calculated as Serum Iron ÷ TIBC.",
+    "why": "Cross-checks iron status. Saturation <20% supports iron deficiency; >45% can suggest iron overload.",
+    "highMeans": "High saturation (>45%) can suggest hereditary hemochromatosis, especially if ferritin is also elevated.",
+    "lowMeans": "Low saturation (<20%) supports iron deficiency.",
+    "context": "Must be drawn fasting and not after iron supplementation.",
+    "actions": {
+      "high": [
+        "Check HFE gene testing if persistent (hemochromatosis)",
+        "Check ferritin and liver enzymes"
+      ],
+      "low": [
+        "Start iron supplementation",
+        "Find and treat source of iron loss"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "TSH": {
+    "desc": "Thyroid Stimulating Hormone, released by the pituitary to tell the thyroid how hard to work.",
+    "why": "The single best screening test for thyroid disease. TSH moves opposite to thyroid hormone levels.",
+    "highMeans": "High TSH means your pituitary is telling the thyroid to work harder, usually because thyroid hormone levels are low (hypothyroidism).",
+    "lowMeans": "Low TSH means the pituitary is dialing back, either because thyroid hormone is too high (hyperthyroidism) or because of pituitary issues or certain medications.",
+    "context": "TSH has diurnal rhythm, slightly higher in the morning. Test at the same time of day if tracking trends.",
+    "actions": {
+      "high": [
+        "Check Free T4",
+        "If T4 is low, discuss thyroid hormone replacement",
+        "Screen for Hashimoto's (anti-TPO antibodies) if persistent"
+      ],
+      "low": [
+        "Check Free T4 and Free T3",
+        "Screen for Graves' disease if symptomatic (weight loss, tremor, palpitations)"
+      ],
+      "maintain": [
+        "Annual thyroid screen"
+      ]
+    }
+  },
+  "Free T4": {
+    "desc": "The unbound, active form of thyroxine, one of the two main thyroid hormones.",
+    "why": "Confirms what TSH suggests. High TSH + low Free T4 = clear hypothyroidism.",
+    "highMeans": "High Free T4 with suppressed TSH suggests hyperthyroidism (overactive thyroid).",
+    "lowMeans": "Low Free T4 with high TSH confirms hypothyroidism.",
+    "context": "Always interpret with TSH, they tell the full story together.",
+    "actions": {
+      "high": [
+        "Check Free T3 and TSH",
+        "See an endocrinologist if persistent with symptoms"
+      ],
+      "low": [
+        "Check TSH and thyroid antibodies",
+        "Discuss replacement therapy if persistent"
+      ],
+      "maintain": [
+        "Annual thyroid screen"
+      ]
+    }
+  },
+  "Free T3": {
+    "desc": "The unbound, active form of triiodothyronine, the most metabolically active thyroid hormone.",
+    "why": "Useful when Free T4 is normal but symptoms suggest thyroid dysfunction. Also used to confirm hyperthyroidism.",
+    "highMeans": "High Free T3 supports hyperthyroidism.",
+    "lowMeans": "Low Free T3 with low/normal Free T4 can suggest Euthyroid Sick Syndrome (low T3 during illness) or peripheral conversion issues.",
+    "context": "Not used as a primary screen, TSH and Free T4 come first.",
+    "actions": {
+      "high": [
+        "Check TSH and Free T4"
+      ],
+      "low": [
+        "Check TSH, ferritin, and overall health status"
+      ],
+      "maintain": [
+        "Usually no need to track routinely"
+      ]
+    }
+  },
+  "Vitamin D (25-OH)": {
+    "desc": "25-hydroxy Vitamin D, the storage form of vitamin D and the best marker of vitamin D status.",
+    "why": "Supports bone health, immune function, mood, and testosterone. Deficiency is very common, especially in darker-skinned people and those who spend most of the day indoors.",
+    "highMeans": "Very high vitamin D (>100 ng/mL) can cause high calcium. Almost always from over-supplementation.",
+    "lowMeans": "Low vitamin D (<30 ng/mL) is common and linked to fatigue, poor sleep, bone loss, low testosterone, and worse immune function.",
+    "context": "Different labs report in ng/mL or nmol/L. To convert nmol/L to ng/mL divide by 2.5.",
+    "actions": {
+      "high": [
+        "Stop supplementation and retest in 3 months",
+        "Check calcium level"
+      ],
+      "low": [
+        "Supplement 2000-5000 IU/day of vitamin D3 with a fatty meal",
+        "Add vitamin K2 (MK-7) if supplementing long-term",
+        "Get 15-30 min of midday sun a few times a week",
+        "Retest in 3 months"
+      ],
+      "maintain": [
+        "Maintenance dose of 1000-2000 IU/day in winter months",
+        "Annual retest"
+      ]
+    }
+  },
+  "Vitamin B12": {
+    "desc": "A water-soluble vitamin essential for nerve function, red cell production, and energy.",
+    "why": "Deficiency causes fatigue, brain fog, tingling, and eventually anemia. Common in vegans and in anyone with reduced stomach acid (PPI users, elderly).",
+    "highMeans": "High B12 is usually from supplementation, rarely concerning. Very high levels without supplementation can occasionally signal liver disease or certain cancers.",
+    "lowMeans": "Low B12 (<300 pg/mL) can cause neurological symptoms even before anemia develops. Levels 300-500 are borderline and worth rechecking with methylmalonic acid.",
+    "context": "Vegans, vegetarians, and long-term PPI users should check B12 routinely. Methylmalonic acid is more sensitive than B12 for borderline cases.",
+    "actions": {
+      "high": [
+        "Usually no action, review supplementation"
+      ],
+      "low": [
+        "Supplement 1000 mcg methylcobalamin daily for 2-3 months",
+        "Include eggs, dairy, fish, meat if not vegan",
+        "Vegans should take B12 permanently"
+      ],
+      "maintain": [
+        "Retest every 1-2 years if supplementing"
+      ]
+    }
+  },
+  "hs-CRP": {
+    "desc": "High-sensitivity C-Reactive Protein, a marker of inflammation in the body.",
+    "why": "Used to assess cardiovascular risk and track chronic inflammation. Low-grade elevation predicts heart disease independent of cholesterol.",
+    "highMeans": "Above 3 mg/L suggests high cardiovascular risk or active inflammation somewhere. Very high (>10) usually means acute infection or injury, retest after recovery.",
+    "lowMeans": "Low hs-CRP is favorable and suggests low inflammation.",
+    "context": "Temporarily rises with any infection, injury, or intense exercise. Retest 2-4 weeks after any acute illness.",
+    "actions": {
+      "high": [
+        "Retest 4 weeks after any recent illness",
+        "Reduce visceral fat, the biggest lever",
+        "Mediterranean diet, omega-3s, sleep 7+ hrs/night",
+        "Treat periodontal disease if present"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Recheck every 1-2 years"
+      ]
+    }
+  },
+  "ASO": {
+    "desc": "Anti-Streptolysin O, an antibody produced after a streptococcal infection.",
+    "why": "Used to confirm recent strep infection, especially when investigating rheumatic fever or post-strep glomerulonephritis.",
+    "highMeans": "Elevated ASO suggests a recent strep infection. Peaks 3-5 weeks after infection, then gradually declines.",
+    "lowMeans": "Low ASO is the norm and indicates no recent strep exposure.",
+    "context": "A single high ASO is less meaningful than a rising titer over 2-4 weeks.",
+    "actions": {
+      "high": [
+        "Discuss with your doctor if symptomatic (joint pain, rash, kidney issues)",
+        "Usually no treatment needed if asymptomatic"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Routine screening not needed"
+      ]
+    }
+  },
+  "Rheumatoid Factor": {
+    "desc": "An autoantibody that targets your own antibodies. Elevated in rheumatoid arthritis and some other conditions.",
+    "why": "Screening test for rheumatoid arthritis and other autoimmune diseases. Not specific, elevated in 5-10% of healthy people.",
+    "highMeans": "Elevated RF supports rheumatoid arthritis in the right clinical context (joint pain, stiffness). Also elevated in some infections and other autoimmune conditions.",
+    "lowMeans": "Low RF is reassuring but doesn't completely rule out RA.",
+    "context": "Anti-CCP antibodies are more specific for RA than RF.",
+    "actions": {
+      "high": [
+        "Confirm with anti-CCP if joint symptoms",
+        "See a rheumatologist if persistent with symptoms"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Screen only if joint symptoms develop"
+      ]
+    }
+  },
+  "CRP (Quantitative)": {
+    "desc": "C-Reactive Protein, standard sensitivity, a general inflammation marker.",
+    "why": "Rises within hours of infection, injury, or active inflammation. Standard CRP is good for detecting acute inflammation.",
+    "highMeans": "High CRP signals active inflammation somewhere. Causes range from infection to autoimmune flares to injury.",
+    "lowMeans": "Low CRP is favorable.",
+    "context": "If you're investigating cardiovascular risk, use hs-CRP instead, it measures the same molecule with more precision at low levels.",
+    "actions": {
+      "high": [
+        "Retest 4 weeks after any acute illness resolves",
+        "Look for a source if persistent"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Retest only if symptoms suggest inflammation"
+      ]
+    }
+  },
+  "CPK / CK": {
+    "desc": "Creatine Phosphokinase (also called Creatine Kinase), an enzyme inside muscle cells that leaks into blood when muscle is damaged.",
+    "why": "Rises with muscle injury, intense exercise, certain medications (especially statins), and rare muscle diseases. Also a heart attack marker when broken down into subtypes.",
+    "highMeans": "High CPK most commonly reflects intense exercise in the past 24-72 hours. Statin-related muscle damage, muscle trauma, prolonged sitting pressure, and rare muscle disorders can also raise it. Heart attack raises CK-MB subtype specifically.",
+    "lowMeans": "Low CPK is rarely meaningful. May be seen with low muscle mass or certain autoimmune conditions.",
+    "context": "Skip heavy exercise for 48-72 hours before testing for a clean baseline. Eccentric exercise (downhill running, heavy lifting) can quintuple CPK for several days.",
+    "actions": {
+      "high": [
+        "Retest after 72 hours of rest, if values normalize, exercise was the likely cause",
+        "Check CK-MB and troponin if chest pain is present",
+        "Review statin dose and switch to a different statin if muscle pain is a concern",
+        "Hydrate well around workouts"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Annual panel"
+      ]
+    }
+  },
+  "CK-MB": {
+    "desc": "The heart-muscle-specific subtype of CPK. Normally makes up a small fraction of total CK.",
+    "why": "Historically used to diagnose heart attacks. Now largely replaced by troponin, but still reported.",
+    "highMeans": "Elevated CK-MB with chest pain suggests cardiac muscle injury (heart attack). Can also rise with severe skeletal muscle damage.",
+    "lowMeans": "Low CK-MB is normal.",
+    "context": "Troponin is now the preferred marker for heart attacks, CK-MB is less specific. The ratio of CK-MB to total CK matters: >5% suggests cardiac origin.",
+    "actions": {
+      "high": [
+        "If chest pain, seek emergency care",
+        "Confirm with troponin",
+        "Recheck alongside total CPK if muscle injury suspected"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "No routine monitoring needed"
+      ]
+    }
+  },
+  "Troponin-I": {
+    "desc": "A protein released when heart muscle is damaged. The single most specific marker of heart attack.",
+    "why": "Any detectable elevation is concerning in the right clinical context. Ultra-sensitive assays can detect very small amounts.",
+    "highMeans": "Elevated troponin strongly suggests heart muscle injury, heart attack, myocarditis, or severe strain (marathon, pulmonary embolism). Always treat as urgent unless explained by a clear non-cardiac cause.",
+    "lowMeans": "Undetectable or low troponin is reassuring and essentially rules out acute heart attack.",
+    "context": "Must be drawn at least 3-6 hours after chest pain onset for full sensitivity. Sometimes repeated at 3 and 6 hours.",
+    "actions": {
+      "high": [
+        "Seek emergency care immediately if chest pain, shortness of breath, or symptoms of heart attack"
+      ],
+      "low": [
+        "No action needed, this is reassuring"
+      ],
+      "maintain": [
+        "No routine monitoring needed in healthy people"
+      ]
+    }
+  },
+  "Testosterone Total": {
+    "desc": "The primary male sex hormone. Drives muscle mass, energy, libido, and mood. Also present in smaller amounts in women.",
+    "why": "Low levels in men cause fatigue, low libido, depressed mood, reduced muscle mass, and worsened metabolic health.",
+    "highMeans": "Very high testosterone in men usually means exogenous supplementation (TRT or anabolic steroids).",
+    "lowMeans": "Low testosterone causes fatigue, low libido, poor sleep, reduced muscle, and irritability. Drivers include obesity, poor sleep, low vitamin D, and aging (1-2% decline per year after 30).",
+    "context": "Must be drawn in the morning (7-10 AM), fasting, after 8+ hours of sleep. A single low reading needs confirmation on a second morning draw.",
+    "actions": {
+      "high": [
+        "Review supplementation honestly with your doctor",
+        "Check hematocrit, estradiol, and PSA if on TRT"
+      ],
+      "low": [
+        "Confirm with a second AM test",
+        "Prioritize 7-9 hours of sleep, biggest single lever",
+        "Strength train 3-4x/week",
+        "Optimize vitamin D, zinc, magnesium",
+        "Lose excess visceral fat",
+        "Consider TRT only after lifestyle optimization fails and symptoms are significant"
+      ],
+      "maintain": [
+        "Recheck annually if tracking"
+      ]
+    }
+  },
+  "FSH": {
+    "desc": "Follicle Stimulating Hormone, released by the pituitary to regulate testicular function (in men) or ovarian function (in women).",
+    "why": "In men, FSH supports sperm production. High FSH with low testosterone suggests primary testicular failure.",
+    "highMeans": "High FSH with low testosterone in men suggests the testes aren't responding, primary hypogonadism. In women, it signals reduced ovarian function or menopause.",
+    "lowMeans": "Low FSH can suggest pituitary issues or, in men, exogenous testosterone use shutting down the HPG axis.",
+    "context": "Always interpreted with LH and testosterone (men) or estradiol (women).",
+    "actions": {
+      "high": [
+        "See an endocrinologist if men with low testosterone",
+        "Check LH and testosterone"
+      ],
+      "low": [
+        "Review any testosterone supplementation",
+        "Check pituitary function if unexplained"
+      ],
+      "maintain": [
+        "No routine monitoring needed"
+      ]
+    }
+  },
+  "LH": {
+    "desc": "Luteinizing Hormone, released by the pituitary to trigger testosterone production (in men) or ovulation (in women).",
+    "why": "Helps classify the cause of low testosterone in men: high LH = testicular issue; low LH = pituitary issue.",
+    "highMeans": "High LH with low testosterone in men indicates primary hypogonadism (testicular failure).",
+    "lowMeans": "Low LH with low testosterone suggests secondary hypogonadism (pituitary/hypothalamic issue) or exogenous testosterone use.",
+    "context": "Secreted in pulses, so single readings have significant variability.",
+    "actions": {
+      "high": [
+        "See an endocrinologist"
+      ],
+      "low": [
+        "Review any testosterone supplementation",
+        "Check prolactin and pituitary function"
+      ],
+      "maintain": [
+        "No routine monitoring needed"
+      ]
+    }
+  },
+  "PSA Total": {
+    "desc": "Prostate-Specific Antigen, a protein made by the prostate. Elevated levels can suggest prostate issues.",
+    "why": "Used to screen for prostate cancer and monitor prostate conditions. Interpretation depends strongly on age.",
+    "highMeans": "Elevated PSA can be from prostate cancer, benign prostate enlargement (BPH), prostatitis, recent ejaculation, or a recent prostate exam. Free PSA ratio helps distinguish cancer from benign causes.",
+    "lowMeans": "Low PSA is favorable and suggests low prostate cancer risk.",
+    "context": "Avoid ejaculation, vigorous cycling, and prostate exams for 48 hours before testing. PSA rises slightly with age, age-adjusted ranges exist.",
+    "actions": {
+      "high": [
+        "Retest after 4-6 weeks with no ejaculation or prostate stimulation",
+        "Check free PSA ratio if persistent",
+        "See a urologist if confirmed elevated"
+      ],
+      "low": [
+        "No action needed"
+      ],
+      "maintain": [
+        "Baseline in your 40s, then per your doctor's guidance"
+      ]
+    }
+  },
+  "Zinc (Serum)": {
+    "desc": "An essential trace mineral involved in immune function, wound healing, taste, smell, and testosterone production.",
+    "why": "Deficiency is common with restrictive diets, GI disorders, heavy alcohol use, or aging. Symptoms include frequent infections, slow wound healing, hair loss, and low libido.",
+    "highMeans": "High serum zinc is almost always from supplementation. Long-term high intake can cause copper deficiency.",
+    "lowMeans": "Low zinc causes immune problems, slow healing, taste loss, and can lower testosterone.",
+    "context": "Take supplements with food, on an empty stomach zinc often causes nausea. Zinc and copper compete for absorption, so balance matters long-term.",
+    "actions": {
+      "high": [
+        "Reduce supplement dose",
+        "Add copper 1-2 mg/day if on zinc long-term"
+      ],
+      "low": [
+        "Supplement 15-30 mg zinc daily with food for 2-3 months",
+        "Add oysters, pumpkin seeds, red meat, legumes",
+        "Retest after 3 months"
+      ],
+      "maintain": [
+        "Annual panel if restrictive diet or prior deficiency"
+      ]
+    }
+  }
+}
