@@ -7,10 +7,46 @@ import shutil, re
 from pathlib import Path
 root = Path("$root"); dist = root / "dist"
 html = (dist / 'index.html').read_text()
-inject = '<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png">'
-if '</head>' in html: html = html.replace('</head>', inject + '</head>')
-elif '<body>' in html: html = html.replace('<body>', inject + '<body>')
+
+# Inject manifest + apple-touch-icon + SW registration with update check
+inject_head = '<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png">'
+if '</head>' in html: html = html.replace('</head>', inject_head + '</head>')
+elif '<body>' in html: html = html.replace('<body>', inject_head + '<body>')
+
+# Inject SW registration + an aggressive update trigger at end of body
+sw_reg = """
+<script>
+(function(){
+  if (!('serviceWorker' in navigator)) return;
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      reg.update();
+      if (reg.waiting) { reg.waiting.postMessage({type:'SKIP_WAITING'}); }
+      reg.addEventListener('updatefound', function(){
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function(){
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            nw.postMessage({type:'SKIP_WAITING'});
+          }
+        });
+      });
+    }).catch(function(){});
+    // On controller change (new SW took over), reload once for a clean page
+    var reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+  });
+})();
+</script>
+"""
+if '</body>' in html: html = html.replace('</body>', sw_reg + '</body>')
+else: html = html + sw_reg
 (dist / 'index.html').write_text(html)
+
 def copy(src, dst):
     if src.is_dir(): shutil.copytree(src, dst, dirs_exist_ok=True)
     else:
@@ -19,21 +55,45 @@ copy(root / 'manifest.json', dist / 'manifest.json')
 copy(root / 'icons', dist / 'icons')
 copy(root / 'public' / 'data', dist / 'data')
 (dist / '.nojekyll').write_text('')
+
+# New service worker: network-first for HTML and data, cache-first for static assets, clears old caches
 sw = """
-const CACHE = 'jimmy-health-v1';
-const ASSETS = ['./', 'index.html', 'manifest.json'];
-self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(()=>{})); self.skipWaiting(); });
-self.addEventListener('activate', (e) => { self.clients.claim(); });
+const CACHE = 'jimmy-health-v4';
+self.addEventListener('install', (e) => { self.skipWaiting(); });
+self.addEventListener('activate', (e) => {
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+self.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'SKIP_WAITING') { self.skipWaiting(); }
+});
 self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  if (url.pathname.includes('/data/')) { e.respondWith(fetch(e.request).then(r => { const c = r.clone(); caches.open(CACHE).then(cc => cc.put(e.request, c)); return r; }).catch(() => caches.match(e.request))); return; }
-  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(fr => { const c = fr.clone(); caches.open(CACHE).then(cc => cc.put(e.request, c)); return fr; })));
+  const isHTML = e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname === '/jimmy-health/' || url.pathname === '/jimmy-health';
+  const isData = url.pathname.includes('/data/');
+  if (isHTML || isData) {
+    e.respondWith(
+      fetch(e.request).then(r => {
+        const copy = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy)).catch(()=>{});
+        return r;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+  e.respondWith(
+    caches.match(e.request).then(r => r || fetch(e.request).then(fr => {
+      const copy = fr.clone();
+      caches.open(CACHE).then(c => c.put(e.request, copy)).catch(()=>{});
+      return fr;
+    }))
+  );
 });
 """
 (dist / 'sw.js').write_text(sw)
-html = (dist / 'index.html').read_text()
-reg = "<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script>"
-html = html.replace('</body>', reg + '</body>') if '</body>' in html else html + reg
-(dist / 'index.html').write_text(html)
 PY
 echo "post-build complete"

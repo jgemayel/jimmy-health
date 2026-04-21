@@ -366,11 +366,14 @@ function Overview({ onFocus, setSection }: { onFocus: (m: BloodMarker) => void; 
  return (
  <div className="space-y-4">
  {/* Compact header */}
- <div>
- <h1 className="font-serif text-xl text-stone-900">Overview</h1>
- <p className="mt-0.5 text-xs text-stone-500">
- {DATES.length} lab visits on record. Latest {DATES[DATES.length - 1]}.
- </p>
+ <div className="flex items-center gap-2.5">
+ <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-900 text-stone-50">
+ <HeartPulse className="h-5 w-5" />
+ </div>
+ <div className="leading-tight">
+ <div className="font-serif text-lg text-stone-900">Jimmy's Health</div>
+ <div className="text-[11px] text-stone-500">{DATES.length} visits on record. Latest {DATES[DATES.length - 1]}.</div>
+ </div>
  </div>
 
  {/* KPI row (compact pills) */}
@@ -689,7 +692,6 @@ export default function App() {
 
  return (
  <div className="min-h-screen bg-stone-50 text-stone-900 pb-20">
- {section === "overview" && <TopBar />}
  <main className="mx-auto max-w-3xl px-3 py-3 sm:px-5 sm:py-4">
  {section === "overview" && <Overview onFocus={(m) => { setFocusMarker(m); setSection("blood"); }} setSection={setSection} />}
  {section === "blood" && <BloodView initial={focusMarker} />}
