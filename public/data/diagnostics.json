@@ -7,18 +7,17 @@
     "context": "Hydration status matters. Getting blood drawn dehydrated can artificially raise this number.",
     "actions": {
       "high": [
-        "Drink water consistently and retest, mild dehydration shifts this upward",
-        "Review smoking and altitude exposure",
-        "Pair with Hb, HCT, and ferritin for a full picture"
+        "Hydrate consistently through the day, mild dehydration artificially lifts this number",
+        "If you smoke, quit, smoking thickens the blood",
+        "Address sleep apnea if you snore heavily or wake unrefreshed"
       ],
       "low": [
-        "Check ferritin, B12, and folate",
-        "Rule out GI or urinary blood loss if unexplained",
-        "Review iron-rich foods, red meat, lentils, spinach"
+        "Add iron-rich foods like red meat, lentils, spinach, and pair them with vitamin C to absorb better",
+        "Make sure you are getting enough B12 and folate from eggs, dairy, fish, and leafy greens",
+        "Avoid tea and coffee within an hour of iron-rich meals, tannins block absorption"
       ],
       "maintain": [
-        "Re-check with your next annual panel",
-        "Stay well hydrated before any blood draw"
+        "Keep a balanced protein and iron intake and stay hydrated before blood draws"
       ]
     }
   },
@@ -30,18 +29,18 @@
     "context": "A drop of more than 1 g/dL between tests is worth investigating even if the value is still in range.",
     "actions": {
       "high": [
-        "Hydrate well before retesting",
-        "Discuss smoking cessation and sleep quality with your doctor",
-        "Check oxygen saturation if you have daytime fatigue"
+        "Drink more water through the day, dehydration concentrates the blood",
+        "Quit smoking if relevant, it pushes hemoglobin up",
+        "If you live or train at altitude, that is a normal cause and is benign"
       ],
       "low": [
-        "Check ferritin, B12, folate, and iron studies",
-        "Add iron-rich foods and vitamin C (which helps absorption)",
-        "Ask your doctor about iron supplementation if ferritin is low"
+        "Build up iron stores with red meat, lentils, beans, pumpkin seeds, and spinach",
+        "Pair iron foods with vitamin C sources like citrus or bell peppers to triple absorption",
+        "If periods are not the cause for you, rule out GI bleeding (stool occult blood test)",
+        "Consider a trial of iron supplementation if ferritin is also low"
       ],
       "maintain": [
-        "Annual CBC is enough if you feel well",
-        "Donate blood no more than 2-3 times per year"
+        "Keep protein intake around 1 g per kg body weight and eat iron-rich foods weekly"
       ]
     }
   },
@@ -53,15 +52,17 @@
     "context": "Hct closely tracks Hemoglobin. Interpret them together, not independently.",
     "actions": {
       "high": [
-        "Drink water and retest",
-        "Review smoking and sleep habits with your doctor"
+        "Drink water consistently, this rises with dehydration",
+        "Cut back on alcohol, it dehydrates and irritates marrow",
+        "Quit smoking if relevant"
       ],
       "low": [
-        "Check iron, B12, folate, the anemia workup",
-        "Rule out hidden bleeding if persistent"
+        "Add iron-rich foods and pair with vitamin C",
+        "Check B12 and folate if vegetarian or vegan",
+        "Rule out chronic blood loss if the drop is unexplained"
       ],
       "maintain": [
-        "Annual CBC"
+        "Stay hydrated and keep iron-rich foods on your weekly menu"
       ]
     }
   },
@@ -73,16 +74,16 @@
     "context": "MCV is the single best triage tool once anemia is confirmed.",
     "actions": {
       "high": [
-        "Check B12 and folate",
-        "Review alcohol intake honestly",
-        "Check TSH to rule out thyroid"
+        "Cut alcohol, heavy intake enlarges red cells",
+        "Eat more folate (leafy greens, legumes, fortified grains) and B12 (fish, meat, dairy)",
+        "Check thyroid if fatigue or cold intolerance are present"
       ],
       "low": [
-        "Check iron and ferritin",
-        "Ask about thalassemia trait if you have Mediterranean ancestry"
+        "Boost iron intake with red meat, lentils, pumpkin seeds, plus vitamin C alongside",
+        "Skip tea or coffee at iron-rich meals"
       ],
       "maintain": [
-        "No action needed when MCV is normal"
+        "Keep B12, folate, and iron topped up through varied whole foods"
       ]
     }
   },
@@ -94,13 +95,13 @@
     "context": "Interpret alongside MCV and MCHC, never in isolation.",
     "actions": {
       "high": [
-        "Follow the MCV workup (B12, folate, TSH)"
+        "Cut alcohol, add B12 and folate from fish, eggs, leafy greens"
       ],
       "low": [
-        "Follow the MCV workup (ferritin, iron)"
+        "Build iron with red meat, lentils, dark greens plus vitamin C"
       ],
       "maintain": [
-        "No action needed when normal"
+        "Keep iron and B vitamins steady in the diet"
       ]
     }
   },
@@ -112,13 +113,13 @@
     "context": "If isolated and the rest of the CBC is normal, a mildly off MCHC often has no clinical meaning.",
     "actions": {
       "high": [
-        "Repeat the test, artifacts are common here"
+        "Usually a lab artifact, stay hydrated and retest if out of range"
       ],
       "low": [
-        "Check iron and ferritin"
+        "Focus on iron and vitamin C together at meals"
       ],
       "maintain": [
-        "No action needed when normal"
+        "Stable iron intake from whole foods is the best maintenance"
       ]
     }
   },
@@ -130,14 +131,12 @@
     "context": "RDW often rises before Hemoglobin drops, it's an early-warning marker for nutritional anemia.",
     "actions": {
       "high": [
-        "Check iron, B12, and folate",
-        "Review diet for animal protein and leafy greens"
+        "Cover both iron (red meat, lentils, spinach) and B12 or folate (eggs, fish, greens)",
+        "Reduce alcohol, it is a common cause of mixed red cell populations"
       ],
-      "low": [
-        "No action needed"
-      ],
+      "low": [],
       "maintain": [
-        "Annual CBC"
+        "Balanced protein, iron, and B vitamin intake keeps cell sizing uniform"
       ]
     }
   },
@@ -149,16 +148,16 @@
     "context": "A single reading just below the reference range is usually not concerning. Trend over multiple tests matters more.",
     "actions": {
       "high": [
-        "Check ferritin and CRP",
-        "Retest in 4-6 weeks after any recent illness or infection has resolved"
+        "Add omega-3 from fatty fish twice a week to reduce stickiness",
+        "Limit processed foods and stay active, inflammation nudges platelets up",
+        "Quit smoking if relevant"
       ],
       "low": [
-        "Retest to confirm, EDTA clumping can falsely lower platelets",
-        "Review medications with your doctor",
-        "Avoid NSAIDs and alcohol until confirmed"
+        "Cut alcohol, even moderate intake can suppress platelets",
+        "Add folate and B12 from greens, beans, fish, and eggs"
       ],
       "maintain": [
-        "Annual CBC"
+        "Mediterranean-style eating keeps platelets in a healthy zone"
       ]
     }
   },
@@ -170,13 +169,13 @@
     "context": "MPV alone rarely drives decisions. Always interpret with platelet count.",
     "actions": {
       "high": [
-        "Follow up with your doctor if platelet count is also abnormal"
+        "Add omega-3, exercise regularly, and manage blood pressure"
       ],
       "low": [
-        "Follow up with your doctor if platelet count is also abnormal"
+        "No specific lifestyle action, trend matters more than a single value"
       ],
       "maintain": [
-        "No action needed when the rest of the CBC is normal"
+        "Anti-inflammatory eating supports normal platelet turnover"
       ]
     }
   },
@@ -188,15 +187,17 @@
     "context": "Exercise in the hours before testing can transiently raise WBC. Avoid hard workouts the morning of a draw.",
     "actions": {
       "high": [
-        "Retest once any current illness has cleared",
-        "Check CRP to gauge inflammation"
+        "Prioritize 7 to 9 hours of sleep, poor sleep raises WBC",
+        "Manage stress with walks, breathwork, or meditation",
+        "Load up on anti-inflammatory foods, berries, olive oil, fatty fish, leafy greens",
+        "Quit smoking if relevant"
       ],
       "low": [
-        "Retest in 2-4 weeks",
-        "Check B12 and folate"
+        "Prioritize sleep and stress control, both suppress immune cell production",
+        "Get zinc from oysters, beef, pumpkin seeds, and vitamin D from sun or supplement"
       ],
       "maintain": [
-        "Annual CBC"
+        "Sleep, stress management, and protein at every meal support steady immunity"
       ]
     }
   },
@@ -208,15 +209,15 @@
     "context": "Absolute neutrophil count matters more than the percentage, a high percentage with a normal WBC may not mean much.",
     "actions": {
       "high": [
-        "Retest once any infection resolves",
-        "Check CRP"
+        "Manage acute stress and inflammation, cut processed foods",
+        "Address smoking if relevant"
       ],
       "low": [
-        "Retest in 2-4 weeks",
-        "If persistently below 1.0 x10^3/uL, see a doctor promptly"
+        "Focus on sleep and stress, both drive this up",
+        "Ensure adequate vitamin B12, folate, and zinc"
       ],
       "maintain": [
-        "No action needed when normal"
+        "Anti-inflammatory eating and sleep keep the white cell differential balanced"
       ]
     }
   },
@@ -228,15 +229,15 @@
     "context": "Percentages shift whenever neutrophils shift, always check absolute counts if either side looks off.",
     "actions": {
       "high": [
-        "Retest 4-6 weeks after any viral illness",
-        "Ask about EBV/CMV screening if persistently elevated"
+        "Often reflects a viral exposure, rest and fluids usually settle it"
       ],
       "low": [
-        "Retest after recovering from any recent illness",
-        "Review medications (especially steroids)"
+        "Sleep 7 to 9 hours, chronic under-sleeping drops lymphocytes",
+        "Get vitamin D and zinc from sun, fish, oysters, seeds",
+        "Reduce chronic stress, cortisol suppresses lymphocytes"
       ],
       "maintain": [
-        "No action needed when normal"
+        "Sleep and micronutrients (D, zinc, selenium) keep lymphocytes healthy"
       ]
     }
   },
@@ -248,14 +249,14 @@
     "context": "Small percentage changes in monocytes rarely matter by themselves.",
     "actions": {
       "high": [
-        "Check CRP and repeat CBC in 4-6 weeks",
-        "Review for chronic inflammatory conditions"
+        "Cut ultra-processed foods, add fatty fish and colorful vegetables",
+        "Exercise 150 minutes a week"
       ],
       "low": [
-        "No action needed"
+        "Usually benign, focus on sleep and nutrition fundamentals"
       ],
       "maintain": [
-        "Annual CBC"
+        "Mediterranean eating keeps monocytes in range"
       ]
     }
   },
@@ -267,14 +268,15 @@
     "context": "Eosinophils dip in acute stress and rise slowly, interpret trends, not single readings.",
     "actions": {
       "high": [
-        "Review any new allergies, medications, or travel history",
-        "Consider stool ova and parasite testing if relevant"
+        "Identify and remove allergen triggers (pollens, dust, food)",
+        "Consider a deworming check if you have travel history",
+        "Add omega-3 to lower allergic inflammation"
       ],
       "low": [
-        "No action needed"
+        "Usually benign and needs no action"
       ],
       "maintain": [
-        "Annual CBC"
+        "Keep allergies controlled, clean indoor air, and eat plenty of plants"
       ]
     }
   },
@@ -286,13 +288,13 @@
     "context": "Measured as a percentage, so small absolute changes can look dramatic.",
     "actions": {
       "high": [
-        "Review for allergies, recheck in 4-6 weeks"
+        "Usually allergy-related, identify triggers and add omega-3"
       ],
       "low": [
-        "No action needed"
+        "Usually benign, no action needed"
       ],
       "maintain": [
-        "Annual CBC"
+        "A varied whole-food diet keeps basophils normal"
       ]
     }
   },
@@ -304,14 +306,17 @@
     "context": "Normal ESR rises gradually with age and is usually higher in women. Pair with hs-CRP for a fuller picture.",
     "actions": {
       "high": [
-        "Check hs-CRP to confirm active inflammation",
-        "Review for recent infections or autoimmune symptoms"
+        "Eat Mediterranean style, lots of olive oil, fatty fish, nuts, leafy greens",
+        "Move 150 minutes a week, add 2 strength sessions",
+        "Drop 5 to 10 percent of body weight if overweight, fat tissue drives inflammation",
+        "Sleep 7 to 9 hours, short sleep keeps ESR elevated",
+        "Quit smoking and limit alcohol to 0 to 2 drinks a week"
       ],
       "low": [
-        "No action needed"
+        "Low ESR is benign, no action"
       ],
       "maintain": [
-        "No need to track unless trending inflammation"
+        "Keep anti-inflammatory habits, diet, exercise, sleep, lean body composition"
       ]
     }
   },
@@ -323,19 +328,19 @@
     "context": "Must be truly fasted. Coffee, gum, or stress can nudge it up. Prior-day carb intake also matters.",
     "actions": {
       "high": [
-        "Confirm with repeat test and HbA1c",
-        "Cut refined carbs and added sugar; emphasize fiber, protein, fat",
-        "Add 150+ min/week of zone-2 cardio",
-        "Walk 10-15 minutes after each meal",
-        "Aim for 5-7% weight loss if overweight"
+        "Cut refined carbs and sugary drinks, swap for whole grains, legumes, and vegetables",
+        "Eat protein and fiber first at each meal, it blunts the glucose spike",
+        "Walk 10 to 15 minutes after each main meal, muscles pull glucose out of the blood",
+        "Add 2 to 3 strength sessions a week, muscle improves glucose disposal",
+        "Sleep 7 to 9 hours, short sleep raises fasting glucose within days",
+        "If BMI is over 25, losing 5 to 10 percent of body weight can normalize this"
       ],
       "low": [
-        "Retest to confirm, lab or timing errors are common",
-        "Discuss with your doctor if symptomatic (shakiness, sweating, confusion)"
+        "Eat small, regular meals with protein and complex carbs",
+        "Avoid alcohol on an empty stomach, it drops glucose"
       ],
       "maintain": [
-        "Recheck annually",
-        "Keep the same dietary and activity pattern, it's working"
+        "Keep a steady eating pattern, daily movement, and good sleep"
       ]
     }
   },
@@ -347,18 +352,18 @@
     "context": "Conditions that shorten red cell life (hemolysis, iron deficiency anemia after repletion) can falsely lower HbA1c.",
     "actions": {
       "high": [
-        "Add 150+ min/week of zone-2 cardio, the highest-leverage lever",
-        "Reduce refined carbs; prefer fiber, protein, and fat at each meal",
-        "Walk 10-15 min after every meal",
-        "Lose 5-7% of body weight if overweight, meaningfully lowers HbA1c",
-        "Recheck every 3-6 months until stable"
+        "Cut added sugar and refined grains, replace with whole grains, legumes, vegetables, and berries",
+        "Walk 10 to 15 minutes after every meal, this flattens post-meal glucose",
+        "Do 2 to 3 strength workouts a week, muscle is your glucose sink",
+        "Aim for 7 to 9 hours of sleep, poor sleep raises insulin resistance",
+        "If you are carrying extra weight, a 5 to 7 percent loss typically drops A1c by 0.3 to 0.5 points",
+        "Keep alcohol at or under one drink a day"
       ],
       "low": [
-        "Check red cell indices and ferritin for a hemolysis or anemia cause"
+        "Very low A1c can reflect recent anemia, address iron and B12 status"
       ],
       "maintain": [
-        "Recheck annually",
-        "Keep current nutrition and exercise habits"
+        "Keep daily movement, protein-first meals, and consistent sleep"
       ]
     }
   },
@@ -370,15 +375,16 @@
     "context": "Must be drawn fasting. Interpret alongside fasting glucose using HOMA-IR.",
     "actions": {
       "high": [
-        "Prioritize resistance training (builds insulin-sensitive muscle)",
-        "Reduce added sugar and refined carbs",
-        "Lose excess body fat if applicable, the fastest fix"
+        "Shift to a lower-refined-carb, higher-fiber, higher-protein pattern",
+        "Post-meal walks and 2 to 3 strength sessions a week are very effective",
+        "Lose 5 to 10 percent of body weight if overweight, this often halves insulin",
+        "Prioritize sleep and reduce late-night eating"
       ],
       "low": [
-        "Usually no action needed if glucose is normal"
+        "Pair carbs with protein and fat for steady energy, see MD if you feel hypoglycemic"
       ],
       "maintain": [
-        "Recheck annually with glucose"
+        "Keep the pattern, fiber, protein, movement, sleep"
       ]
     }
   },
@@ -390,15 +396,15 @@
     "context": "Calculated from the same blood draw as fasting glucose and insulin, so both must be fasting.",
     "actions": {
       "high": [
-        "Zone-2 cardio and resistance training",
-        "Lower refined carbs and added sugars",
-        "Reduce body fat if applicable"
+        "Combine lower refined carbs, higher fiber, and at least 150 minutes of cardio plus 2 strength sessions a week",
+        "Target a 5 to 10 percent body-weight reduction if BMI is above 25",
+        "Sleep 7 to 9 hours and cap alcohol at one drink a day"
       ],
       "low": [
-        "No action needed"
+        "This is favorable, keep the current routine"
       ],
       "maintain": [
-        "Recheck annually"
+        "Stay active, eat whole foods, and protect sleep"
       ]
     }
   },
@@ -410,15 +416,18 @@
     "context": "Must be drawn fasting (9-12 hours) for an accurate LDL calculation.",
     "actions": {
       "high": [
-        "Focus on LDL and Non-HDL below",
-        "Mediterranean diet, olive oil, fiber, nuts",
-        "150+ min/week aerobic exercise"
+        "Cut saturated fat, butter, fatty cuts of meat, full-fat cheese, tropical oils",
+        "Add 25 to 35 g of fiber a day, oats, beans, lentils, chia, vegetables",
+        "Eat fatty fish twice a week or take 1 to 2 g of EPA or DHA daily",
+        "Swap butter and coconut oil for olive oil and nuts",
+        "Exercise 30 to 45 minutes most days, this lifts HDL and shifts particles favorably",
+        "If overweight, drop 5 to 10 percent of body weight"
       ],
       "low": [
-        "No action needed"
+        "Very low total cholesterol can signal malabsorption, focus on a varied diet with healthy fats"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep Mediterranean style, fish, olive oil, nuts, legumes, lots of vegetables"
       ]
     }
   },
@@ -430,17 +439,18 @@
     "context": "Exercise and olive oil raise HDL. Extreme keto can temporarily lower it. Hormonal changes matter too.",
     "actions": {
       "high": [
-        "No action, this is favorable",
-        "Keep exercise and Mediterranean eating patterns"
+        "Very high HDL is usually fine, keep the healthy habits that got you there"
       ],
       "low": [
-        "Add 150+ min/week aerobic exercise, the most effective HDL booster",
-        "Add olive oil and fatty fish; reduce trans fats",
-        "Stop smoking if applicable",
-        "Moderate alcohol (no more than 1 drink/day)"
+        "Do aerobic exercise at moderate intensity 150 to 200 minutes a week, this raises HDL most reliably",
+        "Add monounsaturated fats, olive oil, avocado, almonds, pistachios",
+        "Eat fatty fish twice a week for omega-3",
+        "Quit smoking, it drops HDL meaningfully",
+        "Lose 5 to 10 percent of body weight if relevant, HDL rises with weight loss",
+        "Limit refined carbs and sugar, they lower HDL"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep aerobic training, olive oil, nuts, and fatty fish in rotation"
       ]
     }
   },
@@ -452,18 +462,18 @@
     "context": "Most labs calculate LDL from other lipids. Accurate calculation requires fasting. Direct LDL-C is more reliable when triglycerides are high.",
     "actions": {
       "high": [
-        "Mediterranean-style diet: olive oil, nuts, fatty fish, legumes, vegetables",
-        "Reduce saturated fat (<7% of calories) and eliminate trans fats",
-        "30+ g/day of soluble fiber (oats, beans, apples)",
-        "150+ min/week aerobic exercise",
-        "Discuss statin therapy with your doctor if persistently high despite lifestyle changes"
+        "Replace saturated fat (red meat, butter, cheese, palm oil) with olive oil, avocado, nuts",
+        "Eat 5 to 10 g of soluble fiber daily, oats, barley, beans, apples, psyllium",
+        "Add plant sterols (2 g a day) from fortified foods or supplements",
+        "Eat fatty fish twice a week or take 1 to 2 g EPA or DHA",
+        "Exercise 30 to 45 minutes most days",
+        "Drop 5 to 10 percent body weight if overweight"
       ],
       "low": [
-        "No action needed"
+        "Low LDL is usually favorable, no action"
       ],
       "maintain": [
-        "Annual lipid panel",
-        "Keep current nutrition and activity pattern"
+        "Keep plant-forward eating with fiber, olive oil, and fish"
       ]
     }
   },
@@ -475,17 +485,17 @@
     "context": "Strictly fasting (no food 9-12 hours). A big dinner the night before can dramatically raise the reading.",
     "actions": {
       "high": [
-        "Cut added sugar and refined carbs first, biggest single lever",
-        "Reduce alcohol",
-        "Add omega-3s (fatty fish 2x/week or 2-4 g EPA/DHA daily)",
-        "Lose excess weight",
-        "Retest after 6-8 weeks of changes"
+        "Cut sugar and refined carbs, sodas, sweets, white bread, these are the main driver",
+        "Limit alcohol to 0 to 3 drinks a week, alcohol is a strong triglyceride pusher",
+        "Eat fatty fish twice a week or take 2 to 4 g of EPA or DHA daily under guidance",
+        "Do 150 minutes of cardio a week",
+        "Lose 5 to 10 percent body weight if overweight"
       ],
       "low": [
-        "No action needed"
+        "Low triglycerides are favorable, no action"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep sugar and alcohol low, fish and exercise in"
       ]
     }
   },
@@ -494,18 +504,18 @@
     "why": "A secondary cholesterol marker. Moves in the same direction as triglycerides and adds a bit of cardiovascular risk.",
     "highMeans": "High VLDL usually tracks with high triglycerides and points to the same issues: too much refined carb or alcohol, or insulin resistance.",
     "lowMeans": "Low VLDL is not a concern.",
-    "context": "Calculated from triglycerides in most labs (Trig ÷ 5). Treat the same way as triglycerides.",
+    "context": "Calculated from triglycerides in most labs (Trig \u00f7 5). Treat the same way as triglycerides.",
     "actions": {
       "high": [
-        "Cut added sugar and refined carbs",
-        "Reduce alcohol",
-        "Add omega-3s"
+        "Cut sugar, refined carbs, and alcohol",
+        "Add omega-3 from fish or supplement",
+        "Exercise 150 minutes a week and lose weight if overweight"
       ],
       "low": [
-        "No action needed"
+        "Low is favorable"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep sugar and alcohol low and stay active"
       ]
     }
   },
@@ -517,15 +527,13 @@
     "context": "Non-HDL is accurate whether you're fasting or not, useful when someone forgets to fast.",
     "actions": {
       "high": [
-        "Same approach as high LDL: Mediterranean diet, fiber, exercise",
-        "Reduce saturated fat and added sugar",
-        "Discuss medication if persistently high"
+        "Same playbook as LDL, less saturated fat, more soluble fiber, fatty fish, exercise, weight loss"
       ],
       "low": [
-        "No action needed"
+        "Low is favorable"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep Mediterranean eating and steady activity"
       ]
     }
   },
@@ -537,15 +545,15 @@
     "context": "Harder to move than individual lipids, best improved by raising HDL (exercise) while lowering LDL (diet).",
     "actions": {
       "high": [
-        "Raise HDL with aerobic exercise, olive oil, fatty fish",
-        "Lower LDL with fiber and saturated fat reduction",
-        "Stop smoking if applicable"
+        "Raise HDL with aerobic exercise, olive oil, nuts, fish, and by quitting smoking",
+        "Lower LDL with soluble fiber and less saturated fat",
+        "Lose 5 to 10 percent body weight if relevant"
       ],
       "low": [
-        "No action needed"
+        "Low ratio is ideal"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep the habits that built this ratio"
       ]
     }
   },
@@ -557,14 +565,14 @@
     "context": "Track with Total Chol/HDL ratio; they move together.",
     "actions": {
       "high": [
-        "Raise HDL with aerobic exercise",
-        "Lower LDL with Mediterranean diet and fiber"
+        "Raise HDL, exercise, olive oil, nuts, fatty fish, no smoking",
+        "Lower LDL, fiber, less saturated fat, weight loss if relevant"
       ],
       "low": [
-        "No action needed"
+        "Low ratio is ideal"
       ],
       "maintain": [
-        "Annual lipid panel"
+        "Keep up aerobic exercise plus a fiber-rich diet"
       ]
     }
   },
@@ -576,16 +584,16 @@
     "context": "Not part of standard lipid panels in most labs. Test if you have high triglycerides, low HDL, or family history of heart disease.",
     "actions": {
       "high": [
-        "Lower triglycerides (cut refined carbs and sugar)",
-        "Raise HDL with exercise and olive oil",
-        "Lose excess weight",
-        "Discuss with your doctor whether a statin or other lipid therapy is warranted"
+        "Cut refined carbs and sugar, they drive small dense LDL specifically",
+        "Exercise 150 minutes a week plus 2 strength sessions",
+        "Lose 5 to 10 percent body weight if overweight",
+        "Add omega-3 from fatty fish twice a week"
       ],
       "low": [
-        "No action needed"
+        "Low small dense LDL is favorable"
       ],
       "maintain": [
-        "Recheck every 1-2 years if previously high"
+        "Keep refined carbs low, fiber high, and stay active"
       ]
     }
   },
@@ -597,15 +605,17 @@
     "context": "Well-muscled people naturally run higher. Intense exercise in the 24 hours before testing can also raise it temporarily.",
     "actions": {
       "high": [
-        "Hydrate well and retest",
-        "Avoid NSAIDs and heavy exercise before testing",
-        "Check eGFR and urine protein for kidney function detail"
+        "Drink water through the day, chronic mild dehydration raises creatinine",
+        "Avoid NSAIDs (ibuprofen, naproxen) for routine aches, they stress the kidney",
+        "Keep blood pressure at or under 120 over 80",
+        "Moderate protein to about 0.8 to 1.0 g per kg body weight if kidney function is borderline",
+        "If you take creatine supplements, hold them for 3 to 4 weeks before retesting"
       ],
       "low": [
-        "No action needed"
+        "Low creatinine is usually fine, especially with low muscle mass, add strength training"
       ],
       "maintain": [
-        "Annual panel"
+        "Hydrate, control blood pressure, avoid chronic NSAID use"
       ]
     }
   },
@@ -617,15 +627,17 @@
     "context": "eGFR naturally declines with age (about 1 mL/min/year after 40). A trend downward matters more than a single value.",
     "actions": {
       "high": [
-        "No action needed"
+        "Very high GFR is usually benign in younger, lean adults"
       ],
       "low": [
-        "Check urine protein (microalbumin) and kidney ultrasound if persistent",
-        "Review any nephrotoxic medications (NSAIDs, certain antibiotics)",
-        "Control blood pressure and glucose aggressively"
+        "Keep blood pressure at or under 120 over 80 and blood sugar tight",
+        "Avoid routine NSAIDs, switch to paracetamol for occasional pain",
+        "Moderate protein intake, 0.8 g per kg body weight",
+        "Stay well hydrated and limit salt to under 5 g a day",
+        "Do not smoke"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep blood pressure, glucose, and hydration steady"
       ]
     }
   },
@@ -637,14 +649,14 @@
     "context": "Rises quickly with dehydration. Drink water and retest before jumping to conclusions.",
     "actions": {
       "high": [
-        "Hydrate well and retest",
-        "Review protein intake in the 24h before testing"
+        "Drink more water, dehydration is the top cause of mildly elevated BUN",
+        "Ease up on very high protein intakes (over 2 g per kg) if kidney function is borderline"
       ],
       "low": [
-        "No action needed"
+        "Usually benign, can reflect low protein or liver adjustment, keep protein at 1 g per kg"
       ],
       "maintain": [
-        "Annual panel"
+        "Hydrate well and eat adequate, not excessive, protein"
       ]
     }
   },
@@ -656,15 +668,14 @@
     "context": "A practical triage tool when both BUN and creatinine look off.",
     "actions": {
       "high": [
-        "Hydrate well and retest",
-        "Discuss with your doctor if you have black stools or GI symptoms"
+        "Usually a hydration signal, drink water steadily",
+        "Check for GI bleeding only if there are symptoms"
       ],
       "low": [
-        "Review protein intake",
-        "Check liver function"
+        "Usually benign, ensure adequate protein intake"
       ],
       "maintain": [
-        "Annual panel"
+        "Stay hydrated"
       ]
     }
   },
@@ -676,17 +687,18 @@
     "context": "Dehydration and fasting raise uric acid. Rapid weight loss (especially keto) can trigger a flare.",
     "actions": {
       "high": [
-        "Reduce red meat, organ meats, and shellfish",
-        "Cut beer and sugar-sweetened drinks",
-        "Hydrate well (2-3 L/day)",
-        "Lose weight gradually; avoid very-low-calorie crash diets",
-        "Ask about allopurinol if you've had gout attacks"
+        "Cut alcohol especially beer, it drives uric acid up fast",
+        "Reduce sugar and fructose, fruit juice, sodas, high-fructose corn syrup",
+        "Limit organ meats, shellfish, and red meat to occasional",
+        "Add low-fat dairy, cherries, coffee, these lower uric acid",
+        "Lose 5 to 10 percent of body weight if overweight",
+        "Drink 2 to 3 liters of water a day to flush urate"
       ],
       "low": [
-        "No action needed"
+        "Low uric acid is usually benign"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep alcohol low, hydration high, and diet plant-forward"
       ]
     }
   },
@@ -698,16 +710,19 @@
     "context": "Intense exercise can transiently raise ALT because some also comes from muscle.",
     "actions": {
       "high": [
-        "Reduce alcohol to zero for 6-8 weeks and retest",
-        "Lose weight if overweight, fatty liver often reverses with 5-10% weight loss",
-        "Review medications and supplements with your doctor",
-        "Check hepatitis B/C if risk factors exist"
+        "Cut alcohol, even moderate intake keeps ALT elevated",
+        "Lose 5 to 10 percent body weight if you carry extra fat around the middle, fatty liver is the top cause",
+        "Shift to Mediterranean eating, olive oil, fish, vegetables, whole grains",
+        "Cut sugar and fructose, they drive liver fat",
+        "Exercise 150 minutes a week plus 2 strength sessions",
+        "Review medications and supplements with your doctor, statins, acetaminophen, herbal supplements can raise ALT",
+        "Drink 2 to 3 cups of coffee a day if tolerated, coffee lowers ALT"
       ],
       "low": [
-        "Check B6 level if curious; otherwise no action"
+        "Low ALT is usually fine"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep alcohol low, stay lean, and eat whole foods"
       ]
     }
   },
@@ -719,15 +734,16 @@
     "context": "Rises with heavy exercise. Avoid intense workouts in the 24-48 hours before testing.",
     "actions": {
       "high": [
-        "Reduce alcohol and retest in 6-8 weeks",
-        "Check ALT pattern (AST:ALT ratio) for clues",
-        "Avoid intense exercise before retesting"
+        "Cut alcohol, it is the most common driver",
+        "Avoid intense exercise 48 hours before a blood draw, muscle releases AST",
+        "Lose weight if fatty liver is the cause, aim for 5 to 10 percent",
+        "Review medications with your doctor"
       ],
       "low": [
-        "No action needed"
+        "Low AST is usually fine"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep alcohol low and weight stable"
       ]
     }
   },
@@ -739,15 +755,16 @@
     "context": "Even moderate regular alcohol use can nudge GGT up. Abstaining for 2-4 weeks typically drops it meaningfully.",
     "actions": {
       "high": [
-        "Stop alcohol for 4-6 weeks and retest",
-        "Review medications (phenytoin, barbiturates)",
-        "Check other liver tests and consider imaging if persistently high"
+        "Cut alcohol, GGT is very sensitive to even moderate drinking",
+        "Lose weight if fatty liver is suspected",
+        "Review medications that stress the liver",
+        "Drink coffee (2 to 3 cups) if tolerated, it lowers GGT"
       ],
       "low": [
-        "No action needed"
+        "Low GGT is favorable"
       ],
       "maintain": [
-        "Annual panel"
+        "Limit alcohol and keep a lean body composition"
       ]
     }
   },
@@ -759,15 +776,15 @@
     "context": "Adolescents and pregnant women naturally run higher.",
     "actions": {
       "high": [
-        "Check GGT to split liver vs bone",
-        "Review for bone symptoms or recent fracture",
-        "Imaging if liver source suspected"
+        "Check vitamin D, low vitamin D raises alkaline phosphatase",
+        "Review bone health, bone turnover can elevate it",
+        "Cut alcohol if relevant"
       ],
       "low": [
-        "Check zinc and nutrition status"
+        "Ensure adequate zinc, magnesium, and protein"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep vitamin D, protein, and calcium adequate"
       ]
     }
   },
@@ -779,14 +796,15 @@
     "context": "Fasting, stress, illness, and dehydration can temporarily raise unconjugated bilirubin in Gilbert syndrome.",
     "actions": {
       "high": [
-        "Split into direct vs indirect, direct elevation is more concerning",
-        "If isolated and stable, often Gilbert syndrome, benign"
+        "Often Gilbert syndrome and benign, stay well hydrated and eat regularly",
+        "Fasting, dehydration, and intense exercise raise it, avoid these the day before labs",
+        "Cut alcohol if relevant"
       ],
       "low": [
-        "No action needed"
+        "Low bilirubin is benign"
       ],
       "maintain": [
-        "Annual panel"
+        "Eat regular meals and hydrate well"
       ]
     }
   },
@@ -798,15 +816,14 @@
     "context": "Always interpret alongside albumin and globulin, they drive the total.",
     "actions": {
       "high": [
-        "Hydrate and retest",
-        "If persistent, check serum protein electrophoresis"
+        "Ensure good hydration through the day, dehydration concentrates proteins"
       ],
       "low": [
-        "Check albumin and globulin individually",
-        "Review diet and check for kidney protein loss"
+        "Increase protein intake to about 1 to 1.2 g per kg body weight",
+        "Include eggs, fish, dairy, legumes, and lean meat at each meal"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep protein at 1 g per kg and stay hydrated"
       ]
     }
   },
@@ -818,14 +835,15 @@
     "context": "Albumin has a long half-life (~20 days), so it responds to changes slowly.",
     "actions": {
       "high": [
-        "Hydrate"
+        "Usually just dehydration, drink water steadily"
       ],
       "low": [
-        "Check liver tests, urine protein",
-        "Review protein intake and any GI symptoms"
+        "Raise protein intake to 1 to 1.2 g per kg body weight",
+        "Include eggs, fish, dairy, legumes, and lean meat at each meal",
+        "Address any gut issues that may impair absorption"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep protein and hydration steady"
       ]
     }
   },
@@ -837,14 +855,13 @@
     "context": "Calculated as Total Protein minus Albumin in many labs.",
     "actions": {
       "high": [
-        "Check serum protein electrophoresis if persistent",
-        "Review for autoimmune symptoms"
+        "Often reflects chronic inflammation, add omega-3, lower sugar, exercise, sleep"
       ],
       "low": [
-        "Check immunoglobulins if recurrent infections"
+        "Ensure balanced protein intake"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep inflammation low with Mediterranean eating and exercise"
       ]
     }
   },
@@ -856,14 +873,13 @@
     "context": "Ratio is most useful in conjunction with the individual values, not alone.",
     "actions": {
       "high": [
-        "Look at globulin separately, is it low?",
-        "Usually no action needed if you feel well"
+        "Keep protein intake steady and stay hydrated"
       ],
       "low": [
-        "Check albumin and globulin separately to find the driver"
+        "Work on lowering inflammation, Mediterranean diet, exercise, sleep, weight loss"
       ],
       "maintain": [
-        "Annual panel"
+        "Balanced protein plus anti-inflammatory habits"
       ]
     }
   },
@@ -875,15 +891,15 @@
     "context": "Tightly regulated, even small deviations (2-3 mmol/L) can matter in the right clinical picture.",
     "actions": {
       "high": [
-        "Increase water intake"
+        "Drink more water, the most common cause is dehydration",
+        "Cut back on very salty foods if intake is extreme"
       ],
       "low": [
-        "Review medications",
-        "Don't over-drink during endurance exercise",
-        "Discuss with your doctor if persistent"
+        "Avoid over-drinking plain water during endurance events, add electrolytes",
+        "Review diuretic or antidepressant medications with your doctor"
       ],
       "maintain": [
-        "Annual panel"
+        "Drink to thirst, salt food reasonably"
       ]
     }
   },
@@ -895,15 +911,16 @@
     "context": "A hemolyzed sample (red cells broken during draw) falsely raises potassium. Repeat before acting.",
     "actions": {
       "high": [
-        "Repeat test with fresh sample",
-        "Review medications"
+        "If you take potassium supplements or salt substitutes, stop and recheck",
+        "Review ACE inhibitors, ARBs, and potassium-sparing diuretics with your doctor"
       ],
       "low": [
-        "Eat potassium-rich foods (banana, avocado, spinach, potatoes)",
-        "Check magnesium too, low magnesium causes low potassium"
+        "Add bananas, potatoes with skin, beans, leafy greens, avocado, tomato",
+        "Limit alcohol, it drops potassium",
+        "Review diuretic medications with your doctor"
       ],
       "maintain": [
-        "Annual panel"
+        "Eat 3 to 5 servings of potassium-rich plants a day"
       ]
     }
   },
@@ -915,13 +932,13 @@
     "context": "Rarely interpreted alone.",
     "actions": {
       "high": [
-        "Check sodium and acid-base status"
+        "Stay hydrated and reduce very high salt intake"
       ],
       "low": [
-        "Check sodium and acid-base status"
+        "Usually tracks sodium, address hydration and medication causes"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep balanced salt intake and hydration"
       ]
     }
   },
@@ -933,15 +950,13 @@
     "context": "Interpret with a full metabolic panel. Severely abnormal values need urgent evaluation.",
     "actions": {
       "high": [
-        "Review medications and recent vomiting",
-        "Discuss with your doctor if persistent"
+        "Review diuretic use and vomiting history with your doctor"
       ],
       "low": [
-        "Check kidney function, glucose, and anion gap",
-        "Discuss promptly with your doctor if meaningfully below range"
+        "Stay hydrated, address any chronic diarrhea, keep blood sugar under control"
       ],
       "maintain": [
-        "Annual panel"
+        "Hydration and metabolic health keep this steady"
       ]
     }
   },
@@ -953,16 +968,15 @@
     "context": "Low albumin can falsely lower the total calcium reading. Ask for ionized calcium if albumin is abnormal.",
     "actions": {
       "high": [
-        "Check PTH and vitamin D",
-        "Hydrate well and retest"
+        "Review vitamin D and calcium supplementation, over-supplementing is a common cause",
+        "Drink more water and keep active"
       ],
       "low": [
-        "Check vitamin D and albumin",
-        "Increase calcium intake (dairy, leafy greens, sardines)",
-        "Correct vitamin D deficiency first"
+        "Increase dairy, fortified plant milks, leafy greens, sardines, almonds",
+        "Ensure vitamin D is adequate, calcium is not absorbed without it"
       ],
       "maintain": [
-        "Annual panel"
+        "2 to 3 servings of calcium-rich foods a day plus adequate vitamin D"
       ]
     }
   },
@@ -974,16 +988,15 @@
     "context": "Serum magnesium underestimates true deficiency, it only reflects 1% of total body magnesium.",
     "actions": {
       "high": [
-        "Review supplements",
-        "Check kidney function"
+        "Review magnesium supplements or laxatives, cut or reduce dose"
       ],
       "low": [
-        "Add magnesium-rich foods (dark chocolate, almonds, pumpkin seeds, leafy greens)",
-        "Supplement 200-400 mg magnesium glycinate or citrate in the evening",
-        "Reduce alcohol"
+        "Add pumpkin seeds, almonds, cashews, dark chocolate, black beans, spinach",
+        "Cut back on alcohol, it depletes magnesium",
+        "Consider 200 to 400 mg magnesium glycinate at bedtime if dietary intake is low"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep a handful of nuts or seeds plus leafy greens in daily rotation"
       ]
     }
   },
@@ -995,15 +1008,17 @@
     "context": "Diurnal variation is large, draw in the morning and fasting for consistency. Single readings are unreliable.",
     "actions": {
       "high": [
-        "Retest fasting and off supplements for 48h",
-        "Check ferritin and transferrin saturation if persistent"
+        "Cut red meat and iron supplements",
+        "Donate blood if the pattern persists and you are a candidate",
+        "Check for hereditary hemochromatosis if ferritin is also very high"
       ],
       "low": [
-        "Check ferritin (the most reliable deficiency marker)",
-        "Review diet for heme iron (red meat) and vitamin C for absorption"
+        "Eat iron-rich foods (red meat, lentils, spinach) with vitamin C",
+        "Skip tea and coffee at iron-heavy meals",
+        "Consider a ferrous bisglycinate supplement if intake is low"
       ],
       "maintain": [
-        "Annual panel"
+        "Rotate iron-rich foods weekly and keep vitamin C at meals"
       ]
     }
   },
@@ -1015,17 +1030,18 @@
     "context": "Ferritin rises with inflammation, so a 'normal' ferritin with active inflammation can mask true iron deficiency. Interpret with hs-CRP.",
     "actions": {
       "high": [
-        "Check hs-CRP to see if inflammation explains it",
-        "Reduce alcohol",
-        "Check for hemochromatosis if very high"
+        "Cut red meat and iron supplements",
+        "Reduce alcohol, which raises ferritin through inflammation",
+        "Address inflammation with exercise, sleep, and whole foods",
+        "If persistent over 300, screen for hemochromatosis"
       ],
       "low": [
-        "Supplement iron (65 mg elemental, every other day, with vitamin C)",
-        "Add red meat, lentils, spinach",
-        "Find and treat any source of blood loss"
+        "Build iron with red meat, lentils, beans, pumpkin seeds, plus vitamin C",
+        "Skip tea or coffee within an hour of iron-rich meals",
+        "Consider a ferrous bisglycinate supplement if ferritin is under 30"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep iron intake steady and address any sources of blood loss"
       ]
     }
   },
@@ -1037,35 +1053,32 @@
     "context": "Interpret alongside serum iron and ferritin.",
     "actions": {
       "high": [
-        "Check ferritin, likely iron deficient",
-        "Start iron repletion if confirmed"
+        "Suggests iron need, add iron-rich foods and vitamin C"
       ],
       "low": [
-        "Check hs-CRP",
-        "Review nutrition"
+        "Usually reflects inflammation or iron overload, focus on anti-inflammatory habits"
       ],
       "maintain": [
-        "Annual panel"
+        "Balanced iron intake from whole foods"
       ]
     }
   },
   "Transferrin Saturation": {
-    "desc": "The percentage of transferrin (the iron taxi) that's actually carrying iron. Calculated as Serum Iron ÷ TIBC.",
+    "desc": "The percentage of transferrin (the iron taxi) that's actually carrying iron. Calculated as Serum Iron \u00f7 TIBC.",
     "why": "Cross-checks iron status. Saturation <20% supports iron deficiency; >45% can suggest iron overload.",
     "highMeans": "High saturation (>45%) can suggest hereditary hemochromatosis, especially if ferritin is also elevated.",
     "lowMeans": "Low saturation (<20%) supports iron deficiency.",
     "context": "Must be drawn fasting and not after iron supplementation.",
     "actions": {
       "high": [
-        "Check HFE gene testing if persistent (hemochromatosis)",
-        "Check ferritin and liver enzymes"
+        "Cut iron supplements and heavy red meat",
+        "Check ferritin, if also high, screen for hemochromatosis"
       ],
       "low": [
-        "Start iron supplementation",
-        "Find and treat source of iron loss"
+        "Boost iron intake and pair with vitamin C"
       ],
       "maintain": [
-        "Annual panel"
+        "Keep iron balanced through varied whole foods"
       ]
     }
   },
@@ -1077,16 +1090,17 @@
     "context": "TSH has diurnal rhythm, slightly higher in the morning. Test at the same time of day if tracking trends.",
     "actions": {
       "high": [
-        "Check Free T4",
-        "If T4 is low, discuss thyroid hormone replacement",
-        "Screen for Hashimoto's (anti-TPO antibodies) if persistent"
+        "Get iodine from iodized salt, seafood, seaweed, dairy, eggs",
+        "Add selenium from 2 to 3 Brazil nuts a day",
+        "Ask your doctor to check anti-TPO antibodies if TSH is over 4",
+        "Reduce chronic stress and prioritize sleep"
       ],
       "low": [
-        "Check Free T4 and Free T3",
-        "Screen for Graves' disease if symptomatic (weight loss, tremor, palpitations)"
+        "Review any thyroid medication or iodine supplements with your doctor",
+        "Manage stress and get 7 to 9 hours of sleep"
       ],
       "maintain": [
-        "Annual thyroid screen"
+        "Keep iodine and selenium adequate, stress and sleep in check"
       ]
     }
   },
@@ -1098,15 +1112,13 @@
     "context": "Always interpret with TSH, they tell the full story together.",
     "actions": {
       "high": [
-        "Check Free T3 and TSH",
-        "See an endocrinologist if persistent with symptoms"
+        "Review any thyroid medication or supplements with your doctor"
       ],
       "low": [
-        "Check TSH and thyroid antibodies",
-        "Discuss replacement therapy if persistent"
+        "Ensure iodine and selenium are adequate, see thyroid diet tips"
       ],
       "maintain": [
-        "Annual thyroid screen"
+        "Balanced iodine and selenium intake supports thyroid output"
       ]
     }
   },
@@ -1118,13 +1130,14 @@
     "context": "Not used as a primary screen, TSH and Free T4 come first.",
     "actions": {
       "high": [
-        "Check TSH and Free T4"
+        "Review thyroid medication and stimulants with your doctor"
       ],
       "low": [
-        "Check TSH, ferritin, and overall health status"
+        "Address selenium and zinc intake, both convert T4 to T3",
+        "Reduce chronic under-eating or over-exercising, both suppress T3"
       ],
       "maintain": [
-        "Usually no need to track routinely"
+        "Eat enough calories, selenium, zinc, and protein"
       ]
     }
   },
@@ -1136,18 +1149,16 @@
     "context": "Different labs report in ng/mL or nmol/L. To convert nmol/L to ng/mL divide by 2.5.",
     "actions": {
       "high": [
-        "Stop supplementation and retest in 3 months",
-        "Check calcium level"
+        "Reduce or pause vitamin D supplementation and retest in 2 to 3 months"
       ],
       "low": [
-        "Supplement 2000-5000 IU/day of vitamin D3 with a fatty meal",
-        "Add vitamin K2 (MK-7) if supplementing long-term",
-        "Get 15-30 min of midday sun a few times a week",
-        "Retest in 3 months"
+        "Get 15 to 20 minutes of midday sun on arms and face most days",
+        "Eat fatty fish (salmon, sardines) twice a week and egg yolks",
+        "Supplement 2000 IU D3 daily with a fatty meal, 4000 IU if under 20 ng per mL",
+        "Ensure magnesium is adequate, it is needed to activate vitamin D"
       ],
       "maintain": [
-        "Maintenance dose of 1000-2000 IU/day in winter months",
-        "Annual retest"
+        "Keep sun exposure, fatty fish, and a maintenance 1000 to 2000 IU D3 dose"
       ]
     }
   },
@@ -1159,15 +1170,14 @@
     "context": "Vegans, vegetarians, and long-term PPI users should check B12 routinely. Methylmalonic acid is more sensitive than B12 for borderline cases.",
     "actions": {
       "high": [
-        "Usually no action, review supplementation"
+        "Review B12 supplements, pause and retest"
       ],
       "low": [
-        "Supplement 1000 mcg methylcobalamin daily for 2-3 months",
-        "Include eggs, dairy, fish, meat if not vegan",
-        "Vegans should take B12 permanently"
+        "Eat fish, eggs, dairy, and meat regularly, or take 500 to 1000 mcg methylcobalamin daily if vegetarian or vegan",
+        "Check for chronic acid-blocker or metformin use, both reduce B12 absorption"
       ],
       "maintain": [
-        "Retest every 1-2 years if supplementing"
+        "Include B12 sources daily, especially if plant-based, supplement 250 mcg a few times a week"
       ]
     }
   },
@@ -1179,16 +1189,18 @@
     "context": "Temporarily rises with any infection, injury, or intense exercise. Retest 2-4 weeks after any acute illness.",
     "actions": {
       "high": [
-        "Retest 4 weeks after any recent illness",
-        "Reduce visceral fat, the biggest lever",
-        "Mediterranean diet, omega-3s, sleep 7+ hrs/night",
-        "Treat periodontal disease if present"
+        "Eat Mediterranean style, olive oil, fatty fish, nuts, legumes, lots of vegetables and berries",
+        "Exercise 150 minutes a week plus 2 strength sessions",
+        "Drop 5 to 10 percent of body weight if BMI is above 25, fat drives CRP",
+        "Sleep 7 to 9 hours, short sleep elevates CRP within a week",
+        "Quit smoking and cap alcohol at one drink a day",
+        "Brush and floss daily, gum disease keeps CRP elevated"
       ],
       "low": [
-        "No action needed"
+        "Low CRP is favorable"
       ],
       "maintain": [
-        "Recheck every 1-2 years"
+        "Keep the Mediterranean pattern, exercise, sleep, lean body composition"
       ]
     }
   },
@@ -1200,14 +1212,14 @@
     "context": "A single high ASO is less meaningful than a rising titer over 2-4 weeks.",
     "actions": {
       "high": [
-        "Discuss with your doctor if symptomatic (joint pain, rash, kidney issues)",
-        "Usually no treatment needed if asymptomatic"
+        "Recent strep exposure is typical, complete any antibiotic course prescribed",
+        "If elevation persists, a follow-up with your doctor is reasonable"
       ],
       "low": [
-        "No action needed"
+        "No action"
       ],
       "maintain": [
-        "Routine screening not needed"
+        "Good dental hygiene and attention to sore throats"
       ]
     }
   },
@@ -1219,14 +1231,15 @@
     "context": "Anti-CCP antibodies are more specific for RA than RF.",
     "actions": {
       "high": [
-        "Confirm with anti-CCP if joint symptoms",
-        "See a rheumatologist if persistent with symptoms"
+        "Discuss autoimmune screening (anti-CCP, ANA) with your doctor if joints are involved",
+        "Eat anti-inflammatory, Mediterranean style, add omega-3",
+        "Quit smoking if relevant"
       ],
       "low": [
-        "No action needed"
+        "No action"
       ],
       "maintain": [
-        "Screen only if joint symptoms develop"
+        "Anti-inflammatory eating and regular exercise"
       ]
     }
   },
@@ -1238,14 +1251,14 @@
     "context": "If you're investigating cardiovascular risk, use hs-CRP instead, it measures the same molecule with more precision at low levels.",
     "actions": {
       "high": [
-        "Retest 4 weeks after any acute illness resolves",
-        "Look for a source if persistent"
+        "Same playbook as hs-CRP, Mediterranean diet, exercise, sleep, weight",
+        "Address any active infection or dental issues"
       ],
       "low": [
-        "No action needed"
+        "Low CRP is favorable"
       ],
       "maintain": [
-        "Retest only if symptoms suggest inflammation"
+        "Keep anti-inflammatory habits steady"
       ]
     }
   },
@@ -1257,16 +1270,15 @@
     "context": "Skip heavy exercise for 48-72 hours before testing for a clean baseline. Eccentric exercise (downhill running, heavy lifting) can quintuple CPK for several days.",
     "actions": {
       "high": [
-        "Retest after 72 hours of rest, if values normalize, exercise was the likely cause",
-        "Check CK-MB and troponin if chest pain is present",
-        "Review statin dose and switch to a different statin if muscle pain is a concern",
-        "Hydrate well around workouts"
+        "Skip intense workouts for 48 to 72 hours before a blood draw",
+        "Hydrate well around workouts",
+        "Review statins with your doctor if you also have muscle aches"
       ],
       "low": [
-        "No action needed"
+        "Usually benign, add strength training"
       ],
       "maintain": [
-        "Annual panel"
+        "Train steadily and hydrate well"
       ]
     }
   },
@@ -1278,15 +1290,14 @@
     "context": "Troponin is now the preferred marker for heart attacks, CK-MB is less specific. The ratio of CK-MB to total CK matters: >5% suggests cardiac origin.",
     "actions": {
       "high": [
-        "If chest pain, seek emergency care",
-        "Confirm with troponin",
-        "Recheck alongside total CPK if muscle injury suspected"
+        "If mildly raised after heavy exercise it can be benign, rest 48 to 72 hours and retest",
+        "If raised without a clear cause, see a doctor promptly"
       ],
       "low": [
-        "No action needed"
+        "No action"
       ],
       "maintain": [
-        "No routine monitoring needed"
+        "Standard cardiovascular lifestyle"
       ]
     }
   },
@@ -1298,13 +1309,13 @@
     "context": "Must be drawn at least 3-6 hours after chest pain onset for full sensitivity. Sometimes repeated at 3 and 6 hours.",
     "actions": {
       "high": [
-        "Seek emergency care immediately if chest pain, shortness of breath, or symptoms of heart attack"
+        "Seek urgent medical care, elevated troponin can signal heart muscle injury"
       ],
       "low": [
-        "No action needed, this is reassuring"
+        "No action"
       ],
       "maintain": [
-        "No routine monitoring needed in healthy people"
+        "Mediterranean eating, exercise, blood pressure and lipid control"
       ]
     }
   },
@@ -1316,19 +1327,18 @@
     "context": "Must be drawn in the morning (7-10 AM), fasting, after 8+ hours of sleep. A single low reading needs confirmation on a second morning draw.",
     "actions": {
       "high": [
-        "Review supplementation honestly with your doctor",
-        "Check hematocrit, estradiol, and PSA if on TRT"
+        "Review any testosterone or steroid supplements with your doctor"
       ],
       "low": [
-        "Confirm with a second AM test",
-        "Prioritize 7-9 hours of sleep, biggest single lever",
-        "Strength train 3-4x/week",
-        "Optimize vitamin D, zinc, magnesium",
-        "Lose excess visceral fat",
-        "Consider TRT only after lifestyle optimization fails and symptoms are significant"
+        "Prioritize sleep, 7 to 9 hours, deep sleep is when testosterone is made",
+        "Do 2 to 4 strength sessions a week with compound lifts",
+        "Lose 5 to 10 percent body weight if overweight, fat tissue converts testosterone to estrogen",
+        "Ensure adequate zinc (oysters, beef, pumpkin seeds) and vitamin D",
+        "Limit alcohol to 0 to 3 drinks a week",
+        "Manage chronic stress, cortisol suppresses testosterone"
       ],
       "maintain": [
-        "Recheck annually if tracking"
+        "Keep training, sleep, zinc, vitamin D, and a lean body composition"
       ]
     }
   },
@@ -1340,15 +1350,13 @@
     "context": "Always interpreted with LH and testosterone (men) or estradiol (women).",
     "actions": {
       "high": [
-        "See an endocrinologist if men with low testosterone",
-        "Check LH and testosterone"
+        "Discuss with a doctor, especially if fertility is a goal"
       ],
       "low": [
-        "Review any testosterone supplementation",
-        "Check pituitary function if unexplained"
+        "Discuss with a doctor, look for pituitary or lifestyle causes"
       ],
       "maintain": [
-        "No routine monitoring needed"
+        "Sleep, training, nutrition, and weight management support normal gonadotropins"
       ]
     }
   },
@@ -1360,14 +1368,13 @@
     "context": "Secreted in pulses, so single readings have significant variability.",
     "actions": {
       "high": [
-        "See an endocrinologist"
+        "Pair with FSH and testosterone for context, discuss with an endocrinologist"
       ],
       "low": [
-        "Review any testosterone supplementation",
-        "Check prolactin and pituitary function"
+        "Review training load, sleep, and nutrition, severe calorie deficits suppress LH"
       ],
       "maintain": [
-        "No routine monitoring needed"
+        "Adequate calories, sleep, and weight stability keep LH in range"
       ]
     }
   },
@@ -1379,15 +1386,15 @@
     "context": "Avoid ejaculation, vigorous cycling, and prostate exams for 48 hours before testing. PSA rises slightly with age, age-adjusted ranges exist.",
     "actions": {
       "high": [
-        "Retest after 4-6 weeks with no ejaculation or prostate stimulation",
-        "Check free PSA ratio if persistent",
-        "See a urologist if confirmed elevated"
+        "Avoid ejaculation, cycling, and prostate exams in the 48 hours before the test",
+        "Cut alcohol, add tomatoes, cruciferous vegetables, and omega-3",
+        "Follow up with a repeat PSA and prostate exam if values stay elevated"
       ],
       "low": [
-        "No action needed"
+        "Low PSA is favorable"
       ],
       "maintain": [
-        "Baseline in your 40s, then per your doctor's guidance"
+        "Plant-forward eating, exercise, and regular screening per age guidelines"
       ]
     }
   },
@@ -1399,16 +1406,15 @@
     "context": "Take supplements with food, on an empty stomach zinc often causes nausea. Zinc and copper compete for absorption, so balance matters long-term.",
     "actions": {
       "high": [
-        "Reduce supplement dose",
-        "Add copper 1-2 mg/day if on zinc long-term"
+        "Review zinc supplements, stop and retest"
       ],
       "low": [
-        "Supplement 15-30 mg zinc daily with food for 2-3 months",
-        "Add oysters, pumpkin seeds, red meat, legumes",
-        "Retest after 3 months"
+        "Eat oysters, beef, pumpkin seeds, cashews, lentils, eggs, and dairy",
+        "Limit alcohol and heavy iron supplementation, both reduce zinc absorption",
+        "Consider 15 to 25 mg zinc with dinner if intake is low"
       ],
       "maintain": [
-        "Annual panel if restrictive diet or prior deficiency"
+        "Include a zinc-rich food daily"
       ]
     }
   }

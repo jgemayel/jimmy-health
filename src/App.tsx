@@ -270,14 +270,18 @@ function MarkerSpotlight({ marker, onPick }: { marker: BloodMarker; onPick: (m: 
  <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
  <XAxis dataKey="date" tick={{ fontSize: 10, fill: "#78716c" }} axisLine={false} tickLine={false} />
  <YAxis domain={domain} ticks={ticks} tickFormatter={yFmt} tick={{ fontSize: 10, fill: "#78716c" }} axisLine={false} tickLine={false} width={44} />
- {marker.low !== null && marker.high !== null && (
- <ReferenceArea y1={marker.low} y2={marker.high} fill="#10b981" fillOpacity={0.07} stroke="none" />
+ {(marker.low !== null || marker.high !== null) && (
+ <ReferenceArea
+ y1={marker.low !== null ? marker.low : domain[0]}
+ y2={marker.high !== null ? marker.high : domain[1]}
+ fill="#10b981" fillOpacity={0.07} stroke="none"
+ />
  )}
  {marker.low !== null && (
- <ReferenceLine y={marker.low} stroke="#a8a29e" strokeDasharray="4 4" />
+ <ReferenceLine y={marker.low} stroke="#a8a29e" strokeDasharray="4 4" label={{ value: "min", position: "insideLeft", fontSize: 10, fill: "#a8a29e" }} />
  )}
  {marker.high !== null && (
- <ReferenceLine y={marker.high} stroke="#a8a29e" strokeDasharray="4 4" />
+ <ReferenceLine y={marker.high} stroke="#a8a29e" strokeDasharray="4 4" label={{ value: "max", position: "insideLeft", fontSize: 10, fill: "#a8a29e" }} />
  )}
  <Area type="monotone" dataKey="value" stroke="none" fill="url(#markerFill)" />
  <Line
@@ -685,7 +689,7 @@ export default function App() {
 
  return (
  <div className="min-h-screen bg-stone-50 text-stone-900 pb-20">
- <TopBar />
+ {section === "overview" && <TopBar />}
  <main className="mx-auto max-w-3xl px-3 py-3 sm:px-5 sm:py-4">
  {section === "overview" && <Overview onFocus={(m) => { setFocusMarker(m); setSection("blood"); }} setSection={setSection} />}
  {section === "blood" && <BloodView initial={focusMarker} />}
