@@ -33,42 +33,42 @@ export interface WhoopWorkout {
   maxHR: number | null;
 }
 
-export interface WhoopBehavior {
-  question: string;
-  totalDays: number;
-  yesDays: number;
-  yesRate: number;
+export interface WhoopJournal {
+  date: string;
+  q: string;
+  y: boolean;
 }
 
-export interface WhoopSummary {
+export interface WhoopAllTime {
   totalDays: number;
   firstDate: string;
   lastDate: string;
   totalWorkouts: number;
-  topActivities: { name: string; count: number }[];
-  last7: { recovery: number | null; rhr: number | null; hrv: number | null; strain: number | null; sleepHours: number | null; sleepPerf: number | null };
-  last30: { recovery: number | null; rhr: number | null; hrv: number | null; strain: number | null; sleepHours: number | null; sleepPerf: number | null };
-  last90: { recovery: number | null; rhr: number | null; hrv: number | null; strain: number | null };
-  allTime: { recovery: number | null; rhr: number | null; hrv: number | null };
+  recovery: number | null;
+  rhr: number | null;
+  hrv: number | null;
+  strain: number | null;
+  sleepHours: number | null;
+  sleepPerf: number | null;
 }
 
 export const WHOOP: {
-  summary: WhoopSummary | null;
+  allTime: WhoopAllTime | null;
   cycles: WhoopCycle[];
   workouts: WhoopWorkout[];
-  behaviors: WhoopBehavior[];
+  journal: WhoopJournal[];
 } = {
-  summary: null,
+  allTime: null,
   cycles: [],
   workouts: [],
-  behaviors: [],
+  journal: [],
 };
 
 export async function loadWhoop() {
   const res = await fetch("data/whoop.json", { cache: "no-cache" });
   const j = await res.json();
-  WHOOP.summary = j.summary;
+  WHOOP.allTime = j.allTime;
   WHOOP.cycles.splice(0, WHOOP.cycles.length, ...j.cycles);
   WHOOP.workouts.splice(0, WHOOP.workouts.length, ...j.workouts);
-  WHOOP.behaviors.splice(0, WHOOP.behaviors.length, ...j.behaviors);
+  WHOOP.journal.splice(0, WHOOP.journal.length, ...j.journal);
 }
