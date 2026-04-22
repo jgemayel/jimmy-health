@@ -730,30 +730,95 @@ function WhoopStatCard({ label, value, unit, delta, icon: Icon, accent }: {
  );
 }
 
+// Pick the date in `dates` closest to `target`. Returns null if none within 7 days.
+function nearestDate(dates: string[], target: string): string | null {
+ if (dates.includes(target)) return target;
+ const ti = new Date(target + "T00:00:00").getTime();
+ let best: string | null = null;
+ let bestGap = Infinity;
+ for (const d of dates) {
+ const gap = Math.abs(new Date(d + "T00:00:00").getTime() - ti);
+ if (gap < bestGap) { bestGap = gap; best = d; }
+ }
+ return best && bestGap <= 7 * 86400000 ? best : null;
+}
+
 function buildXTicks(dates: string[]): string[] {
  if (dates.length === 0) return [];
+ const first = dates[0];
+ const last = dates[dates.length - 1];
+ const dateSet = new Set(dates);
+ let ticks: string[] = [];
+
  if (dates.length <= 95) {
- const mondays = dates.filter(d => new Date(d + "T00:00:00").getDay() === 1);
- if (mondays.length >= 4 && mondays.length <= 14) return mondays;
- const step = Math.max(1, Math.floor(dates.length / 6));
- return dates.filter((_, i) => i % step === 0);
+ // Short window: Mondays (snap to nearest existing date)
+ const firstDt = new Date(first + "T00:00:00");
+ const cursor = new Date(firstDt);
+ // Advance to the first Monday on or after the start
+ while (cursor.getDay() !== 1) cursor.setDate(cursor.getDate() + 1);
+ while (cursor <= new Date(last + "T00:00:00")) {
+ const iso = cursor.toISOString().slice(0, 10);
+ const snap = dateSet.has(iso) ? iso : nearestDate(dates, iso);
+ if (snap) ticks.push(snap);
+ cursor.setDate(cursor.getDate() + 7);
  }
- const firsts = dates.filter(d => d.endsWith("-01"));
- if (firsts.length >= 4 && firsts.length <= 14) return firsts;
+ if (ticks.length < 3 || ticks.length > 12) {
+ const step = Math.max(1, Math.floor(dates.length / 5));
+ ticks = dates.filter((_, i) => i % step === 0);
+ }
+ } else {
+ // Long window: month firsts (snap to nearest existing date)
+ const firstDt = new Date(first + "T00:00:00");
+ let y = firstDt.getFullYear();
+ let m = firstDt.getMonth();
+ // Start at the 1st of the next month if we are past the 1st
+ if (firstDt.getDate() > 1) { m += 1; if (m > 11) { m = 0; y += 1; } }
+ const lastDt = new Date(last + "T00:00:00");
+ while (new Date(y, m, 1) <= lastDt) {
+ const iso = `${y}-${String(m + 1).padStart(2, "0")}-01`;
+ const snap = dateSet.has(iso) ? iso : nearestDate(dates, iso);
+ if (snap) ticks.push(snap);
+ m += 1; if (m > 11) { m = 0; y += 1; }
+ }
+ if (ticks.length < 3) {
  const step = Math.max(1, Math.floor(dates.length / 8));
- return dates.filter((_, i) => i % step === 0);
+ ticks = dates.filter((_, i) => i % step === 0);
+ }
+ }
+
+ // Always anchor first and last
+ const firstIdx = 0;
+ const lastIdx = dates.length - 1;
+ const minGap = dates.length > 95 ? 14 : 3;
+ // Drop any middle tick too close to the endpoints
+ const filtered = ticks.filter(t => {
+ const ti = dates.indexOf(t);
+ return (ti - firstIdx) >= minGap && (lastIdx - ti) >= minGap;
+ });
+ // Dedupe and sort
+ const set = new Set<string>([first, ...filtered, last]);
+ return Array.from(set).sort();
 }
 
 function tickFmtForRange(dates: string[]) {
  const long = dates.length > 95;
+ const mons = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
  return (d: string) => {
+ if (!d) return "";
  const dt = new Date(d + "T00:00:00");
  if (long) {
- const mons = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
- return mons[dt.getMonth()];
+ const yr = String(dt.getFullYear()).slice(-2);
+ return `${mons[dt.getMonth()]} '${yr}`;
  }
- return `${dt.getMonth() + 1}/${dt.getDate()}`;
+ return `${mons[dt.getMonth()]} ${dt.getDate()}`;
  };
+}
+
+function tooltipLabelFmt(d: string) {
+ if (!d) return "";
+ const dt = new Date(d + "T00:00:00");
+ const mons = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+ return `${mons[dt.getMonth()]} ${dt.getDate()}, ${dt.getFullYear()}`;
 }
 
 function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, refAreas, yDomain, yTicks, formatter }: {
@@ -802,7 +867,7 @@ function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, refAr
  <RTooltip
  contentStyle={{ fontSize: 11, borderRadius: 8, border: "1px solid #e7e5e4" }}
  formatter={(v: any) => formatter ? formatter(v) : v}
- labelFormatter={(l) => l}
+ labelFormatter={(l: any) => tooltipLabelFmt(String(l))}
  />
  <Area type="monotone" dataKey="v" stroke={color} strokeWidth={1.5} fill={color} fillOpacity={0.12} dot={false} name={dataKey} />
  <Line type="monotone" dataKey="ma" stroke="#0c0a09" strokeWidth={1.5} dot={false} name="7-day avg" />
