@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
  Activity, TrendingUp, TrendingDown, Minus, AlertTriangle, Check, ChevronDown,
  FlaskConical, Droplets, Stethoscope, FileText, Menu, Search, Sparkles,
- ArrowRight, Info, HeartPulse
+ ArrowRight, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
 } from "lucide-react";
 import {
  ResponsiveContainer, ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid,
@@ -24,6 +24,8 @@ import type { BloodMarker } from "@/data/blood";
 import { DATES, SHORT_DATES, LABS } from "@/data/dates";
 import { URINALYSIS, URINALYSIS_DATES, URINALYSIS_LABS, IMAGING, PATHOLOGY, SEMEN, META as OTHER_META, SOURCES } from "@/data/other";
 import { getDiagnostic } from "@/data/diagnostics";
+import { WHOOP } from "@/data/whoop";
+import type { WhoopCycle } from "@/data/whoop";
 import {
  statusOf, latestValue, previousValue, chartData, formatValue, formatNumber, niceDomain, countAbnormal,
  attentionList, trajectory
@@ -31,7 +33,7 @@ import {
 import { iconFor } from "@/lib/category-icons";
 import { cn } from "@/lib/utils";
 
-type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "reports";
+type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "whoop" | "reports";
 
 const STATUS_STYLES: Record<string, { bg: string; text: string; border: string; dot: string; label: string }> = {
  high: { bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200", dot: "bg-rose-500", label: "High" },
@@ -74,7 +76,7 @@ function BottomNav({ section, setSection }: { section: Section; setSection: (s: 
  const tabs: { id: Section; label: string; icon: any }[] = [
  { id: "overview", label: "Home", icon: HeartPulse },
  { id: "blood", label: "Blood", icon: Droplets },
- { id: "urine", label: "Urine", icon: FlaskConical },
+ { id: "whoop", label: "Whoop", icon: Watch },
  { id: "imaging", label: "Imaging", icon: Activity },
  { id: "reports", label: "More", icon: Menu },
  ];
@@ -676,6 +678,305 @@ function ReportsView() {
  );
 }
 
+// ---------- Whoop view ----------
+
+function rolling7(cycles: WhoopCycle[], key: keyof WhoopCycle): (number | null)[] {
+ return cycles.map((_, i) => {
+ const window = cycles.slice(Math.max(0, i - 6), i + 1);
+ const vals = window.map(c => c[key]).filter((v): v is number => typeof v === "number");
+ if (vals.length === 0) return null;
+ return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 10) / 10;
+ });
+}
+
+function shortMD(d: string): string {
+ const dt = new Date(d + "T00:00:00");
+ return `${dt.getMonth() + 1}/${dt.getDate()}`;
+}
+
+function WhoopStatCard({ label, value, unit, delta, icon: Icon, accent }: {
+ label: string; value: string | number | null; unit?: string;
+ delta?: { value: number; baseline: string } | null;
+ icon: any; accent: string;
+}) {
+ const display = value === null || value === undefined ? "," : value;
+ const goodDirection = delta && delta.value > 0;
+ return (
+ <div className="rounded-xl border border-stone-200 bg-white p-3">
+ <div className="flex items-center justify-between">
+ <div className="text-[10px] font-semibold uppercase tracking-wider text-stone-500">{label}</div>
+ <div className={cn("flex h-6 w-6 items-center justify-center rounded-lg", accent)}>
+ <Icon className="h-3.5 w-3.5" />
+ </div>
+ </div>
+ <div className="mt-1 flex items-baseline gap-1">
+ <span className="font-serif text-2xl text-stone-900">{display}</span>
+ {unit && <span className="text-[11px] text-stone-500">{unit}</span>}
+ </div>
+ {delta && delta.value !== 0 && (
+ <div className={cn("mt-0.5 text-[10px]", goodDirection ? "text-emerald-700" : "text-stone-500")}>
+ {goodDirection ? "+" : ""}{delta.value} vs {delta.baseline}
+ </div>
+ )}
+ </div>
+ );
+}
+
+function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, formatter }: {
+ title: string; subtitle: string;
+ data: { date: string; v: number | null; ma: number | null }[];
+ dataKey: string; color: string;
+ refLines?: { y: number; label: string; stroke: string }[];
+ formatter?: (v: number) => string;
+}) {
+ const yVals = data.map(d => d.v).filter((v): v is number => typeof v === "number");
+ const minY = yVals.length ? Math.min(...yVals) : 0;
+ const maxY = yVals.length ? Math.max(...yVals) : 100;
+ const pad = (maxY - minY) * 0.1 || 1;
+ const yMin = Math.max(0, Math.floor(minY - pad));
+ const yMax = Math.ceil(maxY + pad);
+ return (
+ <div className="rounded-xl border border-stone-200 bg-white p-3">
+ <div className="flex items-baseline justify-between">
+ <div>
+ <div className="font-serif text-base text-stone-900">{title}</div>
+ <div className="text-[10px] text-stone-500">{subtitle}</div>
+ </div>
+ </div>
+ <div className="mt-2 h-[180px]">
+ <ResponsiveContainer width="100%" height="100%">
+ <ComposedChart data={data} margin={{ top: 4, right: 6, left: 0, bottom: 0 }}>
+ <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+ <XAxis dataKey="date" tickFormatter={shortMD} tick={{ fontSize: 9, fill: "#78716c" }}
+ interval={Math.max(1, Math.floor(data.length / 6))} axisLine={false} tickLine={false} />
+ <YAxis domain={[yMin, yMax]} tick={{ fontSize: 9, fill: "#78716c" }} width={28} axisLine={false} tickLine={false} />
+ {refLines?.map((rl, i) => (
+ <ReferenceLine key={i} y={rl.y} stroke={rl.stroke} strokeDasharray="3 3"
+ label={{ value: rl.label, position: "insideRight", fontSize: 9, fill: rl.stroke }} />
+ ))}
+ <RTooltip
+ contentStyle={{ fontSize: 11, borderRadius: 8, border: "1px solid #e7e5e4" }}
+ formatter={(v: any) => formatter ? formatter(v) : v}
+ labelFormatter={(l) => l}
+ />
+ <Area type="monotone" dataKey="v" stroke={color} strokeWidth={1.5} fill={color} fillOpacity={0.12} dot={false} name={dataKey} />
+ <Line type="monotone" dataKey="ma" stroke="#0c0a09" strokeWidth={1.5} dot={false} name="7-day avg" />
+ </ComposedChart>
+ </ResponsiveContainer>
+ </div>
+ </div>
+ );
+}
+
+function WhoopView() {
+ const [range, setRange] = useState<60 | 90 | 365>(60);
+ const all = WHOOP.cycles;
+ const summary = WHOOP.summary;
+ const slice = all.slice(Math.max(0, all.length - range));
+
+ const recoveryMA = rolling7(slice, "recovery");
+ const strainMA = rolling7(slice, "strain");
+ const hrvMA = rolling7(slice, "hrv");
+ const rhrMA = rolling7(slice, "rhr");
+ const sleepMA = rolling7(slice, "asleepMin");
+
+ const recoveryData = slice.map((c, i) => ({ date: c.date, v: c.recovery, ma: recoveryMA[i] }));
+ const strainData = slice.map((c, i) => ({ date: c.date, v: c.strain, ma: strainMA[i] }));
+ const hrvData = slice.map((c, i) => ({ date: c.date, v: c.hrv, ma: hrvMA[i] }));
+ const rhrData = slice.map((c, i) => ({ date: c.date, v: c.rhr, ma: rhrMA[i] }));
+ const sleepData = slice.map((c, i) => ({
+ date: c.date,
+ v: c.asleepMin !== null ? Math.round((c.asleepMin / 60) * 10) / 10 : null,
+ ma: sleepMA[i] !== null ? Math.round(((sleepMA[i] as number) / 60) * 10) / 10 : null,
+ }));
+
+ const last7 = summary?.last7;
+ const last30 = summary?.last30;
+ const last90 = summary?.last90;
+
+ const delta = (a: number | null | undefined, b: number | null | undefined): number => {
+ if (a === null || a === undefined || b === null || b === undefined) return 0;
+ return Math.round((a - b) * 10) / 10;
+ };
+
+ return (
+ <div className="space-y-3">
+ <div className="flex items-start justify-between gap-2">
+ <div>
+ <h1 className="font-serif text-xl text-stone-900">Whoop</h1>
+ <p className="mt-0.5 text-xs text-stone-500">
+ {summary?.totalDays ?? 0} days tracked. {summary?.totalWorkouts ?? 0} workouts. Latest {summary?.lastDate}.
+ </p>
+ </div>
+ </div>
+
+ {/* 7-day stat grid */}
+ <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+ <WhoopStatCard
+ label="Recovery (7d)" value={last7?.recovery ?? null} unit="%"
+ delta={last7 && last30 ? { value: delta(last7.recovery, last30.recovery), baseline: "30d" } : null}
+ icon={HeartPulse}
+ accent={last7?.recovery && last7.recovery >= 67 ? "bg-emerald-100 text-emerald-700" : last7?.recovery && last7.recovery >= 34 ? "bg-amber-100 text-amber-800" : "bg-rose-100 text-rose-700"}
+ />
+ <WhoopStatCard
+ label="HRV (7d)" value={last7?.hrv ?? null} unit="ms"
+ delta={last7 && last30 ? { value: delta(last7.hrv, last30.hrv), baseline: "30d" } : null}
+ icon={Zap} accent="bg-violet-100 text-violet-700"
+ />
+ <WhoopStatCard
+ label="Resting HR (7d)" value={last7?.rhr ?? null} unit="bpm"
+ delta={last7 && last30 ? { value: delta(last30.rhr, last7.rhr), baseline: "30d" } : null}
+ icon={Activity} accent="bg-rose-100 text-rose-700"
+ />
+ <WhoopStatCard
+ label="Sleep (7d)" value={last7?.sleepHours ?? null} unit="hrs"
+ delta={last7 && last30 ? { value: delta(last7.sleepHours, last30.sleepHours), baseline: "30d" } : null}
+ icon={Moon} accent="bg-indigo-100 text-indigo-700"
+ />
+ </div>
+
+ {/* Range selector */}
+ <div className="flex items-center justify-between">
+ <div className="text-[10px] font-semibold uppercase tracking-wider text-stone-500">Trends</div>
+ <div className="flex gap-1 rounded-lg bg-stone-100 p-0.5">
+ {[60, 90, 365].map((r) => (
+ <button
+ key={r}
+ onClick={() => setRange(r as 60 | 90 | 365)}
+ className={cn(
+ "rounded-md px-2.5 py-1 text-[11px] font-medium",
+ range === r ? "bg-white text-stone-900 shadow-sm" : "text-stone-500"
+ )}
+ >
+ {r === 365 ? "All" : `${r}d`}
+ </button>
+ ))}
+ </div>
+ </div>
+
+ <div className="grid gap-3 sm:grid-cols-2">
+ <WhoopChartCard
+ title="Recovery"
+ subtitle={`Daily score with 7-day average. ${range}d window.`}
+ data={recoveryData} dataKey="recovery" color="#10b981"
+ refLines={[
+ { y: 67, label: "green", stroke: "#10b981" },
+ { y: 34, label: "yellow", stroke: "#f59e0b" },
+ ]}
+ formatter={(v) => `${v}%`}
+ />
+ <WhoopChartCard
+ title="Day strain"
+ subtitle={`Cardiovascular load 0-21 scale.`}
+ data={strainData} dataKey="strain" color="#0ea5e9"
+ formatter={(v) => `${v}`}
+ />
+ <WhoopChartCard
+ title="HRV"
+ subtitle={`Heart rate variability in ms. Higher is better.`}
+ data={hrvData} dataKey="hrv" color="#8b5cf6"
+ formatter={(v) => `${v} ms`}
+ />
+ <WhoopChartCard
+ title="Resting heart rate"
+ subtitle={`Beats per minute. Lower is better.`}
+ data={rhrData} dataKey="rhr" color="#ef4444"
+ formatter={(v) => `${v} bpm`}
+ />
+ <WhoopChartCard
+ title="Sleep duration"
+ subtitle={`Hours asleep per night. Need 8h+.`}
+ data={sleepData} dataKey="sleep" color="#6366f1"
+ refLines={[{ y: 8, label: "8h", stroke: "#6366f1" }]}
+ formatter={(v) => `${v} h`}
+ />
+ </div>
+
+ {/* All-time baselines */}
+ <div className="rounded-xl border border-stone-200 bg-white p-3">
+ <div className="flex items-center gap-2">
+ <Sparkles className="h-4 w-4 text-stone-500" />
+ <div className="font-serif text-base text-stone-900">Baselines</div>
+ </div>
+ <div className="mt-2 grid grid-cols-3 gap-2 text-center">
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">All-time recovery</div>
+ <div className="font-serif text-lg text-stone-900">{summary?.allTime.recovery ?? ","}%</div>
+ </div>
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">All-time HRV</div>
+ <div className="font-serif text-lg text-stone-900">{summary?.allTime.hrv ?? ","} <span className="text-xs text-stone-500">ms</span></div>
+ </div>
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">All-time RHR</div>
+ <div className="font-serif text-lg text-stone-900">{summary?.allTime.rhr ?? ","} <span className="text-xs text-stone-500">bpm</span></div>
+ </div>
+ </div>
+ <div className="mt-3 grid grid-cols-3 gap-2 border-t border-stone-100 pt-3 text-center">
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">90d recovery</div>
+ <div className="text-sm font-semibold text-stone-900">{last90?.recovery ?? ","}%</div>
+ </div>
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">90d HRV</div>
+ <div className="text-sm font-semibold text-stone-900">{last90?.hrv ?? ","} ms</div>
+ </div>
+ <div>
+ <div className="text-[10px] uppercase text-stone-500">90d strain</div>
+ <div className="text-sm font-semibold text-stone-900">{last90?.strain ?? ","}</div>
+ </div>
+ </div>
+ </div>
+
+ {/* Workouts */}
+ <div className="rounded-xl border border-stone-200 bg-white p-3">
+ <div className="flex items-center gap-2">
+ <Dumbbell className="h-4 w-4 text-stone-500" />
+ <div className="font-serif text-base text-stone-900">Workouts</div>
+ <Badge variant="outline" className="border-stone-200 text-[10px]">{summary?.totalWorkouts ?? 0} total</Badge>
+ </div>
+ <div className="mt-2 space-y-1.5">
+ {(summary?.topActivities ?? []).map((a) => {
+ const max = Math.max(...(summary?.topActivities ?? []).map(x => x.count));
+ const pct = max > 0 ? (a.count / max) * 100 : 0;
+ return (
+ <div key={a.name} className="flex items-center gap-2 text-xs">
+ <div className="w-28 shrink-0 truncate text-stone-700">{a.name}</div>
+ <div className="relative flex-1 overflow-hidden rounded bg-stone-100">
+ <div className="h-4 rounded bg-stone-300" style={{ width: `${pct}%` }} />
+ </div>
+ <div className="w-8 text-right tabular-nums text-stone-500">{a.count}</div>
+ </div>
+ );
+ })}
+ </div>
+ </div>
+
+ {/* Behaviors */}
+ {WHOOP.behaviors.length > 0 && (
+ <div className="rounded-xl border border-stone-200 bg-white p-3">
+ <div className="flex items-center gap-2">
+ <Info className="h-4 w-4 text-stone-500" />
+ <div className="font-serif text-base text-stone-900">Daily behaviors logged</div>
+ </div>
+ <div className="mt-2 space-y-1.5">
+ {WHOOP.behaviors.filter(b => b.totalDays >= 30).map((b) => (
+ <div key={b.question} className="flex items-center gap-2 text-xs">
+ <div className="w-44 shrink-0 truncate text-stone-700">{b.question.replace("?", "")}</div>
+ <div className="relative flex-1 overflow-hidden rounded bg-stone-100">
+ <div className="h-4 rounded bg-stone-300" style={{ width: `${b.yesRate}%` }} />
+ </div>
+ <div className="w-12 text-right tabular-nums text-stone-500">{b.yesRate}% yes</div>
+ </div>
+ ))}
+ </div>
+ <div className="mt-2 text-[10px] text-stone-400">Yes-rate over the days each behavior was tracked.</div>
+ </div>
+ )}
+ </div>
+ );
+}
+
 // ---------- App ----------
 
 export default function App() {
@@ -699,6 +1000,7 @@ export default function App() {
  {section === "imaging" && <ImagingView />}
  {section === "pathology" && <PathologyView />}
  {section === "semen" && <SemenView />}
+ {section === "whoop" && <WhoopView />}
  {section === "reports" && <ReportsView />}
  </main>
  <footer className="mx-auto max-w-3xl px-4 pb-3 pt-1 text-center text-[10px] text-stone-400 sm:px-6">
@@ -711,6 +1013,9 @@ export default function App() {
  <SheetTitle className="text-left font-serif text-lg">More</SheetTitle>
  </SheetHeader>
  <div className="mt-3 grid grid-cols-3 gap-2">
+ <button onClick={() => openMore("urine")} className="flex flex-col items-center gap-1 rounded-xl border border-stone-200 bg-white p-3 text-xs text-stone-700 hover:bg-stone-100">
+ <FlaskConical className="h-5 w-5" /> Urine
+ </button>
  <button onClick={() => openMore("pathology")} className="flex flex-col items-center gap-1 rounded-xl border border-stone-200 bg-white p-3 text-xs text-stone-700 hover:bg-stone-100">
  <Stethoscope className="h-5 w-5" /> Pathology
  </button>

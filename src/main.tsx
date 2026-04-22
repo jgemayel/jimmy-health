@@ -6,6 +6,7 @@ import { loadDates } from './data/dates'
 import { loadMarkers } from './data/blood'
 import { loadDiagnostics } from './data/diagnostics'
 import { loadOther } from './data/other'
+import { loadWhoop } from './data/whoop'
 
 function showError(msg: string) {
   const el = document.getElementById('root');
@@ -16,7 +17,7 @@ function showError(msg: string) {
 
 async function boot() {
   try {
-    await Promise.all([loadDates(), loadMarkers(), loadDiagnostics(), loadOther()]);
+    await Promise.all([loadDates(), loadMarkers(), loadDiagnostics(), loadOther(), loadWhoop()]);
     createRoot(document.getElementById('root')!).render(
       <StrictMode>
         <App />
