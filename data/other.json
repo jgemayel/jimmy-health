@@ -1,0 +1,443 @@
+{
+  "URINALYSIS_DATES": [
+    "10-Nov-2020",
+    "06-Jul-2024",
+    "24-May-2025",
+    "20-Aug-2025"
+  ],
+  "URINALYSIS_LABS": [
+    "Dubai Hills",
+    "Dubai Hills",
+    "Dubai London Clinic",
+    "Haddad Lab (Lebanon)"
+  ],
+  "URINALYSIS": [
+    {
+      "parameter": "Color",
+      "unit": "",
+      "ref": "Pale yellow-Amber",
+      "values": [
+        "YELLOW",
+        "Yellow",
+        "straw-yellow",
+        "Light yellow"
+      ]
+    },
+    {
+      "parameter": "Appearance",
+      "unit": "",
+      "ref": "Clear",
+      "values": [
+        "Slightly Turbid",
+        "Clear",
+        "Clear",
+        "Clear"
+      ]
+    },
+    {
+      "parameter": "pH",
+      "unit": "",
+      "ref": "5.0-8.0",
+      "values": [
+        8,
+        7.5,
+        7.5,
+        5
+      ]
+    },
+    {
+      "parameter": "Specific Gravity",
+      "unit": "",
+      "ref": "1.005-1.030",
+      "values": [
+        1.015,
+        1.009,
+        1.01,
+        1.005
+      ]
+    },
+    {
+      "parameter": "Protein",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Glucose",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Ketones",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Nitrite",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Bilirubin",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Urobilinogen",
+      "unit": "",
+      "ref": "Normal",
+      "values": [
+        0.2,
+        "Normal",
+        null,
+        "Normal"
+      ]
+    },
+    {
+      "parameter": "Blood / Hemoglobin",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        "Negative"
+      ]
+    },
+    {
+      "parameter": "Leukocyte Esterase",
+      "unit": "",
+      "ref": "Negative",
+      "values": [
+        "Negative",
+        "Negative",
+        "Negative",
+        null
+      ]
+    },
+    {
+      "parameter": "WBCs / Pus Cells",
+      "unit": "/HPF",
+      "ref": "0-5",
+      "values": [
+        "1-4",
+        "0-5",
+        "0-2",
+        "1-2"
+      ]
+    },
+    {
+      "parameter": "RBCs",
+      "unit": "/HPF",
+      "ref": "0-3",
+      "values": [
+        "0-2",
+        "2-4",
+        "2-4",
+        "1-2"
+      ]
+    },
+    {
+      "parameter": "Epithelial Cells",
+      "unit": "/HPF",
+      "ref": "0-10",
+      "values": [
+        "2-4",
+        "0-5",
+        "0-2",
+        "Absent"
+      ]
+    },
+    {
+      "parameter": "Crystals",
+      "unit": "",
+      "ref": "Nil/None",
+      "values": [
+        "Amorphous Phos",
+        "None Seen",
+        "Nil",
+        "Absent"
+      ]
+    },
+    {
+      "parameter": "Casts",
+      "unit": "",
+      "ref": "None Seen",
+      "values": [
+        "None Seen",
+        "None Seen",
+        "Nil",
+        "Absent"
+      ]
+    },
+    {
+      "parameter": "Bacteria",
+      "unit": "",
+      "ref": "None Seen",
+      "values": [
+        "None Seen",
+        "None Seen",
+        "Nil",
+        "Absent"
+      ]
+    },
+    {
+      "parameter": "Yeast Cells",
+      "unit": "",
+      "ref": "None Seen",
+      "values": [
+        "None Seen",
+        "None Seen",
+        "Nil",
+        null
+      ]
+    },
+    {
+      "parameter": "Mucus",
+      "unit": "",
+      "ref": "Nil",
+      "values": [
+        null,
+        "None Seen",
+        "Nil",
+        "Absent"
+      ]
+    }
+  ],
+  "IMAGING": [
+    {
+      "date": "07-Sep-2023",
+      "study": "US Scrotum with Doppler",
+      "facility": "Dubai Hills (Dr. Samer Obeidat)",
+      "physician": "Dr. Samer Obeidat",
+      "findings": "Both testicles normal (R: 5.3x3.2x2.5cm; L: 5.2x3.1x2.2cm). No torsion. Bilateral varicocele adjacent to upper poles; largest vein R=2.5mm, L=2.3mm. No hydrocele.",
+      "impression": "Bilateral Grade II varicocele (Sarteschi classification).",
+      "source": "2023-09-07_DubaiHills_JimmyGemayel_Radiology_ScrotalUS.pdf"
+    },
+    {
+      "date": "20-Apr-2026",
+      "study": "XR Chest (PA erect, 1 View Frontal)",
+      "facility": "Dubai Hills Marina Medical Centre",
+      "physician": "Dr. Hasan AlOgaily / Read by Dr. Yasmin Giambrone",
+      "findings": "Normal cardiomediastinal contour. Heart size normal. No focal collapse/consolidation. Pleural spaces clear. No pneumothorax. Skeleton grossly normal.",
+      "impression": "Normal study. (Indication: chest pain on inspiration, ?pneumonia)",
+      "source": "2026-04-20_DubaiHills_JimmyGemayel_Radiology_ChestXR.pdf"
+    }
+  ],
+  "PATHOLOGY": [
+    {
+      "date": "07-Sep-2023",
+      "specimen": "Gastric biopsy (2 x 3mm tan-white pieces)",
+      "facility": "Dubai Hills (Dr. Nada Ibrahim)",
+      "clinical": "Clinical indication: Reflux; Procedure: gastroscopy",
+      "findings": "Specialized and nonspecialized glands; no significant inflammation; no H. pylori; no intestinal metaplasia, no dysplasia, no malignancy.",
+      "diagnosis": "No significant histological abnormality.",
+      "source": "2023-09-07_DubaiHills_JimmyGemayel_Pathology_GastricBiopsy.pdf"
+    }
+  ],
+  "SEMEN_DATE": "01-Sep-2023",
+  "SEMEN_LAB": "Dubai Hills",
+  "SEMEN": [
+    {
+      "parameter": "Consistency",
+      "unit": "",
+      "ref": "",
+      "value": "Viscous"
+    },
+    {
+      "parameter": "Colour",
+      "unit": "",
+      "ref": "Greyish White",
+      "value": "Greyish White"
+    },
+    {
+      "parameter": "Volume",
+      "unit": "mL",
+      "ref": ">=1.5",
+      "value": 2.7
+    },
+    {
+      "parameter": "Liquefaction",
+      "unit": "minutes",
+      "ref": "<=60",
+      "value": 30
+    },
+    {
+      "parameter": "WBC",
+      "unit": "/HPF",
+      "ref": "0-2",
+      "value": "0-2"
+    },
+    {
+      "parameter": "RBC",
+      "unit": "/HPF",
+      "ref": "0-2",
+      "value": "0-1"
+    },
+    {
+      "parameter": "Sperm Concentration",
+      "unit": "million/mL",
+      "ref": ">=15",
+      "value": 111
+    },
+    {
+      "parameter": "Total sperm count per ejaculation",
+      "unit": "million",
+      "ref": ">=39",
+      "value": 300
+    },
+    {
+      "parameter": "Progressive motility",
+      "unit": "%",
+      "ref": ">=32",
+      "value": 74
+    },
+    {
+      "parameter": "Non-Progressive motility",
+      "unit": "%",
+      "ref": "",
+      "value": 14
+    },
+    {
+      "parameter": "Immotile",
+      "unit": "%",
+      "ref": "",
+      "value": 12
+    },
+    {
+      "parameter": "Morphology",
+      "unit": "%",
+      "ref": ">=4.0",
+      "value": 6
+    },
+    {
+      "parameter": "pH",
+      "unit": "",
+      "ref": "",
+      "value": 8
+    }
+  ],
+  "SEMEN_INTERPRETATION": "All parameters within normal reference ranges.",
+  "SOURCES": [
+    {
+      "date": "10-Nov-2020",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2020-2024_DubaiHills_JimmyGemayel_Lab_ComprehensiveHistory.pdf + 2020-11-10_DubaiHills_JimmyGemayel_Lab_Zinc.pdf",
+      "type": "CBC, CMP, Lipids, Thyroid, Vit D, UA, Zinc"
+    },
+    {
+      "date": "14-Jul-2023",
+      "lab": "Dr. Antoine Haddad Lab",
+      "location": "Lebanon",
+      "file": "Referenced as 'Last Result' in Aug 2025 Haddad report",
+      "type": "CBC, Biochemistry, Lipids (comparison values)"
+    },
+    {
+      "date": "25-Aug-2023",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2020-2024_DubaiHills_JimmyGemayel_Lab_ComprehensiveHistory.pdf",
+      "type": "CBC, Lipids, Glucose, HbA1c, Ferritin, Calcium, Mg, Uric Acid"
+    },
+    {
+      "date": "01-Sep-2023",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2020-2024_DubaiHills_JimmyGemayel_Lab_ComprehensiveHistory.pdf",
+      "type": "Semen Analysis (normal)"
+    },
+    {
+      "date": "07-Sep-2023",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2023-09-07_DubaiHills_JimmyGemayel_Radiology_ScrotalUS.pdf + 2023-09-07_DubaiHills_JimmyGemayel_Pathology_GastricBiopsy.pdf",
+      "type": "Scrotal US (Bilateral Grade II varicocele), Gastric biopsy (normal)"
+    },
+    {
+      "date": "13-Jan-2024",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2020-2024_DubaiHills_JimmyGemayel_Lab_ComprehensiveHistory.pdf",
+      "type": "HbA1c, HOMA-IR, Lipids, TSH, Vit D"
+    },
+    {
+      "date": "06-Jul-2024",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2020-2024_DubaiHills_JimmyGemayel_Lab_ComprehensiveHistory.pdf",
+      "type": "CBC, CMP, Lipids, Thyroid, Iron, Vit D, Vit B12, UA"
+    },
+    {
+      "date": "24-May-2025",
+      "lab": "Dubai London Clinic",
+      "location": "Dubai, UAE",
+      "file": "2025-05-24_DubaiLondonClinic_JimmyGemayel_Lab_GlucoseInsulinPSA.pdf",
+      "type": "Glucose, HbA1c, Insulin, HOMA, PSA, Urinalysis"
+    },
+    {
+      "date": "20-Aug-2025",
+      "lab": "Dr. Antoine Haddad Lab",
+      "location": "Lebanon",
+      "file": "2025-08-20_HaddadLab_JimmyGemayel_Lab_FullPanel.pdf",
+      "type": "Full panel: CBC, Biochem, Lipids, Thyroid, Insulin, Vitamins, UA"
+    },
+    {
+      "date": "30-Dec-2025",
+      "lab": "Intel-Lab LLC",
+      "location": "Dubai, UAE",
+      "file": "2025-12-30_IntelLab_JimmyGemayel_Lab_ExecutiveHealth.pdf",
+      "type": "Executive Health Package: CBC, Lipids, Liver, Kidney, Thyroid, Hormones, Vitamins, PSA"
+    },
+    {
+      "date": "19-Apr-2026",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2026-04-19_DubaiHills_JimmyGemayel_Lab_BloodPanel.pdf",
+      "type": "CBC, HbA1c, CRP, Troponin-I, Vit D"
+    },
+    {
+      "date": "20-Apr-2026",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2026-04-20_DubaiHills_JimmyGemayel_Lab_LipidPanel.pdf",
+      "type": "Lipid Panel (HDL LOW 34, Trig HIGH 167)"
+    },
+    {
+      "date": "20-Apr-2026",
+      "lab": "Dubai Hills",
+      "location": "Dubai, UAE",
+      "file": "2026-04-20_DubaiHills_JimmyGemayel_Radiology_ChestXR.pdf",
+      "type": "Chest X-ray (PA erect) - Normal study"
+    }
+  ]
+}
