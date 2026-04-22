@@ -345,7 +345,7 @@ function MarkerSpotlight({ marker, onPick }: { marker: BloodMarker; onPick: (m: 
  </li>
  ))}
  </ul>
- <p className="pt-1 text-[11px] text-stone-500">Reference only, not medical advice. Discuss persistent findings with your physician.</p>
+ <p className="pt-1 text-[11px] text-stone-500">Not medical advice.</p>
  </CardContent>
  </Card>
  </div>
