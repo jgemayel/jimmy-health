@@ -730,19 +730,55 @@ function WhoopStatCard({ label, value, unit, delta, icon: Icon, accent }: {
  );
 }
 
-function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, formatter }: {
+function buildXTicks(dates: string[]): string[] {
+ if (dates.length === 0) return [];
+ if (dates.length <= 95) {
+ const mondays = dates.filter(d => new Date(d + "T00:00:00").getDay() === 1);
+ if (mondays.length >= 4 && mondays.length <= 14) return mondays;
+ const step = Math.max(1, Math.floor(dates.length / 6));
+ return dates.filter((_, i) => i % step === 0);
+ }
+ const firsts = dates.filter(d => d.endsWith("-01"));
+ if (firsts.length >= 4 && firsts.length <= 14) return firsts;
+ const step = Math.max(1, Math.floor(dates.length / 8));
+ return dates.filter((_, i) => i % step === 0);
+}
+
+function tickFmtForRange(dates: string[]) {
+ const long = dates.length > 95;
+ return (d: string) => {
+ const dt = new Date(d + "T00:00:00");
+ if (long) {
+ const mons = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+ return mons[dt.getMonth()];
+ }
+ return `${dt.getMonth() + 1}/${dt.getDate()}`;
+ };
+}
+
+function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, refAreas, yDomain, yTicks, formatter }: {
  title: string; subtitle: string;
  data: { date: string; v: number | null; ma: number | null }[];
  dataKey: string; color: string;
- refLines?: { y: number; label: string; stroke: string }[];
+ refLines?: { y: number; label?: string; stroke: string }[];
+ refAreas?: { y1: number; y2: number; fill: string; opacity?: number }[];
+ yDomain?: [number, number];
+ yTicks?: number[];
  formatter?: (v: number) => string;
 }) {
  const yVals = data.map(d => d.v).filter((v): v is number => typeof v === "number");
+ let yMin: number, yMax: number;
+ if (yDomain) { [yMin, yMax] = yDomain; }
+ else {
  const minY = yVals.length ? Math.min(...yVals) : 0;
  const maxY = yVals.length ? Math.max(...yVals) : 100;
  const pad = (maxY - minY) * 0.1 || 1;
- const yMin = Math.max(0, Math.floor(minY - pad));
- const yMax = Math.ceil(maxY + pad);
+ yMin = Math.max(0, Math.floor(minY - pad));
+ yMax = Math.ceil(maxY + pad);
+ }
+ const dates = data.map(d => d.date);
+ const xTicks = buildXTicks(dates);
+ const xFmt = tickFmtForRange(dates);
  return (
  <div className="rounded-xl border border-stone-200 bg-white p-3">
  <div>
@@ -753,12 +789,15 @@ function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, forma
  <ResponsiveContainer width="100%" height="100%">
  <ComposedChart data={data} margin={{ top: 4, right: 6, left: 0, bottom: 0 }}>
  <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
- <XAxis dataKey="date" tickFormatter={shortMD} tick={{ fontSize: 9, fill: "#78716c" }}
- interval={Math.max(1, Math.floor(data.length / 6))} axisLine={false} tickLine={false} />
- <YAxis domain={[yMin, yMax]} tick={{ fontSize: 9, fill: "#78716c" }} width={28} axisLine={false} tickLine={false} />
+ {refAreas?.map((ra, i) => (
+ <ReferenceArea key={`ra${i}`} y1={ra.y1} y2={ra.y2} fill={ra.fill} fillOpacity={ra.opacity ?? 0.12} stroke="none" />
+ ))}
+ <XAxis dataKey="date" tickFormatter={xFmt} tick={{ fontSize: 9, fill: "#78716c" }}
+ ticks={xTicks} axisLine={false} tickLine={false} minTickGap={4} />
+ <YAxis domain={[yMin, yMax]} ticks={yTicks} tick={{ fontSize: 9, fill: "#78716c" }} width={28} axisLine={false} tickLine={false} allowDecimals={false} />
  {refLines?.map((rl, i) => (
  <ReferenceLine key={i} y={rl.y} stroke={rl.stroke} strokeDasharray="3 3"
- label={{ value: rl.label, position: "insideRight", fontSize: 9, fill: rl.stroke }} />
+ label={rl.label ? { value: rl.label, position: "insideRight", fontSize: 9, fill: rl.stroke } : undefined} />
  ))}
  <RTooltip
  contentStyle={{ fontSize: 11, borderRadius: 8, border: "1px solid #e7e5e4" }}
@@ -942,11 +981,17 @@ function WhoopView() {
  <div className="grid gap-3 sm:grid-cols-2">
  <WhoopChartCard
  title="Recovery"
- subtitle={`Daily score over ${sliceLabel}, 7-day average overlaid.`}
+ subtitle={`Daily score over ${sliceLabel}. Green ≥ 67, Yellow 34-66, Red ≤ 33.`}
  data={recoveryData} dataKey="recovery" color="#10b981"
+ yDomain={[0, 100]} yTicks={[0, 33, 67, 100]}
+ refAreas={[
+ { y1: 67, y2: 100, fill: "#10b981", opacity: 0.10 },
+ { y1: 34, y2: 67, fill: "#f59e0b", opacity: 0.08 },
+ { y1: 0, y2: 33, fill: "#ef4444", opacity: 0.08 },
+ ]}
  refLines={[
- { y: 67, label: "green", stroke: "#10b981" },
- { y: 34, label: "yellow", stroke: "#f59e0b" },
+ { y: 67, stroke: "#10b981" },
+ { y: 33, stroke: "#ef4444" },
  ]}
  formatter={(v) => `${v}%`}
  />
@@ -954,6 +999,8 @@ function WhoopView() {
  title="Day strain"
  subtitle={`Cardiovascular load 0-21 over ${sliceLabel}.`}
  data={strainData} dataKey="strain" color="#0ea5e9"
+ yDomain={[0, 21]} yTicks={[0, 7, 14, 21]}
+ refLines={[{ y: 14, stroke: "#0ea5e9" }]}
  formatter={(v) => `${v}`}
  />
  <WhoopChartCard
@@ -970,17 +1017,19 @@ function WhoopView() {
  />
  <WhoopChartCard
  title="Sleep duration"
- subtitle={`Hours asleep per night, 8h target line.`}
+ subtitle={`Hours asleep per night. 8h target line.`}
  data={sleepData} dataKey="sleep" color="#6366f1"
- refLines={[{ y: 8, label: "8h", stroke: "#6366f1" }]}
+ yDomain={[0, 12]} yTicks={[0, 4, 8, 12]}
+ refLines={[{ y: 8, stroke: "#6366f1" }]}
  formatter={(v) => `${v} h`}
  />
  <WhoopChartCard
  title="Sleep performance"
- subtitle={`Percent of needed sleep you got each night.`}
+ subtitle={`Percent of needed sleep you got each night. 85% target line.`}
  data={slice.map((c, i) => ({ date: c.date, v: c.sleepPerf, ma: rolling7(slice, "sleepPerf")[i] }))}
  dataKey="sleepPerf" color="#06b6d4"
- refLines={[{ y: 85, label: "85%", stroke: "#06b6d4" }]}
+ yDomain={[0, 100]} yTicks={[0, 50, 85, 100]}
+ refLines={[{ y: 85, stroke: "#06b6d4" }]}
  formatter={(v) => `${v}%`}
  />
  </div>
