@@ -730,78 +730,30 @@ function WhoopStatCard({ label, value, unit, delta, icon: Icon, accent }: {
  );
 }
 
-// Pick the date in `dates` closest to `target`. Returns null if none within 7 days.
-function nearestDate(dates: string[], target: string): string | null {
- if (dates.includes(target)) return target;
- const ti = new Date(target + "T00:00:00").getTime();
- let best: string | null = null;
- let bestGap = Infinity;
- for (const d of dates) {
- const gap = Math.abs(new Date(d + "T00:00:00").getTime() - ti);
- if (gap < bestGap) { bestGap = gap; best = d; }
- }
- return best && bestGap <= 7 * 86400000 ? best : null;
-}
-
+// Evenly spaced ticks anchored on first and last date of the slice.
 function buildXTicks(dates: string[]): string[] {
- if (dates.length === 0) return [];
- const first = dates[0];
- const last = dates[dates.length - 1];
- const dateSet = new Set(dates);
- let ticks: string[] = [];
-
- if (dates.length <= 95) {
- // Short window: Mondays (snap to nearest existing date)
- const firstDt = new Date(first + "T00:00:00");
- const cursor = new Date(firstDt);
- // Advance to the first Monday on or after the start
- while (cursor.getDay() !== 1) cursor.setDate(cursor.getDate() + 1);
- while (cursor <= new Date(last + "T00:00:00")) {
- const iso = cursor.toISOString().slice(0, 10);
- const snap = dateSet.has(iso) ? iso : nearestDate(dates, iso);
- if (snap) ticks.push(snap);
- cursor.setDate(cursor.getDate() + 7);
+ const n = dates.length;
+ if (n === 0) return [];
+ if (n === 1) return [dates[0]];
+ // Aim for 5-7 ticks total, including endpoints
+ const target = n <= 35 ? 5 : n <= 70 ? 6 : n <= 120 ? 7 : 7;
+ const ticks: string[] = [dates[0]];
+ for (let i = 1; i < target - 1; i++) {
+ const idx = Math.round((i * (n - 1)) / (target - 1));
+ const d = dates[idx];
+ if (d && d !== ticks[ticks.length - 1]) ticks.push(d);
  }
- if (ticks.length < 3 || ticks.length > 12) {
- const step = Math.max(1, Math.floor(dates.length / 5));
- ticks = dates.filter((_, i) => i % step === 0);
- }
- } else {
- // Long window: month firsts (snap to nearest existing date)
- const firstDt = new Date(first + "T00:00:00");
- let y = firstDt.getFullYear();
- let m = firstDt.getMonth();
- // Start at the 1st of the next month if we are past the 1st
- if (firstDt.getDate() > 1) { m += 1; if (m > 11) { m = 0; y += 1; } }
- const lastDt = new Date(last + "T00:00:00");
- while (new Date(y, m, 1) <= lastDt) {
- const iso = `${y}-${String(m + 1).padStart(2, "0")}-01`;
- const snap = dateSet.has(iso) ? iso : nearestDate(dates, iso);
- if (snap) ticks.push(snap);
- m += 1; if (m > 11) { m = 0; y += 1; }
- }
- if (ticks.length < 3) {
- const step = Math.max(1, Math.floor(dates.length / 8));
- ticks = dates.filter((_, i) => i % step === 0);
- }
- }
-
- // Always anchor first and last
- const firstIdx = 0;
- const lastIdx = dates.length - 1;
- const minGap = dates.length > 95 ? 14 : 3;
- // Drop any middle tick too close to the endpoints
- const filtered = ticks.filter(t => {
- const ti = dates.indexOf(t);
- return (ti - firstIdx) >= minGap && (lastIdx - ti) >= minGap;
- });
- // Dedupe and sort
- const set = new Set<string>([first, ...filtered, last]);
- return Array.from(set).sort();
+ if (dates[n - 1] !== ticks[ticks.length - 1]) ticks.push(dates[n - 1]);
+ return ticks;
 }
 
 function tickFmtForRange(dates: string[]) {
- const long = dates.length > 95;
+ if (dates.length === 0) return (_d: string) => "";
+ const first = new Date(dates[0] + "T00:00:00");
+ const last = new Date(dates[dates.length - 1] + "T00:00:00");
+ const spanDays = (last.getTime() - first.getTime()) / 86400000;
+ const long = spanDays > 95;
+ const crossesYear = first.getFullYear() !== last.getFullYear();
  const mons = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
  return (d: string) => {
  if (!d) return "";
@@ -809,6 +761,10 @@ function tickFmtForRange(dates: string[]) {
  if (long) {
  const yr = String(dt.getFullYear()).slice(-2);
  return `${mons[dt.getMonth()]} '${yr}`;
+ }
+ if (crossesYear) {
+ const yr = String(dt.getFullYear()).slice(-2);
+ return `${mons[dt.getMonth()]} ${dt.getDate()} '${yr}`;
  }
  return `${mons[dt.getMonth()]} ${dt.getDate()}`;
  };
