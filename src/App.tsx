@@ -736,7 +736,7 @@ function buildXTicks(dates: string[]): string[] {
  if (n === 0) return [];
  if (n === 1) return [dates[0]];
  // Aim for 5-7 ticks total, including endpoints
- const target = n <= 35 ? 5 : n <= 70 ? 6 : n <= 120 ? 7 : 7;
+ const target = n <= 7 ? 4 : n <= 14 ? 5 : n <= 35 ? 5 : n <= 70 ? 6 : 7;
  const ticks: string[] = [dates[0]];
  for (let i = 1; i < target - 1; i++) {
  const idx = Math.round((i * (n - 1)) / (target - 1));
@@ -835,6 +835,8 @@ function WhoopChartCard({ title, subtitle, data, dataKey, color, refLines, refAr
 }
 
 const RANGE_OPTIONS: { id: number; label: string; sub: string }[] = [
+ { id: 7, label: "7d", sub: "7 days" },
+ { id: 14, label: "14d", sub: "14 days" },
  { id: 30, label: "30d", sub: "30 days" },
  { id: 60, label: "60d", sub: "60 days" },
  { id: 90, label: "90d", sub: "90 days" },
@@ -916,7 +918,7 @@ function WhoopView() {
  });
  const behaviors = Array.from(bhCounts.entries())
  .map(([q, v]) => ({ q, total: v.total, yes: v.yes, rate: v.total > 0 ? Math.round(100 * v.yes / v.total) : 0 }))
- .filter(b => b.total >= Math.max(5, Math.floor(slice.length * 0.1)))
+ .filter(b => b.total >= Math.max(3, Math.floor(slice.length * 0.3)))
  .sort((a, b) => b.total - a.total);
 
  return (
