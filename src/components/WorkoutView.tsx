@@ -132,7 +132,7 @@ function ZoneCalculator() {
 
 // ---------- Exercise row (expandable: photos + instructions + weight log) ----------
 
-function ExerciseRow({ item, logKey }: { item: SetScheme; logKey: string }) {
+function ExerciseRow({ item, logKey, hideWeight }: { item: SetScheme; logKey: string; hideWeight?: boolean }) {
   const ex = EXERCISES[item.ref];
   const [open, setOpen] = useState(false);
   const [weight, setWeight] = useLocalStorage(`workout.wt.${logKey}`, "");
@@ -181,11 +181,13 @@ function ExerciseRow({ item, logKey }: { item: SetScheme; logKey: string }) {
             <ol className="list-decimal space-y-1 pl-4 text-xs leading-relaxed text-stone-600">
               {ex.instructions.map((s, i) => <li key={i}>{s}</li>)}
             </ol>
-            <div className="flex items-center gap-2 border-t border-stone-100 pt-2">
-              <Label htmlFor={`wt-${logKey}`} className="text-xs text-stone-500">Working weight</Label>
-              <Input id={`wt-${logKey}`} value={weight} placeholder="e.g. 20 kg"
-                onChange={(e) => setWeight(e.target.value)} className="h-8 max-w-[140px] text-sm" />
-            </div>
+            {!hideWeight && (
+              <div className="flex items-center gap-2 border-t border-stone-100 pt-2">
+                <Label htmlFor={`wt-${logKey}`} className="text-xs text-stone-500">Working weight</Label>
+                <Input id={`wt-${logKey}`} value={weight} placeholder="e.g. 20 kg"
+                  onChange={(e) => setWeight(e.target.value)} className="h-8 max-w-[140px] text-sm" />
+              </div>
+            )}
           </div>
         </CollapsibleContent>
       </Collapsible>
@@ -224,6 +226,12 @@ function DayCard({
             </div>
             <div className="flex items-center gap-2">
               <span className={cn("font-serif text-base text-stone-900", done && "line-through")}>{day.title}</span>
+              {day.intensity && (
+                <span className={cn("rounded-full px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide",
+                  day.intensity === "Intense" ? "bg-stone-900 text-stone-50" : "bg-stone-100 text-stone-500")}>
+                  {day.intensity}
+                </span>
+              )}
               {!isRest && <ChevronDown className={cn("h-4 w-4 text-stone-400 transition-transform", open && "rotate-180")} />}
             </div>
             <span className="block text-xs text-stone-500">
@@ -251,10 +259,35 @@ function DayCard({
               <p className="rounded-md bg-stone-50 px-3 py-2 text-xs leading-relaxed text-stone-600">{day.note}</p>
             )}
 
-            {/* Strength / mobility exercises */}
-            {day.exercises?.map((item, i) => (
-              <ExerciseRow key={`${item.ref}-${i}`} item={item} logKey={`${day.day}-${i}-${item.ref}`} />
-            ))}
+            {/* Warm-up & mobility */}
+            {day.warmup && day.warmup.length > 0 && (
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-sky-600">
+                  <Wind className="h-3.5 w-3.5" /> Warm-up & mobility
+                </div>
+                {day.warmup.map((item, i) => (
+                  <ExerciseRow key={`wu-${item.ref}-${i}`} item={item} logKey={`${day.day}-wu-${i}-${item.ref}`} hideWeight />
+                ))}
+              </div>
+            )}
+
+            {/* Main work */}
+            {day.exercises && day.exercises.length > 0 && (
+              <div className="space-y-2.5">
+                {day.warmup && (
+                  <div className="pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Workout</div>
+                )}
+                {day.exercises.map((item, i) => (
+                  <ExerciseRow key={`${item.ref}-${i}`} item={item} logKey={`${day.day}-${i}-${item.ref}`} />
+                ))}
+              </div>
+            )}
+
+            {day.cooldown && (
+              <p className="flex items-start gap-2 rounded-md bg-sky-50/60 px-3 py-2 text-xs leading-relaxed text-sky-800">
+                <Wind className="mt-0.5 h-3.5 w-3.5 shrink-0" /> {day.cooldown}
+              </p>
+            )}
 
             {day.finisher && (
               <p className="flex items-center gap-2 rounded-md border border-emerald-200 bg-emerald-50/60 px-3 py-2 text-xs text-emerald-800">

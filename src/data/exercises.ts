@@ -1,5 +1,5 @@
 // AUTO-GENERATED from yuhonas/free-exercise-db (public domain).
-// Demo photos live in /public/exercises/<id>/{0,1}.jpg
+// Demo photos live in /public/exercises/<id>/{0,1}.jpg (referenced by relative path).
 
 export interface Exercise {
   id: string;
@@ -218,5 +218,53 @@ export const EXERCISES: Record<string, Exercise> = {
     primaryMuscles: ["adductors"],
     instructions: ["Begin in a pushup position on the floor. This will be your starting position.", "Using both legs, jump forward landing with your feet next to your hands. Keep your head up as you do so.", "Return to the starting position and immediately repeat the movement, continuing for 10-20 repetitions."],
     images: ["exercises/Groiners/0.jpg", "exercises/Groiners/1.jpg"],
+  },
+  "Barbell_Hip_Thrust": {
+    id: "Barbell_Hip_Thrust",
+    name: "Barbell Hip Thrust",
+    equipment: "barbell",
+    primaryMuscles: ["glutes"],
+    instructions: ["Begin seated on the ground with a bench directly behind you. Have a loaded barbell over your legs. Using a fat bar or having a pad on the bar can greatly reduce the discomfort caused by this exercise.", "Roll the bar so that it is directly above your hips, and lean back against the bench so that your shoulder blades are near the top of it.", "Begin the movement by driving through your feet, extending your hips vertically through the bar. Your weight should be supported by your shoulder blades and your feet. Extend as far as possible, then reverse the motion to return to the starting position."],
+    images: ["exercises/Barbell_Hip_Thrust/0.jpg", "exercises/Barbell_Hip_Thrust/1.jpg"],
+  },
+  "Standing_Calf_Raises": {
+    id: "Standing_Calf_Raises",
+    name: "Standing Calf Raises",
+    equipment: "machine",
+    primaryMuscles: ["calves"],
+    instructions: ["Adjust the padded lever of the calf raise machine to fit your height.", "Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position.", "Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position by a second before you start to go back down.", "Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.", "Repeat for the recommended amount of repetitions."],
+    images: ["exercises/Standing_Calf_Raises/0.jpg", "exercises/Standing_Calf_Raises/1.jpg"],
+  },
+  "Dumbbell_Shoulder_Press": {
+    id: "Dumbbell_Shoulder_Press",
+    name: "Dumbbell Shoulder Press",
+    equipment: "dumbbell",
+    primaryMuscles: ["shoulders"],
+    instructions: ["While holding a dumbbell in each hand, sit on a military press bench or utility bench that has back support. Place the dumbbells upright on top of your thighs.", "Now raise the dumbbells to shoulder height one at a time using your thighs to help propel them up into position.", "Make sure to rotate your wrists so that the palms of your hands are facing forward. This is your starting position.", "Now, exhale and push the dumbbells upward until they touch at the top.", "Then, after a brief pause at the top contracted position, slowly lower the weights back down to the starting position while inhaling.", "Repeat for the recommended amount of repetitions."],
+    images: ["exercises/Dumbbell_Shoulder_Press/0.jpg", "exercises/Dumbbell_Shoulder_Press/1.jpg"],
+  },
+  "Cable_Crossover": {
+    id: "Cable_Crossover",
+    name: "Cable Crossover",
+    equipment: "cable",
+    primaryMuscles: ["chest"],
+    instructions: ["To get yourself into the starting position, place the pulleys on a high position (above your head), select the resistance to be used and hold the pulleys in each hand.", "Step forward in front of an imaginary straight line between both pulleys while pulling your arms together in front of you. Your torso should have a small forward bend from the waist. This will be your starting position.", "With a slight bend on your elbows in order to prevent stress at the biceps tendon, extend your arms to the side (straight out at both sides) in a wide arc until you feel a stretch on your chest. Breathe in as you perform this portion of the movement. Tip: Keep in mind that throughout the movement, the arms and torso should remain stationary; the movement should only occur at the shoulder joint.", "Return your arms back to the starting position as you breathe out. Make sure to use the same arc of motion used to lower the weights.", "Hold for a second at the starting position and repeat the movement for the prescribed amount of repetitions."],
+    images: ["exercises/Cable_Crossover/0.jpg", "exercises/Cable_Crossover/1.jpg"],
+  },
+  "Hammer_Curls": {
+    id: "Hammer_Curls",
+    name: "Hammer Curls",
+    equipment: "dumbbell",
+    primaryMuscles: ["biceps"],
+    instructions: ["Stand up with your torso upright and a dumbbell on each hand being held at arms length. The elbows should be close to the torso.", "The palms of the hands should be facing your torso. This will be your starting position.", "Now, while holding your upper arm stationary, exhale and curl the weight forward while contracting the biceps. Continue to raise the weight until the biceps are fully contracted and the dumbbell is at shoulder level. Hold the contracted position for a brief moment as you squeeze the biceps. Tip: Focus on keeping the elbow stationary and only moving your forearm.", "After the brief pause, inhale and slowly begin the lower the dumbbells back down to the starting position.", "Repeat for the recommended amount of repetitions."],
+    images: ["exercises/Hammer_Curls/0.jpg", "exercises/Hammer_Curls/1.jpg"],
+  },
+  "Dumbbell_Squat": {
+    id: "Dumbbell_Squat",
+    name: "Dumbbell Squat",
+    equipment: "dumbbell",
+    primaryMuscles: ["quadriceps"],
+    instructions: ["Stand up straight while holding a dumbbell on each hand (palms facing the side of your legs).", "Position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance and also maintain a straight back. This will be your starting position. Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances discussed in the foot stances section.", "Begin to slowly lower your torso by bending the knees as you maintain a straight posture with the head up. Continue down until your thighs are parallel to the floor. Tip: If you performed the exercise correctly, the front of the knees should make an imaginary straight line with the toes that is perpendicular to the front. If your knees are past that imaginary line (if they are past your toes) then you are placing undue stress on the knee and the exercise has been performed incorrectly.", "Begin to raise your torso as you exhale by pushing the floor with the heel of your foot mainly as you straighten the legs again and go back to the starting position.", "Repeat for the recommended amount of repetitions."],
+    images: ["exercises/Dumbbell_Squat/0.jpg", "exercises/Dumbbell_Squat/1.jpg"],
   },
 };
