@@ -66,7 +66,8 @@ export const PLAN = {
   ],
   note:
     "Built for an 83 kg / 181 cm returning lifter (~13% BF, was ~8%) on a 1,800–2,000 kcal cut. " +
-    "Days are swappable — just keep the two intense days apart and don't stack intervals straight after a heavy leg day.",
+    "The long run and intervals are spaced apart, each between lifting days, so cardio doubles as active recovery. " +
+    "Intervals land the day after Strength B — keep them on the bike/rower so your legs aren't double-hit. Days are swappable.",
 };
 
 // %HRR bands (Karvonen). targetHR = (HRmax − HRrest) × pct + HRrest, HRmax ≈ 220 − age.
@@ -121,7 +122,7 @@ export const WEEK: DayPlan[] = [
     finisher: "10-min Zone 2 walk to finish.",
   },
   {
-    day: 2, dow: "Tue",
+    day: 3, dow: "Wed",
     title: "Upper Body", subtitle: "Lighter — volume & pump",
     type: "strength", intensity: "Light", icon: "Dumbbell", duration: "~45 min",
     warmup: UPPER_WARMUP,
@@ -137,7 +138,7 @@ export const WEEK: DayPlan[] = [
     cooldown: "Cool-down: chest, shoulder and lat stretches ~30 s each.",
   },
   {
-    day: 3, dow: "Wed",
+    day: 2, dow: "Tue",
     title: "Long Run", subtitle: "Zone 2 aerobic base",
     type: "cardio", icon: "Footprints", duration: "45–60 min",
     warmup: RUN_WARMUP,
@@ -174,7 +175,7 @@ export const WEEK: DayPlan[] = [
     finisher: "10-min Zone 2 walk to finish.",
   },
   {
-    day: 5, dow: "Fri",
+    day: 6, dow: "Sat",
     title: "Lower Body", subtitle: "Lighter — quads, glutes, hams, calves",
     type: "strength", intensity: "Light", icon: "Dumbbell", duration: "~45 min",
     warmup: [
@@ -193,7 +194,7 @@ export const WEEK: DayPlan[] = [
     cooldown: "Cool-down: stretch quads, hamstrings, hip flexors and calves.",
   },
   {
-    day: 6, dow: "Sat",
+    day: 5, dow: "Fri",
     title: "Intervals", subtitle: "Zone 4–5 conditioning",
     type: "cardio", icon: "Zap", duration: "20–25 min",
     warmup: [
