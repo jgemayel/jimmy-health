@@ -1,6 +1,6 @@
-import { HeartPulse, Dumbbell, ChevronRight } from "lucide-react";
+import { HeartPulse, Dumbbell, Salad, ChevronRight } from "lucide-react";
 
-export type AppView = "health" | "workout";
+export type AppView = "health" | "workout" | "diet";
 
 const TILES: {
   id: AppView;
@@ -25,6 +25,14 @@ const TILES: {
     icon: Dumbbell,
     badge: "Training",
     iconWrap: "bg-stone-900",
+  },
+  {
+    id: "diet",
+    title: "Nutrition",
+    desc: "Calorie & macro targets, a daily logger and your supplement stack.",
+    icon: Salad,
+    badge: "Diet",
+    iconWrap: "bg-emerald-600",
   },
 ];
 
