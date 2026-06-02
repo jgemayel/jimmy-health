@@ -1,5 +1,5 @@
 
-const CACHE = 'jimmy-health-v11';
+const CACHE = 'jimmy-health-v4';
 self.addEventListener('install', (e) => { self.skipWaiting(); });
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
