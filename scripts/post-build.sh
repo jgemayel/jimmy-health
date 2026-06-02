@@ -54,6 +54,7 @@ def copy(src, dst):
 copy(root / 'manifest.json', dist / 'manifest.json')
 copy(root / 'icons', dist / 'icons')
 copy(root / 'public' / 'data', dist / 'data')
+copy(root / 'public' / 'exercises', dist / 'exercises')
 (dist / '.nojekyll').write_text('')
 
 # New service worker: network-first for HTML and data, cache-first for static assets, clears old caches

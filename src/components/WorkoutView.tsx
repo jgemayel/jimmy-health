@@ -59,8 +59,8 @@ const ZONE_CLR: Record<string, string> = {
   rose: "bg-rose-50 text-rose-700 border-rose-200",
 };
 
-const IMG_BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
-const img = (p: string) => `${IMG_BASE}${p}`;
+// Image paths in workout data are relative (e.g. "exercises/<id>/0.jpg") so they
+// resolve correctly under the GitHub Pages base path and work under any bundler.
 
 // ---------- My Zones calculator ----------
 
@@ -143,7 +143,7 @@ function ExerciseRow({ item, logKey }: { item: SetScheme; logKey: string }) {
     <div className={cn("rounded-lg border border-stone-200 bg-white", item.superset && "ml-3 border-l-2 border-l-stone-300")}>
       <Collapsible open={open} onOpenChange={setOpen}>
         <CollapsibleTrigger className="flex w-full items-center gap-3 p-2 text-left">
-          <img src={img(ex.images[0])} alt={name} loading="lazy"
+          <img src={ex.images[0]} alt={name} loading="lazy"
             className="h-12 w-16 shrink-0 rounded-md border border-stone-200 object-cover" />
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-1.5">
@@ -163,7 +163,7 @@ function ExerciseRow({ item, logKey }: { item: SetScheme; logKey: string }) {
             <div className="grid grid-cols-2 gap-2">
               {ex.images.map((src, i) => (
                 <figure key={src} className="overflow-hidden rounded-md border border-stone-200">
-                  <img src={img(src)} alt={`${name} ${i === 0 ? "start" : "finish"}`} loading="lazy" className="w-full object-cover" />
+                  <img src={src} alt={`${name} ${i === 0 ? "start" : "finish"}`} loading="lazy" className="w-full object-cover" />
                   <figcaption className="bg-stone-50 px-2 py-1 text-center text-[10px] uppercase tracking-wide text-stone-500">
                     {i === 0 ? "Start" : "Finish"}
                   </figcaption>
