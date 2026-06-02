@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
  Activity, TrendingUp, TrendingDown, Minus, AlertTriangle, Check, ChevronDown,
  FlaskConical, Droplets, Stethoscope, FileText, Menu, Search, Sparkles,
- ArrowRight, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
+ ArrowRight, ArrowLeft, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
 } from "lucide-react";
 import {
  ResponsiveContainer, ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid,
@@ -32,6 +32,9 @@ import {
 } from "@/lib/health";
 import { iconFor } from "@/lib/category-icons";
 import { cn } from "@/lib/utils";
+import Dashboard from "@/components/Dashboard";
+import type { AppView } from "@/components/Dashboard";
+import WorkoutView from "@/components/WorkoutView";
 
 type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "whoop" | "reports";
 
@@ -1115,7 +1118,7 @@ function WhoopView() {
 
 // ---------- App ----------
 
-export default function App() {
+function HealthApp({ onBack }: { onBack: () => void }) {
  const [section, setSection] = useState<Section>("overview");
  const [focusMarker, setFocusMarker] = useState<BloodMarker | null>(null);
  const [moreOpen, setMoreOpen] = useState(false);
@@ -1129,6 +1132,11 @@ export default function App() {
 
  return (
  <div className="min-h-screen bg-stone-50 text-stone-900 pb-20">
+ <div className="mx-auto flex max-w-3xl items-center px-3 pt-3 sm:px-5">
+ <button onClick={onBack} className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-stone-500 hover:bg-stone-100 hover:text-stone-700">
+ <ArrowLeft className="h-4 w-4" /> Dashboard
+ </button>
+ </div>
  <main className="mx-auto max-w-3xl px-3 py-3 sm:px-5 sm:py-4">
  {section === "overview" && <Overview onFocus={(m) => { setFocusMarker(m); setSection("blood"); }} setSection={setSection} />}
  {section === "blood" && <BloodView initial={focusMarker} />}
@@ -1166,4 +1174,14 @@ export default function App() {
  </Sheet>
  </div>
  );
+}
+
+// ---------- Top-level launcher + router ----------
+
+export default function App() {
+ const [view, setView] = useState<AppView | "dashboard">("dashboard");
+
+ if (view === "health") return <HealthApp onBack={() => setView("dashboard")} />;
+ if (view === "workout") return <WorkoutView onBack={() => setView("dashboard")} />;
+ return <Dashboard onSelect={(v) => setView(v)} />;
 }
