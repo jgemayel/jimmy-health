@@ -35,6 +35,7 @@ import { cn } from "@/lib/utils";
 import Dashboard from "@/components/Dashboard";
 import type { AppView } from "@/components/Dashboard";
 import WorkoutView from "@/components/WorkoutView";
+import DietView from "@/components/DietView";
 
 type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "whoop" | "reports";
 
@@ -1183,5 +1184,6 @@ export default function App() {
 
  if (view === "health") return <HealthApp onBack={() => setView("dashboard")} />;
  if (view === "workout") return <WorkoutView onBack={() => setView("dashboard")} />;
+ if (view === "diet") return <DietView onBack={() => setView("dashboard")} />;
  return <Dashboard onSelect={(v) => setView(v)} />;
 }
