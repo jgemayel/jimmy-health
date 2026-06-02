@@ -380,7 +380,7 @@ export default function WorkoutView({ onBack }: { onBack?: () => void }) {
       </div>
 
       <div className="space-y-2.5">
-        {WEEK.map((day) => (
+        {[...WEEK].sort((a, b) => a.day - b.day).map((day) => (
           <DayCard
             key={day.day}
             day={day}
