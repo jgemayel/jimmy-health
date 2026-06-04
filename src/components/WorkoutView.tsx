@@ -336,7 +336,7 @@ export default function WorkoutView({ onBack }: { onBack?: () => void }) {
   return (
     <div className="min-h-screen bg-stone-50">
       <StickyBar title="Workout" onBack={onBack} />
-      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
+      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-28 pt-3 sm:px-6">
       {/* Header */}
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">

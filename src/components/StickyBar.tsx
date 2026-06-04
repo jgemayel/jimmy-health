@@ -1,20 +1,25 @@
 import { ArrowLeft } from "lucide-react";
 
-/** Sticky top bar with an always-reachable back-to-launcher button. */
-export default function StickyBar({ title, onBack }: { title?: string; onBack?: () => void }) {
+/**
+ * Fixed BOTTOM back bar — keeps the "Dashboard" button in the thumb zone
+ * (the top of the screen is hard to reach one-handed on a phone).
+ * Used by the Workout and Nutrition views (the Health view puts Back in its bottom nav).
+ */
+export default function StickyBar({ onBack }: { title?: string; onBack?: () => void }) {
+  if (!onBack) return null;
   return (
-    <div className="sticky top-0 z-30 border-b border-stone-200/70 bg-stone-50/90 backdrop-blur">
-      <div className="mx-auto flex h-12 max-w-3xl items-center gap-1.5 px-3 sm:px-6">
-        {onBack && (
-          <button
-            onClick={onBack}
-            aria-label="Back to dashboard"
-            className="-ml-1 flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-stone-700 hover:bg-stone-200/70 active:bg-stone-300"
-          >
-            <ArrowLeft className="h-4 w-4" /> Dashboard
-          </button>
-        )}
-        {title && <span className="truncate font-serif text-sm text-stone-500">{title}</span>}
+    <div
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-stone-200 bg-stone-50/95 backdrop-blur"
+      style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+    >
+      <div className="mx-auto max-w-3xl px-4 py-2.5 sm:px-6">
+        <button
+          onClick={onBack}
+          aria-label="Back to dashboard"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-stone-900 py-3 text-sm font-medium text-stone-50 active:bg-stone-700"
+        >
+          <ArrowLeft className="h-4 w-4" /> Dashboard
+        </button>
       </div>
     </div>
   );

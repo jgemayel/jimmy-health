@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
  Activity, TrendingUp, TrendingDown, Minus, AlertTriangle, Check, ChevronDown,
  FlaskConical, Droplets, Stethoscope, FileText, Menu, Search, Sparkles,
- ArrowRight, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
+ ArrowRight, ArrowLeft, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
 } from "lucide-react";
 import {
  ResponsiveContainer, ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid,
@@ -36,7 +36,6 @@ import Dashboard from "@/components/Dashboard";
 import type { AppView } from "@/components/Dashboard";
 import WorkoutView from "@/components/WorkoutView";
 import DietView from "@/components/DietView";
-import StickyBar from "@/components/StickyBar";
 
 type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "whoop" | "reports";
 
@@ -77,7 +76,7 @@ function TopBar() {
 
 // ---------- Bottom tab bar (mobile-native feel, also visible on desktop) ----------
 
-function BottomNav({ section, setSection }: { section: Section; setSection: (s: Section) => void }) {
+function BottomNav({ section, setSection, onBack }: { section: Section; setSection: (s: Section) => void; onBack?: () => void }) {
  const tabs: { id: Section; label: string; icon: any }[] = [
  { id: "overview", label: "Home", icon: HeartPulse },
  { id: "blood", label: "Blood", icon: Droplets },
@@ -88,6 +87,14 @@ function BottomNav({ section, setSection }: { section: Section; setSection: (s: 
  return (
  <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-stone-200 bg-stone-50/95 backdrop-blur pb-[env(safe-area-inset-bottom,0)]">
  <div className="mx-auto flex max-w-md items-stretch justify-around">
+ {onBack && (
+ <button onClick={onBack} aria-label="Back to dashboard"
+ className="flex flex-1 flex-col items-center gap-0.5 px-2 py-2 text-[11px] font-medium text-stone-500">
+ <ArrowLeft className="h-5 w-5 stroke-[1.8]" />
+ <span>Back</span>
+ <span className="mt-0.5 h-0.5 w-5 rounded-full bg-transparent" />
+ </button>
+ )}
  {tabs.map((t) => {
  const Icon = t.icon;
  const active = section === t.id;
@@ -939,7 +946,7 @@ function WhoopView() {
  </div>
 
  {/* Single range selector that drives everything below */}
- <div className="sticky top-12 z-10 -mx-3 flex items-center justify-between gap-2 bg-stone-50/95 px-3 py-2 backdrop-blur sm:-mx-5 sm:px-5">
+ <div className="sticky top-0 z-10 -mx-3 flex items-center justify-between gap-2 bg-stone-50/95 px-3 py-2 backdrop-blur sm:-mx-5 sm:px-5">
  <div className="text-[10px] font-semibold uppercase tracking-wider text-stone-500">Window</div>
  <div className="flex gap-1 rounded-lg bg-stone-200/70 p-0.5">
  {RANGE_OPTIONS.map((r) => (
@@ -1134,7 +1141,6 @@ function HealthApp({ onBack }: { onBack: () => void }) {
 
  return (
  <div className="min-h-screen bg-stone-50 text-stone-900 pb-20">
- <StickyBar title="Health" onBack={onBack} />
  <main className="mx-auto max-w-3xl px-3 py-3 sm:px-5 sm:py-4">
  {section === "overview" && <Overview onFocus={(m) => { setFocusMarker(m); setSection("blood"); }} setSection={setSection} />}
  {section === "blood" && <BloodView initial={focusMarker} />}
@@ -1148,7 +1154,7 @@ function HealthApp({ onBack }: { onBack: () => void }) {
  <footer className="mx-auto max-w-3xl px-4 pb-3 pt-1 text-center text-[10px] text-stone-400 sm:px-6">
  Reference information only, not medical advice.
  </footer>
- <BottomNav section={section} setSection={handleTab} />
+ <BottomNav section={section} setSection={handleTab} onBack={onBack} />
  <Sheet open={moreOpen} onOpenChange={setMoreOpen}>
  <SheetContent side="bottom" className="rounded-t-2xl bg-stone-50 pb-8">
  <SheetHeader>
