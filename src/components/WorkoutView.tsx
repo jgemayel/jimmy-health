@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import {
-  Dumbbell, Footprints, Zap, Wind, Moon, ChevronDown, Check, ArrowLeft,
+  Dumbbell, Footprints, Zap, Wind, Moon, ChevronDown, Check,
   HeartPulse, Info, Clock, RotateCcw, Repeat, ArrowRightLeft,
 } from "lucide-react";
+import StickyBar from "@/components/StickyBar";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -333,14 +334,11 @@ export default function WorkoutView({ onBack }: { onBack?: () => void }) {
   const resetWeek = () => setDone({});
 
   return (
-    <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
+    <div className="min-h-screen bg-stone-50">
+      <StickyBar title="Workout" onBack={onBack} />
+      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
       {/* Header */}
       <div className="flex items-start gap-3">
-        {onBack && (
-          <Button variant="ghost" size="icon" onClick={onBack} className="mt-0.5 h-8 w-8 shrink-0" aria-label="Back to dashboard">
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-        )}
         <div className="min-w-0 flex-1">
           <h1 className="font-serif text-xl text-stone-900">{PLAN.title}</h1>
           <p className="mt-0.5 text-xs text-stone-500">{PLAN.subtitle}</p>
@@ -394,6 +392,7 @@ export default function WorkoutView({ onBack }: { onBack?: () => void }) {
       <p className="px-1 pt-2 text-center text-[10px] text-stone-400">
         Exercise photos &amp; instructions: free-exercise-db (public domain). Not medical advice.
       </p>
+      </div>
     </div>
   );
 }

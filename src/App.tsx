@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
  Activity, TrendingUp, TrendingDown, Minus, AlertTriangle, Check, ChevronDown,
  FlaskConical, Droplets, Stethoscope, FileText, Menu, Search, Sparkles,
- ArrowRight, ArrowLeft, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
+ ArrowRight, Info, HeartPulse, Moon, Zap, Watch, Dumbbell
 } from "lucide-react";
 import {
  ResponsiveContainer, ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid,
@@ -36,6 +36,7 @@ import Dashboard from "@/components/Dashboard";
 import type { AppView } from "@/components/Dashboard";
 import WorkoutView from "@/components/WorkoutView";
 import DietView from "@/components/DietView";
+import StickyBar from "@/components/StickyBar";
 
 type Section = "overview" | "blood" | "urine" | "imaging" | "pathology" | "semen" | "whoop" | "reports";
 
@@ -938,7 +939,7 @@ function WhoopView() {
  </div>
 
  {/* Single range selector that drives everything below */}
- <div className="sticky top-0 z-10 -mx-3 flex items-center justify-between gap-2 bg-stone-50/95 px-3 py-2 backdrop-blur sm:-mx-5 sm:px-5">
+ <div className="sticky top-12 z-10 -mx-3 flex items-center justify-between gap-2 bg-stone-50/95 px-3 py-2 backdrop-blur sm:-mx-5 sm:px-5">
  <div className="text-[10px] font-semibold uppercase tracking-wider text-stone-500">Window</div>
  <div className="flex gap-1 rounded-lg bg-stone-200/70 p-0.5">
  {RANGE_OPTIONS.map((r) => (
@@ -1133,11 +1134,7 @@ function HealthApp({ onBack }: { onBack: () => void }) {
 
  return (
  <div className="min-h-screen bg-stone-50 text-stone-900 pb-20">
- <div className="mx-auto flex max-w-3xl items-center px-3 pt-3 sm:px-5">
- <button onClick={onBack} className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-stone-500 hover:bg-stone-100 hover:text-stone-700">
- <ArrowLeft className="h-4 w-4" /> Dashboard
- </button>
- </div>
+ <StickyBar title="Health" onBack={onBack} />
  <main className="mx-auto max-w-3xl px-3 py-3 sm:px-5 sm:py-4">
  {section === "overview" && <Overview onFocus={(m) => { setFocusMarker(m); setSection("blood"); }} setSection={setSection} />}
  {section === "blood" && <BloodView initial={focusMarker} />}

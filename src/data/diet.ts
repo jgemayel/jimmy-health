@@ -149,31 +149,68 @@ export const FOOD_SOURCES: { macro: string; color: string; foods: string }[] = [
     foods: "Olive oil, nuts & nut butter, avocado, whole eggs, oily fish, seeds, a little dark chocolate." },
 ];
 
-export interface Meal {
-  name: string;
-  items: string;
-  kcal: number;
-  protein: number;
+export interface CutTier {
+  key: string;
+  label: string;
+  deficit: number;   // fraction below maintenance
+  tone: string;      // color token
+  note: string;
 }
 
-// A worked training-day menu (~2,200 kcal / ~185 g protein). Rest day: see restNote.
-export const SAMPLE_DAY: { meals: Meal[]; restNote: string } = {
-  meals: [
-    { name: "Breakfast", items: "3 whole eggs + 3 egg whites, 80 g oats with berries, black coffee", kcal: 500, protein: 42 },
-    { name: "Snack", items: "200 g Greek yogurt + honey + a handful of berries (or a whey shake)", kcal: 230, protein: 25 },
-    { name: "Lunch", items: "180 g chicken breast, 200 g cooked rice, big mixed salad + 1 tbsp olive oil", kcal: 620, protein: 52 },
-    { name: "Pre-workout snack", items: "Apple + 30 g almonds, or 2 rice cakes + a scoop of whey", kcal: 260, protein: 18 },
-    { name: "Dinner", items: "200 g salmon or lean steak, 250 g potatoes, greens, drizzle of olive oil", kcal: 600, protein: 48 },
-  ],
-  restNote:
-    "Rest day (~1,900 kcal): drop the breakfast oats and halve the lunch rice — about 300 fewer carb calories, protein stays the same.",
-};
+// Options for how hard to cut — each derives calorie targets from your maintenance.
+export const CUT_TIERS: CutTier[] = [
+  { key: "maintain", label: "Maintain / recomp", deficit: 0, tone: "sky",
+    note: "Hold weight and slowly recomp. Good for a diet break or once you're happy with body fat." },
+  { key: "mild", label: "Mild cut", deficit: 0.10, tone: "emerald",
+    note: "Slow and easy to sustain — best as you get close to your goal." },
+  { key: "moderate", label: "Moderate cut", deficit: 0.20, tone: "amber",
+    note: "The sweet spot — solid fat loss while your lifts stay strong." },
+  { key: "aggressive", label: "Aggressive cut", deficit: 0.27, tone: "rose",
+    note: "Fastest loss — run it in short stints and guard muscle with protein and sleep." },
+];
+
+export interface CutTargets {
+  avg: number;
+  training: number;
+  rest: number;
+  lossPerWeek: number;
+}
+
+const r10 = (n: number) => Math.round(n / 10) * 10;
+
+/** Calorie targets for a deficit, cycled across the 6 training / 1 rest week. */
+export function cutTargets(maintenance: number, deficit: number): CutTargets {
+  const avg = maintenance * (1 - deficit);
+  const rest = r10(avg - 250);
+  const training = r10((avg * (TRAINING_DAYS + REST_DAYS) - rest * REST_DAYS) / TRAINING_DAYS);
+  return { avg: Math.round(avg), training, rest, lossPerWeek: ((maintenance - avg) * 7) / 7700 };
+}
+
+export interface Micro {
+  name: string;
+  target: string;
+  sources: string;
+}
+
+// Directional micronutrient targets — ranges to aim at, not precise prescriptions.
+export const MICROS: Micro[] = [
+  { name: "Fiber", target: "30–40 g/day", sources: "Veg, fruit, oats, legumes, whole grains" },
+  { name: "Sodium", target: "3–5 g/day", sources: "Salt & electrolytes — you sweat a lot training, don't fear it" },
+  { name: "Potassium", target: "3.5–4.7 g/day", sources: "Potatoes, banana, leafy greens, yogurt, beans" },
+  { name: "Calcium", target: "~1,000 mg/day", sources: "Dairy, yogurt, fortified milks, leafy greens" },
+  { name: "Iron", target: "8–11 mg/day", sources: "Red meat, poultry, legumes, spinach" },
+  { name: "Magnesium", target: "~400 mg/day", sources: "Nuts, seeds, whole grains, greens (or supplement)" },
+  { name: "Omega-3 (EPA+DHA)", target: "1–2 g/day", sources: "Salmon, sardines, mackerel, or fish oil" },
+  { name: "Vitamin D", target: "2,000–4,000 IU/day", sources: "Sunlight + a supplement (test your levels)" },
+  { name: "Fruit & veg", target: "5+ servings/day", sources: "Mix the colours for broad micronutrient cover" },
+  { name: "Water", target: "~3 L/day", sources: "More around training and the long run" },
+];
 
 export const DIET_PLAN = {
   title: "Nutrition — Cut Phase",
   subtitle: "Fat loss · hold muscle · built around your training week",
   principles: [
-    "Targets come from your own maintenance (~2,700 kcal) minus ~20% — sustainable, not a crash diet.",
+    "Pick a cut level below — targets are built from your own maintenance (~2,700 kcal), not a one-size diet.",
     "Eat more on training days (~2,200), less on your one rest day (~1,900) — same weekly deficit, better performance.",
     "Protein stays high every day (~2.2 g/kg ≈ 180 g) — this is what keeps your muscle while you lean out.",
     "Carbs cycle to where the work is; fat stays steady (~66 g) for hormones.",
