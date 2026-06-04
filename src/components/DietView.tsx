@@ -317,7 +317,7 @@ export default function DietView({ onBack }: { onBack?: () => void }) {
   return (
     <div className="min-h-screen bg-stone-50">
       <StickyBar title="Nutrition" onBack={onBack} />
-      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
+      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-28 pt-3 sm:px-6">
       <div>
         <h1 className="font-serif text-xl text-stone-900">{DIET_PLAN.title}</h1>
         <p className="mt-0.5 text-xs text-stone-500">{DIET_PLAN.subtitle}</p>
