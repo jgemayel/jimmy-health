@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
-  ArrowLeft, ChevronDown, Flame, Pill, Dumbbell, Moon, Info, GlassWater, UtensilsCrossed,
+  ChevronDown, Flame, Pill, Dumbbell, Moon, Info, GlassWater,
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import {
-  DEFAULT_STATS, NEAT_LEVELS, SUPPLEMENTS, GUIDELINES, FOOD_SOURCES, DIET_PLAN, SAMPLE_DAY,
-  TRAINING_DAYS, REST_DAYS, macrosFor, energyBreakdown,
+  DEFAULT_STATS, NEAT_LEVELS, SUPPLEMENTS, GUIDELINES, FOOD_SOURCES, DIET_PLAN, CUT_TIERS, MICROS,
+  TRAINING_DAYS, REST_DAYS, macrosFor, energyBreakdown, cutTargets,
 } from "@/data/diet";
 import type { BodyStats } from "@/data/diet";
+import StickyBar from "@/components/StickyBar";
 import { cn } from "@/lib/utils";
 
 // ---------- localStorage hook ----------
@@ -49,6 +49,12 @@ const FOOD_CLR: Record<string, string> = {
   rose: "border-rose-200 bg-rose-50/50 text-rose-900",
   amber: "border-amber-200 bg-amber-50/50 text-amber-900",
   sky: "border-sky-200 bg-sky-50/50 text-sky-900",
+};
+const TIER_CLR: Record<string, string> = {
+  sky: "border-sky-200 bg-sky-50 text-sky-700",
+  emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  amber: "border-amber-200 bg-amber-50 text-amber-800",
+  rose: "border-rose-200 bg-rose-50 text-rose-700",
 };
 
 // ---------- macro bar ----------
@@ -306,20 +312,15 @@ function Supplements() {
 export default function DietView({ onBack }: { onBack?: () => void }) {
   // v2 key: tailored defaults (age, body fat, NEAT + training maintenance model).
   const [stats, setStats] = useLocalStorage<BodyStats>("diet.stats.v2", DEFAULT_STATS);
-  const sample = SAMPLE_DAY.meals.reduce((a, m) => ({ kcal: a.kcal + m.kcal, protein: a.protein + m.protein }), { kcal: 0, protein: 0 });
+  const maint = energyBreakdown(stats).maintenance;
 
   return (
-    <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
-      <div className="flex items-start gap-3">
-        {onBack && (
-          <Button variant="ghost" size="icon" onClick={onBack} className="mt-0.5 h-8 w-8 shrink-0" aria-label="Back to dashboard">
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-        )}
-        <div className="min-w-0 flex-1">
-          <h1 className="font-serif text-xl text-stone-900">{DIET_PLAN.title}</h1>
-          <p className="mt-0.5 text-xs text-stone-500">{DIET_PLAN.subtitle}</p>
-        </div>
+    <div className="min-h-screen bg-stone-50">
+      <StickyBar title="Nutrition" onBack={onBack} />
+      <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
+      <div>
+        <h1 className="font-serif text-xl text-stone-900">{DIET_PLAN.title}</h1>
+        <p className="mt-0.5 text-xs text-stone-500">{DIET_PLAN.subtitle}</p>
       </div>
 
       <Card className="border-stone-200 bg-stone-50/60">
@@ -337,6 +338,41 @@ export default function DietView({ onBack }: { onBack?: () => void }) {
 
       <TargetsCalculator stats={stats} setStats={setStats} />
 
+      <h2 className="px-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Cut level — pick how hard to push</h2>
+      <div className="space-y-2">
+        {CUT_TIERS.map((t) => {
+          const ct = cutTargets(maint, t.deficit);
+          const m = macrosFor(ct.training, stats);
+          const active = Math.abs(stats.trainingCals - ct.training) <= 20 && Math.abs(stats.restCals - ct.rest) <= 20;
+          return (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => setStats({ ...stats, trainingCals: ct.training, restCals: ct.rest })}
+              className={cn("w-full rounded-xl border p-3 text-left transition-colors",
+                active ? "border-emerald-500 bg-emerald-50/50 ring-1 ring-emerald-400" : "border-stone-200 bg-white hover:bg-stone-50")}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-serif text-base text-stone-900">{t.label}</span>
+                <span className={cn("shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-medium", TIER_CLR[t.tone])}>
+                  {t.deficit === 0 ? "maintain" : `~${ct.lossPerWeek.toFixed(2)} kg/wk`}
+                </span>
+              </div>
+              <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-stone-600">
+                <span><b className="font-medium text-stone-900 tabular-nums">{ct.training.toLocaleString()}</b> train</span>
+                <span><b className="font-medium text-stone-900 tabular-nums">{ct.rest.toLocaleString()}</b> rest kcal</span>
+                <span className="text-stone-300">·</span>
+                <span className="text-rose-600">P {m.protein}</span>
+                <span className="text-amber-600">C {m.carbs}</span>
+                <span className="text-sky-600">F {m.fat}</span>
+              </div>
+              <p className="mt-1 text-xs leading-relaxed text-stone-500">{t.note}</p>
+              {active && <p className="mt-1 text-[11px] font-medium text-emerald-700">✓ Active — your targets are set to this.</p>}
+            </button>
+          );
+        })}
+      </div>
+
       <div className="grid grid-cols-2 gap-2.5">
         <DayTargetCard label="Training day" icon={Dumbbell} cals={stats.trainingCals} stats={stats} accent="bg-stone-900" />
         <DayTargetCard label="Rest day" icon={Moon} cals={stats.restCals} stats={stats} accent="bg-stone-400" />
@@ -344,31 +380,18 @@ export default function DietView({ onBack }: { onBack?: () => void }) {
 
       <DailyLogger stats={stats} />
 
-      <h2 className="px-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Sample training day</h2>
+      <h2 className="px-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Micronutrient ledger</h2>
       <Card className="border-stone-200">
-        <CardContent className="p-0">
-          <div className="flex items-center gap-2 border-b border-stone-100 p-3 sm:p-4">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-stone-50">
-              <UtensilsCrossed className="h-4 w-4" />
-            </span>
-            <span className="text-sm text-stone-600">
-              ~{sample.kcal.toLocaleString()} kcal · ~{sample.protein} g protein
-            </span>
-          </div>
-          <div className="divide-y divide-stone-100">
-            {SAMPLE_DAY.meals.map((m) => (
-              <div key={m.name} className="p-3 sm:p-4">
-                <div className="flex items-baseline justify-between gap-2">
-                  <span className="text-sm font-medium text-stone-900">{m.name}</span>
-                  <span className="shrink-0 text-xs text-stone-500 tabular-nums">{m.kcal} kcal · {m.protein} g P</span>
-                </div>
-                <p className="mt-0.5 text-xs leading-relaxed text-stone-600">{m.items}</p>
+        <CardContent className="divide-y divide-stone-100 p-0">
+          {MICROS.map((mi) => (
+            <div key={mi.name} className="flex items-baseline justify-between gap-3 p-3 sm:px-4">
+              <div className="min-w-0">
+                <div className="text-sm font-medium text-stone-800">{mi.name}</div>
+                <p className="text-xs leading-relaxed text-stone-500">{mi.sources}</p>
               </div>
-            ))}
-          </div>
-          <p className="flex items-start gap-2 border-t border-stone-100 bg-stone-50/60 px-3 py-2.5 text-xs leading-relaxed text-stone-600 sm:px-4">
-            <Moon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-stone-400" /> {SAMPLE_DAY.restNote}
-          </p>
+              <span className="shrink-0 text-xs font-medium tabular-nums text-emerald-700">{mi.target}</span>
+            </div>
+          ))}
         </CardContent>
       </Card>
 
@@ -403,6 +426,7 @@ export default function DietView({ onBack }: { onBack?: () => void }) {
       <p className="flex items-center justify-center gap-1.5 px-1 pt-2 text-center text-[10px] text-stone-400">
         <GlassWater className="h-3 w-3" /> General nutrition guidance, not medical advice. Check with a doctor before changing diet or supplements.
       </p>
+      </div>
     </div>
   );
 }
