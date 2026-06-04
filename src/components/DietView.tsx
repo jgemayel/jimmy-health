@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
-  ArrowLeft, ChevronDown, Flame, Pill, Dumbbell, Moon, Info, GlassWater,
+  ArrowLeft, ChevronDown, Flame, Pill, Dumbbell, Moon, Info, GlassWater, UtensilsCrossed,
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,8 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import {
-  DEFAULT_STATS, ACTIVITY_LEVELS, SUPPLEMENTS, GUIDELINES, FOOD_SOURCES, DIET_PLAN,
-  maintenanceCals, macrosFor,
+  DEFAULT_STATS, NEAT_LEVELS, SUPPLEMENTS, GUIDELINES, FOOD_SOURCES, DIET_PLAN, SAMPLE_DAY,
+  TRAINING_DAYS, REST_DAYS, macrosFor, energyBreakdown,
 } from "@/data/diet";
 import type { BodyStats } from "@/data/diet";
 import { cn } from "@/lib/utils";
@@ -102,11 +102,12 @@ function DayTargetCard({ label, icon: Icon, cals, stats, accent }: {
 
 function TargetsCalculator({ stats, setStats }: { stats: BodyStats; setStats: (s: BodyStats) => void }) {
   const [open, setOpen] = useState(false);
-  const maint = maintenanceCals(stats);
+  const energy = energyBreakdown(stats);
+  const maint = energy.maintenance;
   const num = (v: string) => (v === "" ? 0 : Math.max(0, Math.round(Number(v) || 0)));
 
-  const weeklyIntake = stats.trainingCals * 5 + stats.restCals * 2;
-  const avgDaily = Math.round(weeklyIntake / 7);
+  const weeklyIntake = stats.trainingCals * TRAINING_DAYS + stats.restCals * REST_DAYS;
+  const avgDaily = Math.round(weeklyIntake / (TRAINING_DAYS + REST_DAYS));
   const weeklyDeficit = maint * 7 - weeklyIntake;
   const estLoss = (weeklyDeficit / 7700).toFixed(2);
 
@@ -128,37 +129,47 @@ function TargetsCalculator({ stats, setStats }: { stats: BodyStats; setStats: (s
         <CollapsibleContent>
           <Separator />
           <CardContent className="space-y-4 p-3 sm:p-4">
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <Field id="d-w" label="Weight (kg)" value={stats.weightKg} onChange={(v) => setStats({ ...stats, weightKg: num(v) })} />
               <Field id="d-h" label="Height (cm)" value={stats.heightCm} onChange={(v) => setStats({ ...stats, heightCm: num(v) })} />
               <Field id="d-a" label="Age" value={stats.age} onChange={(v) => setStats({ ...stats, age: num(v) })} />
+              <Field id="d-bf" label="Body fat %" value={stats.bodyFatPct} onChange={(v) => setStats({ ...stats, bodyFatPct: num(v) })} />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-xs text-stone-500">Activity</Label>
-              <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4">
-                {ACTIVITY_LEVELS.map((a) => (
-                  <button key={a.value} type="button" onClick={() => setStats({ ...stats, activity: a.value })}
+              <Label className="text-xs text-stone-500">Daily activity <span className="text-stone-300">(excl. training)</span></Label>
+              <div className="grid grid-cols-3 gap-1.5">
+                {NEAT_LEVELS.map((a) => (
+                  <button key={a.value} type="button" onClick={() => setStats({ ...stats, neat: a.value })}
                     title={a.hint}
                     className={cn("rounded-md border px-2 py-1.5 text-xs transition-colors",
-                      stats.activity === a.value ? "border-emerald-500 bg-emerald-50 text-emerald-700" : "border-stone-200 text-stone-600 hover:bg-stone-50")}>
+                      stats.neat === a.value ? "border-emerald-500 bg-emerald-50 text-emerald-700" : "border-stone-200 text-stone-600 hover:bg-stone-50")}>
                     {a.label}
                   </button>
                 ))}
               </div>
             </div>
+
+            {/* Energy breakdown */}
+            <div className="rounded-lg border border-stone-200 text-sm">
+              <Row label={`BMR ${stats.bodyFatPct > 0 ? "(Katch–McArdle)" : "(Mifflin–St Jeor)"}`} value={`${energy.bmr.toLocaleString()}`} />
+              <Row label="+ daily activity (NEAT)" value={`${(energy.neat - energy.bmr).toLocaleString()}`} />
+              <Row label="+ training (avg/day)" value={`+${energy.training.toLocaleString()}`} />
+              <Row label="Maintenance" value={`${maint.toLocaleString()} kcal`} bold />
+            </div>
+
             <div className="grid grid-cols-2 gap-3">
               <Field id="d-tc" label="Training-day kcal" value={stats.trainingCals} onChange={(v) => setStats({ ...stats, trainingCals: num(v) })} />
               <Field id="d-rc" label="Rest-day kcal" value={stats.restCals} onChange={(v) => setStats({ ...stats, restCals: num(v) })} />
             </div>
-            <div className="grid grid-cols-2 gap-2 rounded-lg bg-stone-50 p-3 text-sm sm:grid-cols-4">
-              <Stat label="Maintenance" value={`${maint.toLocaleString()}`} unit="kcal" />
+            <div className="grid grid-cols-3 gap-2 rounded-lg bg-stone-50 p-3 text-sm">
               <Stat label="Avg intake" value={`${avgDaily.toLocaleString()}`} unit="kcal/day" />
-              <Stat label="Weekly deficit" value={`${weeklyDeficit.toLocaleString()}`} unit="kcal" />
+              <Stat label="Daily deficit" value={`${Math.round(weeklyDeficit / 7).toLocaleString()}`} unit="kcal" />
               <Stat label="Est. fat loss" value={estLoss} unit="kg/week" />
             </div>
             <p className="text-[11px] leading-relaxed text-stone-400">
-              Maintenance via Mifflin–St Jeor × activity. Protein fixed at {stats.proteinPerKg} g/kg (~{Math.round(stats.proteinPerKg * stats.weightKg)} g),
-              fat at {stats.fatPerKg} g/kg (~{Math.round(stats.fatPerKg * stats.weightKg)} g); carbs fill the rest. Estimates only — track your real trend.
+              Maintenance = BMR × activity + average training burn ({TRAINING_DAYS} sessions/wk). Protein fixed at {stats.proteinPerKg} g/kg
+              (~{Math.round(stats.proteinPerKg * stats.weightKg)} g), fat at {stats.fatPerKg} g/kg (~{Math.round(stats.fatPerKg * stats.weightKg)} g);
+              carbs fill the rest. Estimates only — track your real trend and adjust.
             </p>
           </CardContent>
         </CollapsibleContent>
@@ -182,6 +193,15 @@ function Stat({ label, value, unit }: { label: string; value: string; unit: stri
       <div className="font-serif text-lg text-stone-900 tabular-nums">{value}</div>
       <div className="text-[10px] uppercase tracking-wider text-stone-400">{label}</div>
       <div className="text-[10px] text-stone-400">{unit}</div>
+    </div>
+  );
+}
+
+function Row({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
+  return (
+    <div className={cn("flex items-center justify-between px-3 py-1.5", !bold && "border-b border-stone-100")}>
+      <span className={cn("text-stone-600", bold && "font-medium text-stone-900")}>{label}</span>
+      <span className={cn("tabular-nums text-stone-700", bold && "font-serif text-base text-stone-900")}>{value}</span>
     </div>
   );
 }
@@ -284,7 +304,9 @@ function Supplements() {
 // ---------- view ----------
 
 export default function DietView({ onBack }: { onBack?: () => void }) {
-  const [stats, setStats] = useLocalStorage<BodyStats>("diet.stats", DEFAULT_STATS);
+  // v2 key: tailored defaults (age, body fat, NEAT + training maintenance model).
+  const [stats, setStats] = useLocalStorage<BodyStats>("diet.stats.v2", DEFAULT_STATS);
+  const sample = SAMPLE_DAY.meals.reduce((a, m) => ({ kcal: a.kcal + m.kcal, protein: a.protein + m.protein }), { kcal: 0, protein: 0 });
 
   return (
     <div className="mx-auto max-w-3xl space-y-3 px-4 pb-24 pt-3 sm:px-6">
@@ -321,6 +343,34 @@ export default function DietView({ onBack }: { onBack?: () => void }) {
       </div>
 
       <DailyLogger stats={stats} />
+
+      <h2 className="px-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Sample training day</h2>
+      <Card className="border-stone-200">
+        <CardContent className="p-0">
+          <div className="flex items-center gap-2 border-b border-stone-100 p-3 sm:p-4">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-stone-50">
+              <UtensilsCrossed className="h-4 w-4" />
+            </span>
+            <span className="text-sm text-stone-600">
+              ~{sample.kcal.toLocaleString()} kcal · ~{sample.protein} g protein
+            </span>
+          </div>
+          <div className="divide-y divide-stone-100">
+            {SAMPLE_DAY.meals.map((m) => (
+              <div key={m.name} className="p-3 sm:p-4">
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm font-medium text-stone-900">{m.name}</span>
+                  <span className="shrink-0 text-xs text-stone-500 tabular-nums">{m.kcal} kcal · {m.protein} g P</span>
+                </div>
+                <p className="mt-0.5 text-xs leading-relaxed text-stone-600">{m.items}</p>
+              </div>
+            ))}
+          </div>
+          <p className="flex items-start gap-2 border-t border-stone-100 bg-stone-50/60 px-3 py-2.5 text-xs leading-relaxed text-stone-600 sm:px-4">
+            <Moon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-stone-400" /> {SAMPLE_DAY.restNote}
+          </p>
+        </CardContent>
+      </Card>
 
       <h2 className="px-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-stone-400">Supplements</h2>
       <Supplements />
