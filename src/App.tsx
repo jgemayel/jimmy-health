@@ -366,6 +366,36 @@ function MarkerSpotlight({ marker, onPick }: { marker: BloodMarker; onPick: (m: 
 
 // ---------- Overview ----------
 
+function DoctorNote({ setSection }: { setSection: (s: Section) => void }) {
+ return (
+ <Card className="border-amber-200 bg-amber-50/40">
+ <CardContent className="space-y-2 p-3 sm:p-4">
+ <div className="flex items-center gap-2">
+ <Stethoscope className="h-4 w-4 text-amber-700" />
+ <span className="font-serif text-base text-stone-900">For your doctor — celiac / absorption screen</span>
+ </div>
+ <p className="text-xs leading-relaxed text-stone-700">
+ Recurrent mouth ulcers plus soft absorption signals (recurrently low vitamin D; persistently low &amp; falling globulin; a gentle downward drift in ferritin, calcium and total protein/albumin) prompt a celiac screen. No iron-deficiency anemia and normal B12, MCV and liver enzymes make classic celiac less likely — but don't exclude it.
+ </p>
+ <div className="text-xs text-stone-700">
+ <div className="font-medium text-stone-900">Suggested tests</div>
+ <ul className="mt-0.5 list-disc space-y-0.5 pl-4">
+ <li><b>tTG-IgA</b> — first-line celiac screen</li>
+ <li><b>Total IgA</b> — essential given the low globulin; if low, use IgG-based tests</li>
+ <li><b>Serum (± RBC) folate</b> — never measured before</li>
+ </ul>
+ </div>
+ <p className="rounded-md bg-white/70 px-2.5 py-1.5 text-[11px] text-amber-800">
+ Keep eating gluten (~1–2 slices of bread/day for ~6 weeks) before the antibody test, or it can be falsely negative.
+ </p>
+ <button onClick={() => setSection("blood")} className="text-xs font-medium text-stone-600 underline underline-offset-2">
+ View the new markers in the panel →
+ </button>
+ </CardContent>
+ </Card>
+ );
+}
+
 function Overview({ onFocus, setSection }: { onFocus: (m: BloodMarker) => void; setSection: (s: Section) => void }) {
  const counts = countAbnormal();
  const attention = attentionList();
@@ -397,6 +427,8 @@ function Overview({ onFocus, setSection }: { onFocus: (m: BloodMarker) => void; 
  <KpiPill label="High" value={`${counts.high}`} tone={counts.high ? "bad" : "muted"} />
  <KpiPill label="Low" value={`${counts.low}`} tone={counts.low ? "warn" : "muted"} />
  </div>
+
+ <DoctorNote setSection={setSection} />
 
  {/* Integrated spotlight (picker + chart in one card) */}
  <MarkerSpotlight marker={focus} onPick={(m) => { setFocus(m); onFocus(m); }} />

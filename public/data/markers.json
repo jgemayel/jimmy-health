@@ -1398,5 +1398,65 @@
       null
     ],
     "notes": ""
+  },
+  {
+    "cat": "Vitamins",
+    "name": "Folate",
+    "unit": "ng/mL",
+    "ref": "3.1-20.5",
+    "low": 3.1,
+    "high": 20.5,
+    "values": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "notes": "Added Apr 2026 for the celiac / absorption work-up — not yet measured. Consider serum + RBC folate."
+  },
+  {
+    "cat": "Celiac Screen",
+    "name": "tTG-IgA",
+    "unit": "U/mL",
+    "ref": "<7 (neg)",
+    "low": null,
+    "high": 7,
+    "values": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "notes": "Tissue transglutaminase IgA — first-line celiac screen. Cutoff is assay-specific (often <4, <7, <10 or <20) — set to your lab's. Must be eating gluten (~1-2 slices bread/day for ~6 weeks) before testing."
+  },
+  {
+    "cat": "Celiac Screen",
+    "name": "Total IgA",
+    "unit": "mg/dL",
+    "ref": "70-400",
+    "low": 70,
+    "high": 400,
+    "values": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "notes": "Total serum IgA — draw WITH tTG-IgA. If low (esp. <7 = selective IgA deficiency) the tTG-IgA screen is unreliable and IgG-based tests are needed. Your persistently low globulin is why this matters."
   }
 ]
