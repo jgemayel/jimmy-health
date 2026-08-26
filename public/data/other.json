@@ -3,13 +3,15 @@
     "10-Nov-2020",
     "06-Jul-2024",
     "24-May-2025",
-    "20-Aug-2025"
+    "20-Aug-2025",
+    "24-Aug-2026"
   ],
   "URINALYSIS_LABS": [
     "Dubai Hills",
     "Dubai Hills",
     "Dubai London Clinic",
-    "Haddad Lab (Lebanon)"
+    "Haddad Lab (Lebanon)",
+    "—"
   ],
   "URINALYSIS": [
     {
@@ -20,7 +22,8 @@
         "YELLOW",
         "Yellow",
         "straw-yellow",
-        "Light yellow"
+        "Light yellow",
+        "Straw"
       ]
     },
     {
@@ -29,6 +32,7 @@
       "ref": "Clear",
       "values": [
         "Slightly Turbid",
+        "Clear",
         "Clear",
         "Clear",
         "Clear"
@@ -42,7 +46,8 @@
         8,
         7.5,
         7.5,
-        5
+        5,
+        "6.0"
       ]
     },
     {
@@ -53,7 +58,8 @@
         1.015,
         1.009,
         1.01,
-        1.005
+        1.005,
+        "1.007"
       ]
     },
     {
@@ -61,6 +67,7 @@
       "unit": "",
       "ref": "Negative",
       "values": [
+        "Negative",
         "Negative",
         "Negative",
         "Negative",
@@ -75,6 +82,7 @@
         "Negative",
         "Negative",
         "Negative",
+        "Negative",
         "Negative"
       ]
     },
@@ -83,6 +91,7 @@
       "unit": "",
       "ref": "Negative",
       "values": [
+        "Negative",
         "Negative",
         "Negative",
         "Negative",
@@ -97,6 +106,7 @@
         "Negative",
         "Negative",
         "Negative",
+        "Negative",
         "Negative"
       ]
     },
@@ -105,6 +115,7 @@
       "unit": "",
       "ref": "Negative",
       "values": [
+        "Negative",
         "Negative",
         "Negative",
         "Negative",
@@ -119,6 +130,7 @@
         0.2,
         "Normal",
         null,
+        "Normal",
         "Normal"
       ]
     },
@@ -127,6 +139,7 @@
       "unit": "",
       "ref": "Negative",
       "values": [
+        "Negative",
         "Negative",
         "Negative",
         "Negative",
@@ -141,7 +154,8 @@
         "Negative",
         "Negative",
         "Negative",
-        null
+        null,
+        "Negative"
       ]
     },
     {
@@ -152,7 +166,8 @@
         "1-4",
         "0-5",
         "0-2",
-        "1-2"
+        "1-2",
+        "0-5 /HPF"
       ]
     },
     {
@@ -163,7 +178,8 @@
         "0-2",
         "2-4",
         "2-4",
-        "1-2"
+        "1-2",
+        "0-3 /HPF"
       ]
     },
     {
@@ -174,7 +190,8 @@
         "2-4",
         "0-5",
         "0-2",
-        "Absent"
+        "Absent",
+        "0-5 /HPF"
       ]
     },
     {
@@ -185,7 +202,8 @@
         "Amorphous Phos",
         "None Seen",
         "Nil",
-        "Absent"
+        "Absent",
+        "None seen"
       ]
     },
     {
@@ -196,7 +214,8 @@
         "None Seen",
         "None Seen",
         "Nil",
-        "Absent"
+        "Absent",
+        "None seen"
       ]
     },
     {
@@ -207,7 +226,8 @@
         "None Seen",
         "None Seen",
         "Nil",
-        "Absent"
+        "Absent",
+        "None seen"
       ]
     },
     {
@@ -218,7 +238,8 @@
         "None Seen",
         "None Seen",
         "Nil",
-        null
+        null,
+        "None seen"
       ]
     },
     {
@@ -229,7 +250,8 @@
         null,
         "None Seen",
         "Nil",
-        "Absent"
+        "Absent",
+        "None seen"
       ]
     }
   ],

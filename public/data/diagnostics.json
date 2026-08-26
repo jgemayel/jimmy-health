@@ -1635,5 +1635,23 @@
     "Always order with tTG-IgA so the screen is interpretable."
    ]
   }
+ },
+ "UIBC": {
+  "desc": "Unsaturated iron-binding capacity — the spare room left on transferrin for carrying iron.",
+  "why": "Read together with serum iron and TIBC to characterise iron status. High UIBC suggests iron deficiency; low suggests iron overload or inflammation.",
+  "highMeans": "More empty transferrin than usual — typically early iron deficiency.",
+  "lowMeans": "Transferrin is unusually saturated — seen in iron overload, or reduced transferrin production (inflammation, liver disease).",
+  "context": "Aug 2026: UIBC 186 with iron 100 and TIBC 286 → transferrin saturation ~35% — comfortably normal, no iron deficiency.",
+  "actions": {
+   "high": [
+    "Check ferritin and transferrin saturation; look for blood loss if truly iron deficient."
+   ],
+   "low": [
+    "Interpret with ferritin; if ferritin is also high, discuss iron overload screening."
+   ],
+   "maintain": [
+    "Nothing needed — routine iron panel every year or two."
+   ]
+  }
  }
 }
