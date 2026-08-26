@@ -8,7 +8,8 @@
     "24-May-2025",
     "20-Aug-2025",
     "30-Dec-2025",
-    "19-Apr-2026"
+    "19-Apr-2026",
+    "24-Aug-2026"
   ],
   "LABS": [
     "Dubai Hills",
@@ -19,7 +20,8 @@
     "Dubai London Clinic",
     "Lebanon (Haddad)",
     "Intel-Lab Dubai",
-    "Dubai Hills"
+    "Dubai Hills",
+    "—"
   ],
   "SHORT_DATES": [
     "Nov '20",
@@ -30,6 +32,7 @@
     "May '25",
     "Aug '25",
     "Dec '25",
-    "Apr '26"
+    "Apr '26",
+    "Aug '26"
   ]
 }

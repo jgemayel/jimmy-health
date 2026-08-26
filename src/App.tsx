@@ -375,14 +375,16 @@ function DoctorNote({ setSection }: { setSection: (s: Section) => void }) {
  <span className="font-serif text-base text-stone-900">For your doctor — celiac / absorption screen</span>
  </div>
  <p className="text-xs leading-relaxed text-stone-700">
- Recurrent mouth ulcers plus soft absorption signals (recurrently low vitamin D; persistently low &amp; falling globulin; a gentle downward drift in ferritin, calcium and total protein/albumin) prompt a celiac screen. No iron-deficiency anemia and normal B12, MCV and liver enzymes make classic celiac less likely — but don't exclude it.
+ Recurrent mouth ulcers prompted an absorption work-up. Aug 2026 bloods are reassuring: folate now measured and normal (7.96), iron/ferritin/B12 normal, no anemia, FIT negative. Still outstanding: globulin remains low (2.2 — low-ish since 2020), vitamin D and zinc sit at the bottom of range. Classic celiac looks unlikely, but the one-time screen below is still worthwhile and cheap.
  </p>
  <div className="text-xs text-stone-700">
- <div className="font-medium text-stone-900">Suggested tests</div>
+ <div className="font-medium text-stone-900">Suggested tests (one draw)</div>
  <ul className="mt-0.5 list-disc space-y-0.5 pl-4">
  <li><b>tTG-IgA</b> — first-line celiac screen</li>
- <li><b>Total IgA</b> — essential given the low globulin; if low, use IgG-based tests</li>
- <li><b>Serum (± RBC) folate</b> — never measured before</li>
+ <li><b>Total IgA + immunoglobulins (IgG/IgA/IgM)</b> — validates the screen and settles the six-year low globulin</li>
+ <li><b>hs-CRP ± ESR</b> — recheck at steady state (April CRP 3.65 was a one-off)</li>
+ <li><b>Fasting insulin (HOMA-IR)</b> — glucose 117 / HbA1c 5.8; prior HOMA-IR was normal (1.1–1.3)</li>
+ <li>Consider <b>vitamin B6</b> and a fasting <b>zinc</b> redraw</li>
  </ul>
  </div>
  <p className="rounded-md bg-white/70 px-2.5 py-1.5 text-[11px] text-amber-800">
